@@ -1,5 +1,22 @@
+import { useNavigate } from "react-router";
+
 function LoginPage() {
-  return <h1>Login Page</h1>;
+  const navigator = useNavigate();
+
+  return (
+    <main>
+      <h1>Gym Helper</h1>
+      <p>Explain what app does</p>
+
+      <button
+        onClick={() => {
+          navigator("/");
+        }}
+      >
+        Log in With Facebook
+      </button>
+    </main>
+  );
 }
 
 export default LoginPage;
