@@ -3,13 +3,21 @@ import Root from "../Pages/Root";
 import ErrorPage from "../Pages/Error";
 import LoginPage from "../Pages/Login";
 import HomePage from "../Pages/Home";
+import ProfilePage from "../Pages/Profile";
+import ExercisePage from "../Pages/Exercises";
+import CalendarPage from "../Pages/Calendar";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    children: [{ element: <HomePage />, index: true }],
+    children: [
+      { element: <HomePage />, index: true },
+      { path: "profile", element: <ProfilePage /> },
+      { path: "exercise", element: <ExercisePage /> },
+      { path: "calendar", element: <CalendarPage /> },
+    ],
   },
   {
     path: "login",
