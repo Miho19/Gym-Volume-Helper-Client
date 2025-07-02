@@ -1,7 +1,11 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 function HomePage() {
   const navigator = useNavigate();
+
+  function LogoutFunction() {
+    navigator("/login");
+  }
 
   return (
     <main
@@ -12,18 +16,21 @@ function HomePage() {
         flexDirection: "column",
       }}
     >
-      <div onClick={() => navigator("/profile")}>Profile Bubble</div>
-      <div onClick={() => navigator("/exercise")}>
-        List of Exercises; short list
+      <div>
+        <h2>Profile Bubble</h2>
+        <Link to="/profile">Goto Profile</Link>
       </div>
-      <div onClick={() => navigator("/calendar")}>Calendar</div>
-      <button
-        onClick={() => {
-          navigator("login");
-        }}
-      >
-        Sign Out
-      </button>
+
+      <div>
+        <h2>Exercise List</h2>
+        <Link to="/exercise">Goto Exercise</Link>
+      </div>
+
+      <div>
+        <h2>Calendar</h2>
+        <Link to="/calendar">Goto Calendar</Link>
+      </div>
+      <button onClick={LogoutFunction}>Log Out</button>
     </main>
   );
 }

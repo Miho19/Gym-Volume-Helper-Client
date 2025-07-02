@@ -16,7 +16,7 @@ Track exercises, weight/photos within a calendar
   - [ ] Edit
   - [ ] List
 
-- Calendar Tracker
+- Calendar
 
   - [ ] Body Weight
   - [ ] Photos
