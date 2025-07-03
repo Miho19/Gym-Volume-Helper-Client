@@ -18,19 +18,27 @@ function HomePage() {
     >
       <div>
         <h2>Profile Bubble</h2>
-        <Link to="/profile">Goto Profile</Link>
+        <Link to="/profile" data-testid="profileLink">
+          Goto Profile
+        </Link>
       </div>
 
       <div>
         <h2>Exercise List</h2>
-        <Link to="/exercise">Goto Exercise</Link>
+        <Link to="/exercise" data-testid="exerciseLink">
+          Goto Exercise
+        </Link>
       </div>
 
       <div>
         <h2>Calendar</h2>
-        <Link to="/calendar">Goto Calendar</Link>
+        <Link to="/calendar" data-testid="calendarLink">
+          Goto Calendar
+        </Link>
       </div>
-      <button onClick={LogoutFunction}>Log Out</button>
+      <button onClick={LogoutFunction} data-testid="homeLogoutButton">
+        Log Out
+      </button>
     </main>
   );
 }
