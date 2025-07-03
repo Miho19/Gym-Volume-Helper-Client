@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router";
+import ProfileBubble from "../Components/ProfileBubble/ProfileBubble";
 
 function HomePage() {
   const { logout, isAuthenticated, isLoading } = useAuth0();
@@ -24,12 +25,7 @@ function HomePage() {
         flexDirection: "column",
       }}
     >
-      <div>
-        <h2>Profile Bubble</h2>
-        <Link to="/profile" data-testid="profileLink">
-          Goto Profile
-        </Link>
-      </div>
+      <ProfileBubble />
 
       <div>
         <h2>Exercise List</h2>
