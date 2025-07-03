@@ -1,6 +1,9 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router";
 
 function LoginPage() {
+  const { loginWithRedirect } = useAuth0();
+
   const navigator = useNavigate();
 
   return (
@@ -10,7 +13,7 @@ function LoginPage() {
 
       <button
         onClick={() => {
-          navigator("/");
+          loginWithRedirect();
         }}
       >
         Log in With Facebook
