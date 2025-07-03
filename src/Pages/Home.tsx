@@ -1,11 +1,19 @@
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 
 function HomePage() {
+  const { logout, isAuthenticated, isLoading } = useAuth0();
+
   const navigator = useNavigate();
 
-  function LogoutFunction() {
-    navigator("/login");
-  }
+  useEffect(() => {
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        navigator("login");
+      }
+    }
+  }, [isAuthenticated, isLoading]);
 
   return (
     <main
@@ -36,7 +44,7 @@ function HomePage() {
           Goto Calendar
         </Link>
       </div>
-      <button onClick={LogoutFunction} data-testid="homeLogoutButton">
+      <button onClick={() => logout()} data-testid="homeLogoutButton">
         Log Out
       </button>
     </main>

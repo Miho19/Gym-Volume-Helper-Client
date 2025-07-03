@@ -9,7 +9,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Auth0Provider
       domain={import.meta.env.VITE_AUTH0DOMAIN}
-      clientId={import.meta.env.AUTH0CLIENTID}
+      clientId={import.meta.env.VITE_AUTH0CLIENTID}
       authorizationParams={{ redirect_uri: window.location.origin }}
     >
       <RouterProvider router={router} />
