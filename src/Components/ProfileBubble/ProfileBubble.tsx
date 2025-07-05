@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 type Props = {};
 
-function ProfileBubble(props: Props) {
+function ProfileBubble(_props: Props) {
   return (
     <div>
       <h2>Profile Bubble</h2>

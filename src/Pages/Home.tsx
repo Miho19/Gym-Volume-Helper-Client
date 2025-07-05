@@ -1,20 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import ProfileBubble from "../Components/ProfileBubble/ProfileBubble";
 
 function HomePage() {
-  const { logout, isAuthenticated, isLoading } = useAuth0();
-
-  const navigator = useNavigate();
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigator("login");
-      }
-    }
-  }, [isAuthenticated, isLoading]);
+  const { logout } = useAuth0();
 
   return (
     <main
@@ -40,7 +29,12 @@ function HomePage() {
           Goto Calendar
         </Link>
       </div>
-      <button onClick={() => logout()} data-testid="homeLogoutButton">
+      <button
+        onClick={() =>
+          logout({ logoutParams: { returnTo: window.location.origin } })
+        }
+        data-testid="homeLogoutButton"
+      >
         Log Out
       </button>
     </main>
