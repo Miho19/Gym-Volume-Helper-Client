@@ -1,21 +1,21 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { router } from "../../../src/Router/Router";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { RouterProvider } from "react-router";
 import * as auth0 from "@auth0/auth0-react";
 
+vi.mock("@auth0/auth0-react");
+
 type User = {
   name: string;
   picture: string;
 };
 
-vi.mock("@auth0/auth0-react");
-
-describe("Profile Bubble", () => {
-  it("render profile bubble with user data", () => {
+describe("Profile Page", () => {
+  it("Render Profile Page", async () => {
     const user: User = {
       name: "Josh April",
       picture:
@@ -29,10 +29,10 @@ describe("Profile Bubble", () => {
     });
 
     render(<RouterProvider router={router} />);
-    expect(screen.getByText(user.name)).toBeInTheDocument();
+    const link = screen.getByTestId("profileLink");
+    expect(link).toBeInTheDocument();
+    await userEvent.click(link);
 
-    const profilePicture = screen.getByTestId("profilePicture");
-    const imgSrc = profilePicture.getAttribute("src");
-    expect(imgSrc).toBe(user.picture);
+    expect(screen.getByText(user.name)).toBeInTheDocument();
   });
 });
