@@ -5,7 +5,7 @@ Track exercises, weight/photos within a calendar
 ## Features
 
 - [x] Router
-- [ ] Auth with FaceBook
+- [x] Auth with FaceBook
 - [ ] React Query
 - [ ] Fetching data from backend
 
@@ -22,5 +22,8 @@ Track exercises, weight/photos within a calendar
   - [ ] Photos
 
 - Profile
-  - [ ] Image
-  - [ ] Name
+
+  - [x] Image
+  - [x] Name
+
+- [x] Styling
