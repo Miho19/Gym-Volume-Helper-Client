@@ -12,15 +12,15 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Auth0Provider
-        domain={import.meta.env.VITE_AUTH0DOMAIN}
-        clientId={import.meta.env.VITE_AUTH0CLIENTID}
-        authorizationParams={{ redirect_uri: window.location.origin }}
-      >
+    <Auth0Provider
+      domain={import.meta.env.VITE_AUTH0DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0CLIENTID}
+      authorizationParams={{ redirect_uri: window.location.origin }}
+    >
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
-      </Auth0Provider>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </Auth0Provider>
   </StrictMode>
 );
