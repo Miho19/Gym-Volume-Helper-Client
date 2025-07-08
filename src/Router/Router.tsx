@@ -7,7 +7,7 @@ import ProfilePage from "../Pages/Profile";
 import ExercisePage from "../Pages/Exercises";
 import CalendarPage from "../Pages/Calendar";
 
-export const router = createBrowserRouter([
+export const routerConfig = [
   {
     path: "/",
     element: <Root />,
@@ -23,4 +23,6 @@ export const router = createBrowserRouter([
     path: "login",
     element: <LoginPage />,
   },
-]);
+];
+
+export const router = createBrowserRouter(routerConfig);

@@ -1,9 +1,10 @@
+import ExerciseContainer from "../Components/Exercise/ExerciseContainer";
 import HomeButton from "../Components/Navigation/HomeButton";
 
 function ExercisePage() {
   return (
     <main>
-      <h1>Exericse Page</h1>
+      <h1>Exericses</h1>
       <HomeButton />
     </main>
   );

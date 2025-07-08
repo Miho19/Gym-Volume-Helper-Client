@@ -21,6 +21,6 @@ describe("Exercise List", () => {
 
     await userEvent.click(link);
 
-    await waitFor(() => screen.findByText(/Exericse Page/i));
+    await waitFor(() => screen.findByText(/Exericses/i));
   });
 });
