@@ -9,9 +9,23 @@ function ExerciseListItem(props: Props) {
   const { item } = props;
 
   return (
-    <li>
-      <Link to={item.link}>
-        <img src={item.img} alt={`image of ${item.name}`} />
+    <li style={{ listStyle: "none" }}>
+      <Link
+        to={item.link}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "row",
+          gap: "1%",
+        }}
+      >
+        <img
+          src={item.img}
+          alt={`image of ${item.name}`}
+          width={50}
+          height={50}
+        />
         <p>{item.name}</p>
       </Link>
     </li>
