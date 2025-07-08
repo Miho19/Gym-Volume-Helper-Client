@@ -4,14 +4,12 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import ExerciseContainer from "../../../src/Components/Exercise/ExerciseContainer";
-
 import { ExerciseListElement } from "../../../src/Components/Exercise/ExerciseTypes";
 
-import { Link } from "react-router";
+import { createRoutesStub, MemoryRouter } from "react-router";
+import { routerConfig } from "../../../src/Router/Router";
 
 vi.mock("@auth0/auth0-react");
-
-vi.mock("react-router");
 
 describe("Exercise Container", () => {
   it("render exercise page", async () => {
@@ -25,8 +23,15 @@ describe("Exercise Container", () => {
     ];
 
     render(
-      <ExerciseContainer currentDate={new Date()} exerciseList={exerciseList} />
+      <MemoryRouter>
+        <ExerciseContainer
+          currentDate={new Date()}
+          exerciseList={exerciseList}
+        />
+      </MemoryRouter>
     );
+
+    //
 
     expect(screen.getByText(new Date().toDateString())).toBeInTheDocument();
     expect(screen.getByText(exerciseList[0].name)).toBeInTheDocument();
