@@ -6,8 +6,7 @@ import "@testing-library/jest-dom";
 import ExerciseContainer from "../../../src/Components/Exercise/ExerciseContainer";
 import { ExerciseListElement } from "../../../src/Components/Exercise/ExerciseTypes";
 
-import { createRoutesStub, MemoryRouter } from "react-router";
-import { routerConfig } from "../../../src/Router/Router";
+import { MemoryRouter } from "react-router";
 
 vi.mock("@auth0/auth0-react");
 
@@ -30,8 +29,6 @@ describe("Exercise Container", () => {
         />
       </MemoryRouter>
     );
-
-    //
 
     expect(screen.getByText(new Date().toDateString())).toBeInTheDocument();
     expect(screen.getByText(exerciseList[0].name)).toBeInTheDocument();
