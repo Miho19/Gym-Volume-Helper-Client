@@ -1,12 +1,6 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useQuery } from "@tanstack/react-query";
+import type { UserResponseType } from "../ResponseType/UserResponseType";
 
-type UserResponseType = {
-  name: string;
-  weight: string;
-};
-
-async function fetchUser(
+export async function POSTInitialiseUser(
   userSub: string | undefined
 ): Promise<UserResponseType> {
   if (!userSub || userSub === undefined)
@@ -39,16 +33,4 @@ async function fetchUser(
     if (error instanceof Error) console.log(error);
     throw new Error("Failed to authenicate user");
   }
-}
-
-type Props = {};
-
-export default function useUserQuery(_props: Props) {
-  const { user, isAuthenticated } = useAuth0();
-
-  return useQuery({
-    queryKey: ["auth0 User"],
-    queryFn: () => fetchUser(user?.sub),
-    enabled: isAuthenticated,
-  });
 }
