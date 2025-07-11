@@ -1,8 +1,8 @@
-import type { UserResponseType } from "../ResponseType/UserResponseType";
+import type { UserBodyResponseTypePOST } from "../ResponseType/UserResponseType";
 
 export async function POSTInitialiseUser(
   userSub: string | undefined
-): Promise<UserResponseType> {
+): Promise<UserBodyResponseTypePOST> {
   if (!userSub || userSub === undefined)
     throw new Error("Missing user Sub argument");
 
@@ -28,7 +28,7 @@ export async function POSTInitialiseUser(
 
     // validate response using ZOD
 
-    return body as UserResponseType;
+    return body as UserBodyResponseTypePOST;
   } catch (error) {
     if (error instanceof Error) console.log(error);
     throw new Error("Failed to authenicate user");

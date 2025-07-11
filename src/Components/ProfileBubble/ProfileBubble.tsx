@@ -1,10 +1,13 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router";
+import type { UserInformation } from "./UserType";
+import type { UserBodyResponseTypePOST } from "../../Http/ResponseType/UserResponseType";
 
-type Props = {};
+type Props = {
+  user: UserInformation | UserBodyResponseTypePOST;
+};
 
-function ProfileBubble(_props: Props) {
-  const { user } = useAuth0();
+function ProfileBubble(props: Props) {
+  const { user } = props;
 
   return (
     <div>
