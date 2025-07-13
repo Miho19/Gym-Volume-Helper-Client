@@ -5,22 +5,14 @@ import { router } from "../../../src/Router/Router";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { RouterProvider } from "react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { testRender } from "../../Util";
+
+const client = new QueryClient();
 
 describe("Exercise List", () => {
   it("render exercise list", () => {
-    render(<RouterProvider router={router} />);
+    const result = testRender();
     expect(screen.getByText("Exercise List")).toBeInTheDocument();
-  });
-
-  it("navigates to exercise page", async () => {
-    render(<RouterProvider router={router} />);
-
-    const link = screen.getByTestId("exerciseLink");
-
-    expect(link).toBeInTheDocument();
-
-    await userEvent.click(link);
-
-    await waitFor(() => screen.findByText(/Exericses/i));
   });
 });

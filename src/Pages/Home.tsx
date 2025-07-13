@@ -23,9 +23,7 @@ function HomePage() {
 
       <div>
         <h2>Exercise List</h2>
-        <Link to="/exercise" data-testid="exerciseLink">
-          Goto Exercise
-        </Link>
+        <Link to="/exercise">Goto Exercise</Link>
       </div>
 
       <div>

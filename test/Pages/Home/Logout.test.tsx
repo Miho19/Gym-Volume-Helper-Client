@@ -6,40 +6,42 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { RouterProvider } from "react-router";
 import * as auth0 from "@auth0/auth0-react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { testRender } from "../../Util";
+import { testUser } from "../../../src/Components/ProfileBubble/UserType";
 
 vi.mock("@auth0/auth0-react");
 
-describe("Home Logout", () => {
-  it("render Logout Button", () => {
-    (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
-      loginWithRedirect: vi.fn(),
-      isAuthenticated: true,
-      isLoading: false,
-      logout: vi.fn(),
-    });
-
-    render(<RouterProvider router={router} />);
-    expect(screen.getByText("Log Out")).toBeInTheDocument();
-  });
-
-  it("navigates to Login Page", async () => {
+describe("Home Logout", async () => {
+  it("render a clickable Logout Button", async () => {
     const logoutMock = vi.fn();
 
     (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
       loginWithRedirect: vi.fn(),
       isAuthenticated: true,
-      isLoading: false,
       logout: logoutMock,
+      isLoading: false,
+      user: testUser,
     });
 
-    render(<RouterProvider router={router} />);
+    const result = testRender();
 
-    const link = screen.getByTestId("homeLogoutButton");
+    const Logout = await result.findByText("Log Out");
 
-    expect(link).toBeInTheDocument();
+    expect(Logout).toBeInTheDocument();
 
-    await userEvent.click(link);
+    await userEvent.click(Logout);
 
     expect(logoutMock).toBeCalledTimes(1);
+  });
+
+  it("Should make the user authenication request", async () => {
+    const response = await fetch("http://localhost:5052/auth/", {
+      method: "POST",
+    });
+
+    const body = await response.json();
+
+    expect(body.name).toBeTruthy();
   });
 });

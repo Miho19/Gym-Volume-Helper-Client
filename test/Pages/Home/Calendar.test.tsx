@@ -5,15 +5,26 @@ import { router } from "../../../src/Router/Router";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { RouterProvider } from "react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const client = new QueryClient();
 
 describe("Home Calendar Display", () => {
   it("render Calendar", () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <QueryClientProvider client={client}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    );
     expect(screen.getByText("Calendar")).toBeInTheDocument();
   });
 
   it("navigates to Calendar page", async () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <QueryClientProvider client={client}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    );
 
     const link = screen.getByTestId("calendarLink");
 

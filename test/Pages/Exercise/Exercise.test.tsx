@@ -7,15 +7,14 @@ import "@testing-library/jest-dom";
 import { RouterProvider } from "react-router";
 import * as auth0 from "@auth0/auth0-react";
 import { testUser } from "../../../src/Components/ProfileBubble/UserType";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { testRender } from "../../Util";
 
 vi.mock("@auth0/auth0-react");
 
-type User = {
-  name: string;
-  picture: string;
-};
+const client = new QueryClient();
 
-describe("Exercise Page", () => {
+describe("Exercise Page", async () => {
   it("render exercise page", async () => {
     (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
       isAuthenticated: true,
@@ -23,9 +22,9 @@ describe("Exercise Page", () => {
       user: testUser,
     });
 
-    render(<RouterProvider router={router} />);
+    const result = testRender();
+    const link = await result.findByText("Goto Exercise");
 
-    const link = screen.getByTestId("exerciseLink");
     expect(link).toBeInTheDocument();
     await userEvent.click(link);
     expect(screen.getByText(/Exericses/i)).toBeInTheDocument();

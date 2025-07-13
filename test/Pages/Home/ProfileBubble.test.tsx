@@ -7,19 +7,28 @@ import "@testing-library/jest-dom";
 import { RouterProvider } from "react-router";
 import * as auth0 from "@auth0/auth0-react";
 import { testUser } from "../../../src/Components/ProfileBubble/UserType";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 vi.mock("@auth0/auth0-react");
+const client = new QueryClient();
 
-describe("Profile Bubble", () => {
-  it("render profile bubble with user data", () => {
+describe("Profile Bubble", async () => {
+  it("render profile bubble with user data", async () => {
     (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
       isAuthenticated: true,
       isLoading: false,
       user: testUser,
     });
 
-    render(<RouterProvider router={router} />);
-    expect(screen.getByText(testUser.name)).toBeInTheDocument();
+    render(
+      <QueryClientProvider client={client}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    );
+
+    await waitFor(async () => {
+      expect(screen.getByText(testUser.name)).toBeInTheDocument();
+    });
 
     const profilePicture = screen.getByTestId("profilePicture");
     const imgSrc = profilePicture.getAttribute("src");

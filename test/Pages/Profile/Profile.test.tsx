@@ -7,8 +7,11 @@ import "@testing-library/jest-dom";
 import { RouterProvider } from "react-router";
 import * as auth0 from "@auth0/auth0-react";
 import { testUser } from "../../../src/Components/ProfileBubble/UserType";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { testRender } from "../../Util";
 
 vi.mock("@auth0/auth0-react");
+const client = new QueryClient();
 
 describe("Profile Page", () => {
   it("Render Profile Page", async () => {
@@ -18,8 +21,10 @@ describe("Profile Page", () => {
       user: testUser,
     });
 
-    render(<RouterProvider router={router} />);
-    const link = screen.getByTestId("profileLink");
+    const render = testRender();
+
+    const link = await render.findByText("Goto Profile");
+
     expect(link).toBeInTheDocument();
     await userEvent.click(link);
 

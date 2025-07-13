@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
 import { toURL } from ".";
 
-export const userHandlers = [http.post(toURL("/user/"), postUserResolver)];
+export const userHandlers = [http.post(toURL("/auth/"), postUserResolver)];
 
 function postUserResolver() {
   return HttpResponse.json({
