@@ -2,7 +2,7 @@ import { http, HttpResponse } from "msw";
 import { toURL } from ".";
 import type { ExerciseListElement } from "../Components/Exercise/ExerciseTypes";
 
-export const exerciseHandlers = [http.get(toURL("/exercise/:id"), getExercise)];
+export const exerciseHandlers = [http.get(toURL("/me/exercise"), getExercise)];
 
 function getExercise() {
   return HttpResponse.json({
