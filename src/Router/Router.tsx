@@ -4,8 +4,9 @@ import ErrorPage from "../Pages/Error";
 import LoginPage from "../Pages/Login";
 import HomePage from "../Pages/Home";
 import ProfilePage from "../Pages/Profile";
-import ExercisePage from "../Pages/Exercises";
+import ExercisePage from "../Pages/ExerciseList";
 import CalendarPage from "../Pages/Calendar";
+import Exercise from "../Pages/Exercise";
 
 export const routerConfig = [
   {
@@ -17,6 +18,7 @@ export const routerConfig = [
       { path: "profile", element: <ProfilePage /> },
       { path: "exercise", element: <ExercisePage /> },
       { path: "calendar", element: <CalendarPage /> },
+      { path: "exercise/:id", element: <Exercise /> },
     ],
   },
   {

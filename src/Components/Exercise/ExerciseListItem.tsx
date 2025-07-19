@@ -11,7 +11,7 @@ function ExerciseListItem(props: Props) {
   return (
     <li style={{ listStyle: "none" }}>
       <Link
-        to={item.pageLink}
+        to={`/exercise/${item.id}`}
         style={{
           width: "100%",
           height: "100%",

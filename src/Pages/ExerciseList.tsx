@@ -2,7 +2,7 @@ import ExerciseContainer from "../Components/Exercise/ExerciseContainer";
 import HomeButton from "../Components/Navigation/HomeButton";
 import useExerciseListQuery from "../Hooks/useExerciseListQuery";
 
-function ExercisePage() {
+function ExerciseListPage() {
   const { data, isLoading, isError, error } = useExerciseListQuery();
 
   if (isLoading) return <div>Loading...</div>;
@@ -17,4 +17,4 @@ function ExercisePage() {
   );
 }
 
-export default ExercisePage;
+export default ExerciseListPage;
