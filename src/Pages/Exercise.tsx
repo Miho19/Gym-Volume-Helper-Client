@@ -1,5 +1,10 @@
 import { useParams } from "react-router";
 
+/**
+ *
+ * /me/exercise/:id --> backend fetch the exercise + our db for exercise information
+ *
+ */
 type Props = {};
 
 function Exercise() {
