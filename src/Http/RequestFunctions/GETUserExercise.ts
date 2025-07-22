@@ -1,8 +1,10 @@
 import type { UserExerciseResponseType } from "../ResponseType/UserExerciseResponseType";
 
 export async function GETUserExercise(
-  exerciseID: string
+  exerciseID: string | undefined
 ): Promise<UserExerciseResponseType> {
+  if (exerciseID === undefined) throw new Error("Exercise ID must be defined");
+
   const fetchOptions: RequestInit = {
     mode: "cors",
     method: "GET",

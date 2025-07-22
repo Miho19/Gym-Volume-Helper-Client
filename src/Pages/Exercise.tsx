@@ -1,4 +1,6 @@
 import { useParams } from "react-router";
+import useUserExerciseQuery from "../Hooks/useUserExerciseQuery";
+import UserExerciseContainer from "../Components/Exercise/UserExerciseContainer";
 
 /**
  *
@@ -8,9 +10,15 @@ import { useParams } from "react-router";
 type Props = {};
 
 function Exercise() {
-  const params = useParams();
+  const { id } = useParams();
+  const { data, isLoading, isError, error } = useUserExerciseQuery({
+    exerciseID: id,
+  });
 
-  return <div>ExerciseID: {params.id}</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>{error.message}</div>;
+
+  return <UserExerciseContainer exercise={data!} />;
 }
 
 export default Exercise;

@@ -1,14 +1,18 @@
 export type UserExerciseResponseType = {
   exerciseID: string;
+
   exerciseDetails: {
+    name: string;
+    imgURL: string;
     equipment: string[];
     bodyParts: string[];
-    targetMuscle: string;
-    secondaryMuscles: string;
+    targetMuscle: string[];
+    secondaryMuscles: string[];
     videoURL: string;
     instructions: string[];
-    tips: string[];
+    exerciseTips: string[];
     relatedExercises: string[];
+    overview: string;
   };
   userExerciseDetails: {
     weight: UserExerciseTrend[];
