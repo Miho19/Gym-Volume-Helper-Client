@@ -3,11 +3,7 @@ export type UserExerciseResponseType = {
 
   exerciseDetails: UserExerciseResponseExerciseDetailsType;
 
-  userExerciseDetails: {
-    weight: UserExerciseTrend[];
-    reps: UserExerciseTrend[];
-    sets: UserExerciseTrend[];
-  };
+  userExerciseMetrics: UserExerciseMetrics;
 };
 
 export type UserExerciseResponseExerciseDetailsType = {
@@ -22,6 +18,12 @@ export type UserExerciseResponseExerciseDetailsType = {
   exerciseTips: string[];
   relatedExercises: string[];
   overview: string;
+};
+
+export type UserExerciseMetrics = {
+  weight: UserExerciseTrend[];
+  reps: UserExerciseTrend[];
+  sets: UserExerciseTrend[];
 };
 
 export type UserExerciseTrend = {

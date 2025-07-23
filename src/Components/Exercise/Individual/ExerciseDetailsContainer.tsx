@@ -9,12 +9,12 @@ function ExerciseDetailsContainer(props: Props) {
   const { exerciseID, exercise: details } = props;
 
   return (
-    <main>
+    <section>
       <h2>id: {exerciseID}</h2>
       <h2>name: {details.name}</h2>
       <img src={details.imgURL} alt={`img of ${details.name}`} />
       <p>{details.overview}</p>
-    </main>
+    </section>
   );
 }
 

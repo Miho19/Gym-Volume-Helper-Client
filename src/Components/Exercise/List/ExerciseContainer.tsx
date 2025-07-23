@@ -12,10 +12,10 @@ function ExerciseContainer(props: Props) {
   ));
 
   return (
-    <main>
+    <section>
       <h2>{props.currentDate.toDateString()}</h2>
       <ul>{exerciseListItems}</ul>
-    </main>
+    </section>
   );
 }
 

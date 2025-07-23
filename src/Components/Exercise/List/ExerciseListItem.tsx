@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { ExerciseListElement } from "./ExerciseTypes";
+import type { ExerciseListElement } from "../ExerciseTypes";
 
 type Props = {
   item: ExerciseListElement;
