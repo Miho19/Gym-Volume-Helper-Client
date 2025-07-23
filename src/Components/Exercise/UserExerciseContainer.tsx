@@ -16,7 +16,7 @@ function UserExerciseContainer(props: Props) {
         src={exerciseDetails.imgURL}
         alt={`img of ${exerciseDetails.name}`}
       />
-      <p>description: {exerciseDetails.overview}</p>
+      <p>{exerciseDetails.overview}</p>
     </main>
   );
 }
