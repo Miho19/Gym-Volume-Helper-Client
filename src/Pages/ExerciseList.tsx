@@ -1,4 +1,4 @@
-import ExerciseContainer from "../Components/Exercise/ExerciseContainer";
+import ExerciseContainer from "../Components/Exercise/List/ExerciseContainer";
 import HomeButton from "../Components/Navigation/HomeButton";
 import useExerciseListQuery from "../Hooks/useExerciseListQuery";
 

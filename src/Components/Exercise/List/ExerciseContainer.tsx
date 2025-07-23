@@ -1,5 +1,5 @@
 import ExerciseListItem from "./ExerciseListItem";
-import type { ExerciseListElement } from "./ExerciseTypes";
+import type { ExerciseListElement } from "../ExerciseTypes";
 
 type Props = {
   currentDate: Date;

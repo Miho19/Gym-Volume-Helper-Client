@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import useUserExerciseQuery from "../Hooks/useUserExerciseQuery";
-import UserExerciseContainer from "../Components/Exercise/UserExerciseContainer";
+import UserExerciseContainer from "../Components/Exercise/Individual/UserExerciseContainer";
 
 /**
  *

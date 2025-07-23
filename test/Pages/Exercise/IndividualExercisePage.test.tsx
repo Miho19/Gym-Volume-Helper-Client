@@ -36,6 +36,16 @@ describe("Individual Exercise Page", async () => {
 
     expect(screen.getByText(overviewOfInclineHammerCurls)).toBeInTheDocument();
   });
+
+  it("allows user to add weight, rep, set number for current date", async () => {
+    (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
+      isAuthenticated: true,
+      isLoading: false,
+      user: testUser,
+    });
+
+    const result = testRender();
+  });
 });
 
 const overviewOfInclineHammerCurls =
