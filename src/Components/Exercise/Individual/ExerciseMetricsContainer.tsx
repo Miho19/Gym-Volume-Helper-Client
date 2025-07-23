@@ -1,18 +1,26 @@
 import type { UserExerciseMetrics } from "../../../Http/ResponseType/UserExerciseResponseType";
+import ExerciseIndividualMetricItem from "./ExerciseIndividualMetricItem";
+import ExerciseMetricsNew from "./ExerciseMetricsAddNew";
 
 type Props = {
   exerciseID: string;
-  metrics: UserExerciseMetrics;
+  metrics: UserExerciseMetrics[];
 };
 
 function ExerciseMetricsContainer(props: Props) {
-  const { metrics } = props;
-  const { reps, weight, sets } = metrics;
+  const { exerciseID, metrics } = props;
+
+  console.log(metrics);
+
+  const metricData = metrics.map((metric) => (
+    <ExerciseIndividualMetricItem item={metric} key={metric.metricID} />
+  ));
 
   return (
     <section>
       <h2>Metrics</h2>
-      <ul></ul>
+      <ExerciseMetricsNew exerciseID={exerciseID} />
+      <ul>{metricData}</ul>
     </section>
   );
 }
