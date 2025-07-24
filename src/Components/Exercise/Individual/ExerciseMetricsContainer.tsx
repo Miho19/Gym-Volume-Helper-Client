@@ -10,8 +10,6 @@ type Props = {
 function ExerciseMetricsContainer(props: Props) {
   const { exerciseID, metrics } = props;
 
-  console.log(metrics);
-
   const metricData = metrics.map((metric) => (
     <ExerciseIndividualMetricItem metric={metric} key={metric.metricID} />
   ));

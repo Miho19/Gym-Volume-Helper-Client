@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 type Props = {
   exerciseID: string;
@@ -7,12 +7,14 @@ type Props = {
 type FormData = {
   weight: number;
   reps: number;
+  dateTime: string;
 };
 
 function ExerciseMetricsNew({ exerciseID }: Props) {
   const [metricData, setMetricData] = useState<FormData>({
     weight: 0,
     reps: 0,
+    dateTime: new Date().toDateString(),
   });
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -20,10 +22,24 @@ function ExerciseMetricsNew({ exerciseID }: Props) {
     setMetricData((previous) => ({ ...previous, [name]: value }));
   }
 
+  function handleSubmit(event: React.FormEvent<HTMLInputElement>) {
+    event.preventDefault();
+    console.log(metricData);
+  }
+
   return (
     <section>
       <p>Add New</p>
       <form style={{ display: "flex", gap: "10px" }}>
+        <label>
+          Date
+          <input
+            type="date"
+            name="dateTime"
+            value={new Date(metricData.dateTime).toDateString()}
+            onChange={handleChange}
+          />
+        </label>
         <label style={{ display: "flex", gap: "10px" }}>
           weight
           <input
