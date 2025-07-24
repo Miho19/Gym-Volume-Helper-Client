@@ -13,7 +13,7 @@ function ExerciseMetricsContainer(props: Props) {
   console.log(metrics);
 
   const metricData = metrics.map((metric) => (
-    <ExerciseIndividualMetricItem item={metric} key={metric.metricID} />
+    <ExerciseIndividualMetricItem metric={metric} key={metric.metricID} />
   ));
 
   return (

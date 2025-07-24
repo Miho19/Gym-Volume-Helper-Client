@@ -9,7 +9,7 @@ type FormData = {
   reps: number;
 };
 
-function ExerciseMetricsNew(props: Props) {
+function ExerciseMetricsNew({ exerciseID }: Props) {
   const [metricData, setMetricData] = useState<FormData>({
     weight: 0,
     reps: 0,
@@ -23,25 +23,28 @@ function ExerciseMetricsNew(props: Props) {
   return (
     <section>
       <p>Add New</p>
-      <label>
-        weight:
-        <input
-          type="number"
-          name="weight"
-          value={metricData.weight}
-          onChange={handleChange}
-        />
-      </label>
+      <form style={{ display: "flex", gap: "10px" }}>
+        <label style={{ display: "flex", gap: "10px" }}>
+          weight
+          <input
+            type="number"
+            name="weight"
+            value={metricData.weight}
+            onChange={handleChange}
+          />
+          <span>kg</span>
+        </label>
 
-      <label>
-        reps:
-        <input
-          type="number"
-          name="reps"
-          value={metricData.reps}
-          onChange={handleChange}
-        />
-      </label>
+        <label style={{ display: "flex", gap: "10px" }}>
+          reps
+          <input
+            type="number"
+            name="reps"
+            value={metricData.reps}
+            onChange={handleChange}
+          />
+        </label>
+      </form>
     </section>
   );
 }
