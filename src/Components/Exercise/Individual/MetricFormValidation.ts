@@ -8,14 +8,14 @@ export function isValidFormSubmission(metricData: MetricDataType): boolean {
   return true;
 }
 
-function isDateValid(dateIn: string): boolean {
+export function isDateValid(dateIn: string): boolean {
   return false;
 }
 
-function isWeightValid(weightIn: number): boolean {
+export function isWeightValid(weightIn: number): boolean {
   return false;
 }
 
-function isRepsValid(repsIn: number): boolean {
+export function isRepsValid(repsIn: number): boolean {
   return false;
 }
