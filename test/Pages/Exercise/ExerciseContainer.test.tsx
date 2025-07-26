@@ -1,10 +1,8 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import userEvent from "@testing-library/user-event";
+import ExerciseContainer from "../../../src/Components/Exercise/List/ExerciseContainer.tsx";
 import "@testing-library/jest-dom";
-import ExerciseContainer from "../../../src/Components/Exercise/ExerciseContainer";
-import { ExerciseListElement } from "../../../src/Components/Exercise/ExerciseTypes";
 
 import { MemoryRouter } from "react-router";
 import { exerciseList } from "./Utility";

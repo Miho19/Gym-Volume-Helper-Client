@@ -6,7 +6,7 @@ type Props = {
   exerciseList: ExerciseListElement[];
 };
 
-function ExerciseContainer(props: Props) {
+export default function ExerciseContainer(props: Props) {
   const exerciseListItems = props.exerciseList.map((exercise) => (
     <ExerciseListItem item={exercise} key={exercise.id} />
   ));
@@ -18,5 +18,3 @@ function ExerciseContainer(props: Props) {
     </section>
   );
 }
-
-export default ExerciseContainer;

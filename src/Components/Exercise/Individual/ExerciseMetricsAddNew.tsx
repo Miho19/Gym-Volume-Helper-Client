@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { convertDateToInputStringFormat } from "../../../Utility/DateFormat";
+import { isValidFormSubmission } from "./MetricFormValidation";
 
 type Props = {
   exerciseID: string;
 };
 
-type FormData = {
+export type MetricDataType = {
   weight: number;
   reps: number;
   dateTime: string;
 };
 
 function ExerciseMetricsNew({ exerciseID }: Props) {
-  const [metricData, setMetricData] = useState<FormData>({
+  const [metricData, setMetricData] = useState<MetricDataType>({
     weight: 0,
     reps: 0,
     dateTime: convertDateToInputStringFormat(new Date().toString()),
@@ -31,7 +32,7 @@ function ExerciseMetricsNew({ exerciseID }: Props) {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log("submitted");
+    if (!isValidFormSubmission(metricData)) return;
   }
 
   return (
