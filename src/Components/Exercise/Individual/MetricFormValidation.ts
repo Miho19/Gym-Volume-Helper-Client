@@ -9,6 +9,20 @@ export function isValidFormSubmission(metricData: MetricDataType): boolean {
 }
 
 export function isDateValid(dateIn: string): boolean {
+  if (isDateInFuture(dateIn)) return false;
+
+  return true;
+}
+
+function isDateInFuture(dateIn: string): boolean {
+  const currentDate = new Date();
+  const queryDate = new Date(dateIn);
+
+  currentDate.setHours(0, 0, 0, 0);
+  queryDate.setHours(0, 0, 0, 0);
+
+  if (queryDate.getTime() > currentDate.getTime()) return true;
+
   return false;
 }
 

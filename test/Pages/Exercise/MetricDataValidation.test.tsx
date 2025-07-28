@@ -6,13 +6,37 @@ import { convertDateToInputStringFormat } from "../../../src/Utility/DateFormat"
 
 describe("Metric Data Validation", () => {
   describe("Date Validation", () => {
-    it("allow current date", () => {
+    it("allow date in past", () => {
       const currentDateFormatted = convertDateToInputStringFormat(
-        new Date().toString()
+        new Date("2025-01-01").toString()
       );
       const result = isDateValid(currentDateFormatted);
 
       expect(result).toBeTruthy();
+    });
+
+    it("not allow dates in future", () => {
+      const currentDate = new Date();
+      currentDate.setMonth(currentDate.getMonth() + 1);
+
+      const currentDateFormatted = convertDateToInputStringFormat(
+        currentDate.toString()
+      );
+      const result = isDateValid(currentDateFormatted);
+
+      expect(result).toBeFalsy();
+    });
+
+    it("not allow dates in future", () => {
+      const currentDate = new Date();
+      currentDate.setMonth(currentDate.getMonth() + 1);
+
+      const currentDateFormatted = convertDateToInputStringFormat(
+        currentDate.toString()
+      );
+      const result = isDateValid(currentDateFormatted);
+
+      expect(result).toBeFalsy();
     });
   });
 
