@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { convertDateToInputStringFormat } from "../../../Utility/DateFormat";
-import { isValidFormSubmission } from "./MetricFormValidation";
+import { isValidFormSubmission } from "./MetricFormDateValidation";
 
 type Props = {
   exerciseID: string;

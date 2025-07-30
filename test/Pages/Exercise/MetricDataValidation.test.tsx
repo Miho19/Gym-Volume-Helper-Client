@@ -1,10 +1,10 @@
 import React from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-import { isDateValid } from "../../../src/Components/Exercise/Individual/MetricFormValidation";
+import { isDateValid } from "../../../src/Components/Exercise/Individual/MetricFormDateValidation";
 import { convertDateToInputStringFormat } from "../../../src/Utility/DateFormat";
 
-describe("Metric Data Validation", () => {
+describe("Metric Form Data Validation", () => {
   describe("Date Validation", () => {
     it("allow date in past", () => {
       const currentDateFormatted = convertDateToInputStringFormat(
