@@ -15,6 +15,15 @@ describe("Metric Data Validation", () => {
       expect(result).toBeTruthy();
     });
 
+    it("disallow dates too far in past", () => {
+      const currentDateFormatted = convertDateToInputStringFormat(
+        new Date("2024-01-01").toString()
+      );
+      const result = isDateValid(currentDateFormatted);
+
+      expect(result).toBeFalsy();
+    });
+
     it("not allow dates in future", () => {
       const currentDate = new Date();
       currentDate.setMonth(currentDate.getMonth() + 1);
