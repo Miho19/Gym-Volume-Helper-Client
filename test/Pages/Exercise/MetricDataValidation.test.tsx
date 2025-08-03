@@ -2,6 +2,8 @@ import React from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 import { isDateValid } from "../../../src/Components/Exercise/Individual/MetricFormDateValidation";
+import { isWeightValid } from "../../../src/Components/Exercise/Individual/MetricFormWeightValidation";
+
 import { convertDateToInputStringFormat } from "../../../src/Utility/DateFormat";
 
 describe("Metric Form Data Validation", () => {
@@ -51,7 +53,18 @@ describe("Metric Form Data Validation", () => {
 
   describe("Weight Validation", () => {
     it("should be over 0 kg", () => {
-      expect(true);
+      const result = isWeightValid(0);
+      expect(result).toBeFalsy();
+    });
+
+    it("accepts positive number of kg", () => {
+      const result = isWeightValid(10);
+      expect(result).toBeTruthy();
+    });
+
+    it("disallow unreasonable number of kg", () => {
+      const result = isWeightValid(2501);
+      expect(result).toBeFalsy();
     });
   });
 
