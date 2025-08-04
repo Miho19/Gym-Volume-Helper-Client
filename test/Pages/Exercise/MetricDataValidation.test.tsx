@@ -3,6 +3,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 import { isDateValid } from "../../../src/Components/Exercise/Individual/MetricFormDateValidation";
 import { isWeightValid } from "../../../src/Components/Exercise/Individual/MetricFormWeightValidation";
+import { isRepsValid } from "../../../src/Components/Exercise/Individual/MetricFormRepsValidation";
 
 import { convertDateToInputStringFormat } from "../../../src/Utility/DateFormat";
 
@@ -69,8 +70,19 @@ describe("Metric Form Data Validation", () => {
   });
 
   describe("Reps Validation", () => {
-    it("greater than 0", () => {
-      expect(true);
+    it("allow positive numbers", () => {
+      const result = isRepsValid(50);
+      expect(result).toBeTruthy();
+    });
+
+    it("disallow negative numbers", () => {
+      const result = isRepsValid(-10);
+      expect(result).toBeFalsy();
+    });
+
+    it("disallow numbers too high", () => {
+      const result = isRepsValid(51);
+      expect(result).toBeFalsy();
     });
   });
 });
