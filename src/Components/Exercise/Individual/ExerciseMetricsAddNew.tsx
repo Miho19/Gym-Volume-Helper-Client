@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { convertDateToInputStringFormat } from "../../../Utility/DateFormat";
 import { isValidFormSubmission } from "./MetricFormValidation";
+import useUserExerciseMutation from "../../../Hooks/useUserExerciseMutation";
 
 type Props = {
   exerciseID: string;
@@ -13,11 +14,15 @@ export type MetricDataType = {
 };
 
 function ExerciseMetricsNew({ exerciseID }: Props) {
-  const [metricData, setMetricData] = useState<MetricDataType>({
+  const initialState: MetricDataType = {
     weight: 0,
     reps: 0,
     dateTime: convertDateToInputStringFormat(new Date().toString()),
-  });
+  };
+
+  const [metricData, setMetricData] = useState<MetricDataType>(initialState);
+
+  const mutation = useUserExerciseMutation({ exerciseID });
 
   const calendarSelectorName = "dateTime";
 
@@ -33,10 +38,18 @@ function ExerciseMetricsNew({ exerciseID }: Props) {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!isValidFormSubmission(metricData)) return;
+    mutation.mutate({ exerciseID, newMetric: metricData });
+    if (!mutation.isSuccess) return;
+    setMetricData(initialState);
   }
 
   return (
     <section>
+      {mutation.isError && (
+        <>
+          <h2>error: {mutation.error.message}</h2>
+        </>
+      )}
       <form
         style={{ display: "flex", gap: "10px", flexDirection: "column" }}
         onSubmit={handleSubmit}

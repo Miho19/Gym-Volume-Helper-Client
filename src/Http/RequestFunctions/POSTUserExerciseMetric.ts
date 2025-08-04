@@ -1,8 +1,8 @@
-import type { UserExerciseMetrics } from "../ResponseType/UserExerciseResponseType";
+import type { MetricDataType } from "../../Components/Exercise/Individual/ExerciseMetricsAddNew";
 
 type POSTUserMetricParams = {
   exerciseID: string;
-  metric: UserExerciseMetrics;
+  metric: MetricDataType;
 };
 
 export async function POSTUserExcerciseMetric(input: POSTUserMetricParams) {

@@ -21,6 +21,7 @@ export type UserExerciseResponseExerciseDetailsType = {
 };
 
 export type UserExerciseMetrics = {
+  exerciseID: string;
   metricID: string;
   dateTime: Date;
   value: {

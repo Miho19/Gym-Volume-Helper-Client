@@ -5,10 +5,17 @@ import type {
   UserExerciseMetrics,
   UserExerciseResponseExerciseDetailsType,
 } from "../Http/ResponseType/UserExerciseResponseType";
+import type { MetricDataType } from "../Components/Exercise/Individual/ExerciseMetricsAddNew";
+
+let currentID = 0;
+
+const testExerciseUserMetrics: UserExerciseMetrics[] = [];
+initialExerciseMetric();
 
 export const exerciseHandlers = [
   http.get(toURL("/me/exercise"), getExerciseList),
   http.get(toURL("/me/exercise/:id"), getExercise),
+  http.post(toURL("/me/exercise/:id"), postUserExcerciseMetric),
 ];
 
 function getExerciseList() {
@@ -77,13 +84,25 @@ const testExerciseDetails: UserExerciseResponseExerciseDetailsType = {
     "The Bench Press is a classic strength training exercise that primarily targets the chest, shoulders, and triceps, contributing to upper body muscle development. It is suitable for anyone, from beginners to professional athletes, looking to improve their upper body strength and muscular endurance. Individuals may want to incorporate bench press into their routine for its effectiveness in enhancing physical performance, promoting bone health, and improving body composition.",
 };
 
-const testExerciseUserMetrics: UserExerciseMetrics[] = [
-  {
-    metricID: "1",
+function testExerciseUserMetricAdd(input: UserExerciseMetrics) {
+  testExerciseUserMetrics.push(input);
+}
+
+function initialExerciseMetric() {
+  testExerciseUserMetricAdd({
+    exerciseID: "K6NnTv0",
+    metricID: String(++currentID),
     dateTime: new Date(),
-    value: {
-      weight: [8, 8, 8],
-      reps: [12, 8, 8],
-    },
-  },
-];
+    value: { weight: [8, 8, 8], reps: [12, 8, 10] },
+  });
+}
+
+/**
+ *
+ *
+ * POST --> exerciseID, metric {weight, reps, dateTime}
+ * server
+ *  -> if exerciseID, find dateTime -> add weight, reps
+ *
+ *
+ */

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import type { UserExerciseMetrics } from "../Http/ResponseType/UserExerciseResponseType";
 import { POSTUserExcerciseMetric } from "../Http/RequestFunctions/POSTUserExerciseMetric";
+import type { MetricDataType } from "../Components/Exercise/Individual/ExerciseMetricsAddNew";
 
 type Props = {
   exerciseID: string;
@@ -8,7 +8,7 @@ type Props = {
 
 type MutationFunctionParams = {
   exerciseID: string;
-  newMetric: UserExerciseMetrics;
+  newMetric: MetricDataType;
 };
 
 function useUserExerciseMutation(props: Props) {
