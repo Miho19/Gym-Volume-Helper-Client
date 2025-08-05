@@ -8,6 +8,6 @@ import type { ExerciseListElement } from "../../Components/Exercise/ExerciseType
 export type ExerciseListResponseGET = {
   limit: number;
   index: number;
-  next?: number;
+  next: number | null;
   items: ExerciseListElement[];
 };

@@ -11,3 +11,8 @@ export type ExerciseDetailsType = {
   relatedExercises: string[];
   overview: string;
 };
+
+export type ExerciseDetailsResponseType = {
+  exerciseID: string;
+  item: ExerciseDetailsType;
+};

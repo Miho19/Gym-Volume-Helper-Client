@@ -1,4 +1,4 @@
-import { exerciseHandlers } from "./exercise";
+import { exerciseHandlers } from "./Exercise/exercise";
 import { userHandlers } from "./user";
 
 export const handlers = [...userHandlers, ...exerciseHandlers];

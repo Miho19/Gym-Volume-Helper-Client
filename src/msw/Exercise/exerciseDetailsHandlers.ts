@@ -1,51 +1,11 @@
 import { http, HttpResponse } from "msw";
-import { toURL } from ".";
-import type { ExerciseListElement } from "../Components/Exercise/ExerciseTypes";
+import { toURL } from "..";
 import type {
-  UserExerciseMetrics,
-  UserExerciseResponseExerciseDetailsType,
-} from "../Http/ResponseType/UserExerciseResponseType";
-import type { MetricDataType } from "../Components/Exercise/Individual/ExerciseMetricsAddNew";
+  ExerciseDetailsResponseType,
+  ExerciseDetailsType,
+} from "../../Http/ResponseType/ExerciseDetailsResponseType";
 
-let currentID = 0;
-
-const testExerciseUserMetrics: UserExerciseMetrics[] = [];
-initialExerciseMetric();
-
-export const exerciseHandlers = [
-  http.get(toURL("/me/exercise"), getExerciseList),
-  http.get(toURL("/me/exercise/:id"), getExercise),
-  http.post(toURL("/me/exercise/:id"), () => {}),
-];
-
-function getExerciseList() {
-  return HttpResponse.json({
-    index: 0,
-    next: null,
-    items: exerciseList,
-  });
-}
-
-function getExercise() {
-  return HttpResponse.json({
-    exerciseID: "K6NnTv0",
-
-    exerciseDetails: testExerciseDetails,
-
-    userExerciseMetrics: testExerciseUserMetrics,
-  });
-}
-
-const exerciseList: ExerciseListElement[] = [
-  {
-    name: "Incline Hammer Curls",
-    img: "https://static.strengthlevel.com/images/exercises/incline-hammer-curl/incline-hammer-curl-800.jpg",
-    pageLink: "/exercise/1",
-    id: "K6NnTv0",
-  },
-];
-
-const testExerciseDetails: UserExerciseResponseExerciseDetailsType = {
+const testExerciseDetails: ExerciseDetailsType = {
   name: "Bench Press",
   imgURL: "Barbell-Bench-Press_Chest.png",
   equipment: ["Barbell"],
@@ -84,25 +44,15 @@ const testExerciseDetails: UserExerciseResponseExerciseDetailsType = {
     "The Bench Press is a classic strength training exercise that primarily targets the chest, shoulders, and triceps, contributing to upper body muscle development. It is suitable for anyone, from beginners to professional athletes, looking to improve their upper body strength and muscular endurance. Individuals may want to incorporate bench press into their routine for its effectiveness in enhancing physical performance, promoting bone health, and improving body composition.",
 };
 
-function testExerciseUserMetricAdd(input: UserExerciseMetrics) {
-  testExerciseUserMetrics.push(input);
-}
+export const exerciseDetailsHandlers = [
+  http.get(toURL("/exercise/:id"), getExerciseDetail),
+];
 
-function initialExerciseMetric() {
-  testExerciseUserMetricAdd({
+function getExerciseDetail() {
+  const bodyResponse: ExerciseDetailsResponseType = {
     exerciseID: "K6NnTv0",
-    metricID: String(++currentID),
-    dateTime: new Date(),
-    value: { weight: [8, 8, 8], reps: [12, 8, 10] },
-  });
-}
+    item: testExerciseDetails,
+  };
 
-/**
- *
- *
- * POST --> exerciseID, metric {weight, reps, dateTime}
- * server
- *  -> if exerciseID, find dateTime -> add weight, reps
- *  -> should have a metric id --> associate metric id with user id?
- *
- */
+  return HttpResponse.json(bodyResponse);
+}

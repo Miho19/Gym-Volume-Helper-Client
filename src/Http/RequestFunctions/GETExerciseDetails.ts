@@ -1,4 +1,7 @@
-import type { ExerciseDetailsType } from "../ResponseType/ExerciseDetailsResponseType";
+import type {
+  ExerciseDetailsResponseType,
+  ExerciseDetailsType,
+} from "../ResponseType/ExerciseDetailsResponseType";
 
 export async function GETExerciseDetails(
   exerciseID: string
@@ -22,11 +25,12 @@ export async function GETExerciseDetails(
 
     if (!response.ok) throw new Error(`Failed to fetch exercise ${exerciseID}`);
 
-    const body: unknown = await response.json();
+    const body: ExerciseDetailsResponseType = await response.json();
+    const { item } = body;
 
     // validate response using ZOD
 
-    return body as ExerciseDetailsType;
+    return item as ExerciseDetailsType;
   } catch (error) {
     if (error instanceof Error) console.log(error);
     throw new Error(`Failed to fetch exercise ${exerciseID}`);
