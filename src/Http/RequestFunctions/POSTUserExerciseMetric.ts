@@ -1,11 +1,13 @@
-import type { MetricDataType } from "../../Components/Exercise/Individual/ExerciseMetricsAddNew";
+import type { MetricFormDataType } from "../../Components/Exercise/Individual/MetricFormDataType";
 
-type POSTUserMetricParams = {
+export type POSTUserMetricRequestBody = {
   exerciseID: string;
-  metric: MetricDataType;
+  metric: MetricFormDataType;
 };
 
-export async function POSTUserExcerciseMetric(input: POSTUserMetricParams) {
+export async function POSTUserExcerciseMetric(
+  input: POSTUserMetricRequestBody
+) {
   const { exerciseID, metric } = input;
 
   if (!exerciseID || exerciseID === undefined)
@@ -20,7 +22,8 @@ export async function POSTUserExcerciseMetric(input: POSTUserMetricParams) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ exerciseID, metric }),
+
+    body: JSON.stringify(input),
     credentials: "include",
   };
 

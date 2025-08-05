@@ -4,6 +4,8 @@ import type {
   ExerciseMetric,
   UserExerciseMetricsResponseType,
 } from "../../Http/ResponseType/UserExerciseMetricsResponseType";
+import type { POSTUserMetricRequestBody } from "../../Http/RequestFunctions/POSTUserExerciseMetric";
+import { prepareDatesForComparison } from "../../Components/Exercise/Individual/MetricFormDateValidation";
 
 /**
  *
@@ -11,12 +13,12 @@ import type {
  *
  */
 
-type GetMetricsParams = {
+type MetricsParams = {
   exerciseID: string;
 };
 
 export const exerciseMetricsHandlers = [
-  http.get<GetMetricsParams, undefined, UserExerciseMetricsResponseType>(
+  http.get<MetricsParams, undefined, UserExerciseMetricsResponseType>(
     toURL("/me/exercise/:exerciseID"),
     ({ params }) => {
       const { exerciseID } = params;
@@ -33,9 +35,38 @@ export const exerciseMetricsHandlers = [
       return HttpResponse.json(bodyResponse);
     }
   ),
+  http.post<MetricsParams, POSTUserMetricRequestBody, undefined>(
+    toURL("/me/exercise/:exerciseID"),
+    async ({ params, request }) => {
+      const { exerciseID } = params;
+
+      const { exerciseID: requestExerciseID, metric: requestMetric } =
+        await request.json();
+
+      if (exerciseID !== requestExerciseID) return HttpResponse.error();
+
+      UserExerciseMetrics = UserExerciseMetrics.filter((metric) => {
+        if (metric.exerciseID !== exerciseID) return metric;
+
+        const [dateA, dateB] = prepareDatesForComparison([
+          metric.dateTime.toDateString(),
+          requestMetric.dateTime,
+        ]);
+
+        if (dateA.getTime() !== dateB.getTime()) return metric;
+
+        metric.reps.push(requestMetric.reps);
+        metric.weight.push(requestMetric.weight);
+
+        return metric;
+      });
+
+      return new HttpResponse({}, { status: 200 });
+    }
+  ),
 ];
 
-const testUserMetric: ExerciseMetric = {
+let testUserMetric: ExerciseMetric = {
   exerciseID: "K6NnTv0",
   metricID: "1",
   dateTime: new Date(),
@@ -43,14 +74,4 @@ const testUserMetric: ExerciseMetric = {
   reps: [12, 8, 10],
 };
 
-const UserExerciseMetrics: ExerciseMetric[] = [testUserMetric];
-
-/**
- *
- *
- * POST --> exerciseID, metric {weight, reps, dateTime}
- * server
- *  -> if exerciseID, find dateTime -> add weight, reps
- *  -> should have a metric id --> associate metric id with user id?
- *
- */
+let UserExerciseMetrics: ExerciseMetric[] = [testUserMetric];

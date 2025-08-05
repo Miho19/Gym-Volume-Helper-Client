@@ -32,7 +32,7 @@ function isDateTooFarInPast(queryDateString: string) {
   return false;
 }
 
-function prepareDatesForComparison(queryDates: string[]) {
+export function prepareDatesForComparison(queryDates: string[]): Date[] {
   const queryDateObjects = queryDates.map((queryDate) => {
     const dateObject = new Date(queryDate);
     dateObject.setHours(0, 0, 0, 0);
