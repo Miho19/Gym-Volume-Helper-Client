@@ -1,4 +1,5 @@
 export type ExerciseMetric = {
+  exerciseID: string;
   metricID: string;
   dateTime: Date;
   weight: number[];
