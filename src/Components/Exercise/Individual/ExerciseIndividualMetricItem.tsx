@@ -1,15 +1,11 @@
-import type { UserExerciseMetrics } from "../../../Http/ResponseType/UserExerciseResponseType";
+import type { ExerciseMetric } from "../../../Http/ResponseType/UserExerciseMetricsResponseType";
 
 type Props = {
-  metric: UserExerciseMetrics;
+  metric: ExerciseMetric;
 };
 
 function ExerciseIndividualMetricItem({ metric }: Props) {
-  const {
-    dateTime,
-    metricID,
-    value: { weight, reps },
-  } = metric;
+  const { dateTime, metricID, weight, reps } = metric;
 
   const currentDate = new Date(dateTime);
 

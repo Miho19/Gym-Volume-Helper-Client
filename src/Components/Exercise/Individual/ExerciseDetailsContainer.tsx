@@ -1,19 +1,23 @@
-import type { UserExerciseResponseExerciseDetailsType } from "../../../Http/ResponseType/UserExerciseResponseType";
+import { useParams } from "react-router";
+import useExerciseDetailsQuery from "../../../Hooks/useExerciseDetailsQuery";
 
-type Props = {
-  exerciseID: string;
-  exercise: UserExerciseResponseExerciseDetailsType;
-};
+type Props = {};
 
-function ExerciseDetailsContainer(props: Props) {
-  const { exerciseID, exercise: details } = props;
+function ExerciseDetailsContainer(_props: Props) {
+  const { id } = useParams();
+  const { data, isError, error, isLoading } = useExerciseDetailsQuery({
+    exerciseID: id!,
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>{error.message}</div>;
 
   return (
     <section>
-      <h2>id: {exerciseID}</h2>
-      <h2>name: {details.name}</h2>
-      <img src={details.imgURL} alt={`img of ${details.name}`} />
-      <p>{details.overview}</p>
+      <h2>id: {id}</h2>
+      <h2>name: {data?.name}</h2>
+      <img src={data?.imgURL} alt={`img of ${data?.name}`} />
+      <p>{data?.overview}</p>
     </section>
   );
 }

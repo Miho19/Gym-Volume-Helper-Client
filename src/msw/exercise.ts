@@ -15,7 +15,7 @@ initialExerciseMetric();
 export const exerciseHandlers = [
   http.get(toURL("/me/exercise"), getExerciseList),
   http.get(toURL("/me/exercise/:id"), getExercise),
-  http.post(toURL("/me/exercise/:id"), postUserExcerciseMetric),
+  http.post(toURL("/me/exercise/:id"), () => {}),
 ];
 
 function getExerciseList() {
@@ -103,6 +103,6 @@ function initialExerciseMetric() {
  * POST --> exerciseID, metric {weight, reps, dateTime}
  * server
  *  -> if exerciseID, find dateTime -> add weight, reps
- *
+ *  -> should have a metric id --> associate metric id with user id?
  *
  */

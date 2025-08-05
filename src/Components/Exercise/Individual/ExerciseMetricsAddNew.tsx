@@ -2,25 +2,21 @@ import React, { useState } from "react";
 import { convertDateToInputStringFormat } from "../../../Utility/DateFormat";
 import { isValidFormSubmission } from "./MetricFormValidation";
 import useUserExerciseMutation from "../../../Hooks/useUserExerciseMutation";
+import type { MetricFormDataType } from "./MetricFormDataType";
 
 type Props = {
   exerciseID: string;
 };
 
-export type MetricDataType = {
-  weight: number;
-  reps: number;
-  dateTime: string;
-};
-
 function ExerciseMetricsNew({ exerciseID }: Props) {
-  const initialState: MetricDataType = {
+  const initialState: MetricFormDataType = {
     weight: 0,
     reps: 0,
     dateTime: convertDateToInputStringFormat(new Date().toString()),
   };
 
-  const [metricData, setMetricData] = useState<MetricDataType>(initialState);
+  const [metricData, setMetricData] =
+    useState<MetricFormDataType>(initialState);
 
   const mutation = useUserExerciseMutation({ exerciseID });
 

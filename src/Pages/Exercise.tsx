@@ -1,6 +1,5 @@
-import { useParams } from "react-router";
-import useUserExerciseQuery from "../Hooks/useUserExerciseQuery";
-import UserExerciseContainer from "../Components/Exercise/Individual/UserExerciseContainer";
+import ExerciseDetailsContainer from "../Components/Exercise/Individual/ExerciseDetailsContainer";
+import ExerciseMetricsContainer from "../Components/Exercise/Individual/ExerciseMetricsContainer";
 
 /**
  *
@@ -10,15 +9,12 @@ import UserExerciseContainer from "../Components/Exercise/Individual/UserExercis
 type Props = {};
 
 function Exercise() {
-  const { id } = useParams();
-  const { data, isLoading, isError, error } = useUserExerciseQuery({
-    exerciseID: id,
-  });
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>{error.message}</div>;
-
-  return <UserExerciseContainer exercise={data!} />;
+  return (
+    <main>
+      <ExerciseDetailsContainer />
+      <ExerciseMetricsContainer />
+    </main>
+  );
 }
 
 export default Exercise;
