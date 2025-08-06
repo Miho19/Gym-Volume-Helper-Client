@@ -74,7 +74,6 @@ export const exerciseMetricsHandlers = [
       };
 
       UserExerciseMetrics.push(newMetric);
-      console.log(UserExerciseMetrics);
 
       return new HttpResponse({}, { status: 200 });
     }
