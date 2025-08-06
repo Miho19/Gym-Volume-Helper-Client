@@ -87,6 +87,7 @@ function ExerciseMetricsNew({ exerciseID }: Props) {
             background: "white",
             border: "1px solid black",
             color: "black ",
+            cursor: "pointer",
           }}
         >
           Add New

@@ -22,7 +22,7 @@ function useUserExerciseMutation(props: Props) {
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [`exercise ${props.exerciseID}`],
+        queryKey: [`user exercise metric ${props.exerciseID}`],
       });
     },
   });

@@ -45,33 +45,50 @@ export const exerciseMetricsHandlers = [
 
       if (exerciseID !== requestExerciseID) return HttpResponse.error();
 
-      UserExerciseMetrics = UserExerciseMetrics.filter((metric) => {
-        if (metric.exerciseID !== exerciseID) return metric;
-
+      const index = UserExerciseMetrics.findIndex((metric) => {
         const [dateA, dateB] = prepareDatesForComparison([
           metric.dateTime.toDateString(),
           requestMetric.dateTime,
         ]);
 
-        if (dateA.getTime() !== dateB.getTime()) return metric;
+        if (metric.exerciseID !== exerciseID) return false;
 
-        metric.reps.push(requestMetric.reps);
-        metric.weight.push(requestMetric.weight);
+        if (dateA.getTime() !== dateB.getTime()) return false;
 
-        return metric;
+        return true;
       });
+
+      if (index !== -1) {
+        const currentMetric = UserExerciseMetrics[index];
+        currentMetric.reps.push(requestMetric.reps);
+        currentMetric.weight.push(requestMetric.weight);
+        return new HttpResponse({}, { status: 200 });
+      }
+
+      const newMetric: ExerciseMetric = {
+        exerciseID,
+        metricID: String(++currentMetricID),
+        dateTime: new Date(requestMetric.dateTime),
+        weight: [requestMetric.weight],
+        reps: [requestMetric.reps],
+      };
+
+      UserExerciseMetrics.push(newMetric);
+      console.log(UserExerciseMetrics);
 
       return new HttpResponse({}, { status: 200 });
     }
   ),
 ];
 
+let currentMetricID = 1;
+
 let testUserMetric: ExerciseMetric = {
   exerciseID: "K6NnTv0",
-  metricID: "1",
+  metricID: String(currentMetricID),
   dateTime: new Date(),
   weight: [8, 8, 8],
   reps: [12, 8, 10],
 };
 
-let UserExerciseMetrics: ExerciseMetric[] = [testUserMetric];
+const UserExerciseMetrics: ExerciseMetric[] = [testUserMetric];

@@ -10,6 +10,8 @@ export async function POSTUserExcerciseMetric(
 ) {
   const { exerciseID, metric } = input;
 
+  console.log("hello");
+
   if (!exerciseID || exerciseID === undefined)
     throw new Error("Missing exercise ID");
 
