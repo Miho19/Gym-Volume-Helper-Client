@@ -8,7 +8,7 @@ import ExerciseMetricsContainer from "../Components/Exercise/Individual/Exercise
  */
 type Props = {};
 
-function Exercise() {
+function IndividualExercise() {
   return (
     <main>
       <ExerciseDetailsContainer />
@@ -17,4 +17,4 @@ function Exercise() {
   );
 }
 
-export default Exercise;
+export default IndividualExercise;
