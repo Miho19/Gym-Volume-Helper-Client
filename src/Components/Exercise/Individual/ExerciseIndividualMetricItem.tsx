@@ -12,12 +12,14 @@ function ExerciseIndividualMetricItem({ metric }: Props) {
 
   const currentDate = new Date(dateTime);
 
-  const setsArray = sets.map((set: ExerciseSetType) => {
+  const setsArray = sets.map((set: ExerciseSetType, index: number) => {
     const { weight, reps } = set;
-    return `[${weight} kg ${reps}]`;
+    return (
+      <li key={index}>
+        <p>{`${weight} kg ${reps}`}</p>
+      </li>
+    );
   });
-
-  const setsDisplay = setsArray.join(",");
 
   return (
     <li
@@ -29,7 +31,7 @@ function ExerciseIndividualMetricItem({ metric }: Props) {
       }}
     >
       <p>{currentDate.toDateString()}</p>
-      {setsDisplay}
+      <ul>{setsArray}</ul>
     </li>
   );
 }

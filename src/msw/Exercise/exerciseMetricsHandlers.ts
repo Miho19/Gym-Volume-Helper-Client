@@ -83,7 +83,7 @@ export const exerciseMetricsHandlers = [
 
 let currentMetricID = 1;
 
-let testUserMetric: ExerciseMetric = {
+export const testUserMetric: ExerciseMetric = {
   exerciseID: "K6NnTv0",
   metricID: String(currentMetricID),
   dateTime: new Date(),

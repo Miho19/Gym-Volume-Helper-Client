@@ -7,7 +7,7 @@ import * as auth0 from "@auth0/auth0-react";
 import { testUser } from "../../../src/Components/ProfileBubble/UserType";
 
 import { testRender } from "../../Util";
-import { exerciseList } from "./Utility";
+import { testUserMetric } from "../../../src/msw/Exercise/exerciseMetricsHandlers";
 
 vi.mock("@auth0/auth0-react");
 
@@ -35,6 +35,12 @@ describe("Individual Exercise Page", async () => {
     await userEvent.click(linkToIndividualPage);
 
     expect(screen.getByText(overviewOfInclineHammerCurls)).toBeInTheDocument();
+
+    const exampleMetric = testUserMetric.sets[0];
+
+    expect(
+      screen.getByText(`${exampleMetric.weight} kg ${exampleMetric.reps}`)
+    ).toBeInTheDocument();
   });
 
   it("allows user to add weight, rep, set number for current date", async () => {
