@@ -60,8 +60,10 @@ export const exerciseMetricsHandlers = [
 
       if (index !== -1) {
         const currentMetric = UserExerciseMetrics[index];
-        currentMetric.reps.push(requestMetric.reps);
-        currentMetric.weight.push(requestMetric.weight);
+        currentMetric.sets.push({
+          reps: requestMetric.reps,
+          weight: requestMetric.weight,
+        });
         return new HttpResponse({}, { status: 200 });
       }
 
@@ -69,8 +71,7 @@ export const exerciseMetricsHandlers = [
         exerciseID,
         metricID: String(++currentMetricID),
         dateTime: new Date(requestMetric.dateTime),
-        weight: [requestMetric.weight],
-        reps: [requestMetric.reps],
+        sets: [{ weight: requestMetric.weight, reps: requestMetric.reps }],
       };
 
       UserExerciseMetrics.push(newMetric);
@@ -86,8 +87,11 @@ let testUserMetric: ExerciseMetric = {
   exerciseID: "K6NnTv0",
   metricID: String(currentMetricID),
   dateTime: new Date(),
-  weight: [8, 8, 8],
-  reps: [12, 8, 10],
+  sets: [
+    { reps: 12, weight: 8 },
+    { reps: 8, weight: 8 },
+    { reps: 5, weight: 9 },
+  ],
 };
 
 const UserExerciseMetrics: ExerciseMetric[] = [testUserMetric];

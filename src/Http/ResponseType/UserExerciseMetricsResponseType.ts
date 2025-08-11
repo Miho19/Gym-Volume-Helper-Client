@@ -2,8 +2,12 @@ export type ExerciseMetric = {
   exerciseID: string;
   metricID: string;
   dateTime: Date;
-  weight: number[];
-  reps: number[];
+  sets: ExerciseSetType[];
+};
+
+export type ExerciseSetType = {
+  weight: number;
+  reps: number;
 };
 
 export type UserExerciseMetricsResponseType = {

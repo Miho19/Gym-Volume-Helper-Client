@@ -1,19 +1,23 @@
-import type { ExerciseMetric } from "../../../Http/ResponseType/UserExerciseMetricsResponseType";
+import type {
+  ExerciseMetric,
+  ExerciseSetType,
+} from "../../../Http/ResponseType/UserExerciseMetricsResponseType";
 
 type Props = {
   metric: ExerciseMetric;
 };
 
 function ExerciseIndividualMetricItem({ metric }: Props) {
-  const { dateTime, metricID, weight, reps } = metric;
+  const { dateTime, sets } = metric;
 
   const currentDate = new Date(dateTime);
 
-  const weightDisplayArray = weight.map((w) => `${w}kg`);
+  const setsArray = sets.map((set: ExerciseSetType) => {
+    const { weight, reps } = set;
+    return `[${weight} kg ${reps}]`;
+  });
 
-  let sets = reps.length;
-  if (reps.length !== weight.length)
-    sets = Math.max(reps.length, weight.length);
+  const setsDisplay = setsArray.join(",");
 
   return (
     <li
@@ -25,9 +29,7 @@ function ExerciseIndividualMetricItem({ metric }: Props) {
       }}
     >
       <p>{currentDate.toDateString()}</p>
-      <p>weight: {weightDisplayArray.join(", ")}</p>
-      <p>reps: {reps.join(", ")}</p>
-      <p>sets: {sets}</p>
+      {setsDisplay}
     </li>
   );
 }
