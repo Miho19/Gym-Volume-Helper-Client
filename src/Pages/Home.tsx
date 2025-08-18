@@ -26,12 +26,6 @@ function HomePage() {
         <Link to="/exercise">Goto Exercise</Link>
       </div>
 
-      <div>
-        <h2>Calendar</h2>
-        <Link to="/calendar" data-testid="calendarLink">
-          Goto Calendar
-        </Link>
-      </div>
       <button
         onClick={() =>
           logout({ logoutParams: { returnTo: window.location.origin } })
