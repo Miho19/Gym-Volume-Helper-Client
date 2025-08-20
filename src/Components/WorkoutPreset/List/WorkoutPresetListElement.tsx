@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { UserWorkoutPresetListElementType } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { UserWorkoutPresetListElementType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
 
 type Props = {
   workout: UserWorkoutPresetListElementType;

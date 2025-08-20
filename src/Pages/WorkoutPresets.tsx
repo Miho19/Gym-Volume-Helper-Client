@@ -1,6 +1,6 @@
-import WorkoutPresetList from "../Components/WorkoutPreset/WorkoutPresetList";
+import WorkoutPresetList from "../Components/WorkoutPreset/List/WorkoutPresetList";
 
-function WorkoutPresetsPage() {
+function WorkoutPresetListPage() {
   return (
     <main>
       <WorkoutPresetList />
@@ -16,4 +16,4 @@ function WorkoutPresetsPage() {
  * list exercises in short box form
  */
 
-export default WorkoutPresetsPage;
+export default WorkoutPresetListPage;
