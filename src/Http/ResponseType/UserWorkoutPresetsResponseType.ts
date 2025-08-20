@@ -1,15 +1,23 @@
-export type WorkoutPresetType = {
-  id: string;
+export type UserWorkoutPresetType = {
   ownerID: string;
   ownerName: string;
   ownerProfilePictureURL: string;
-  name: string;
+
   exerciseIDList: string[];
-  imgURL: string;
+
+  workoutID: string;
+  workoutName: string;
+  workoutImgURL: string;
+};
+
+export type UserWorkoutPresetListElementType = {
+  workoutID: string;
+  workoutName: string;
+  workoutImgURL: string;
 };
 
 export type UserWorkoutPresetListResponseType = {
   userID: string;
   userName: string;
-  items: WorkoutPresetType[];
+  items: UserWorkoutPresetListElementType[];
 };
