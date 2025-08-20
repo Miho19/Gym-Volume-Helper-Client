@@ -4,18 +4,15 @@ type Props = {
   workout: UserWorkoutPresetType;
 };
 
-function WorkoutPresetOwnerPanel(props: Props) {
+function WorkoutPresetHeader(props: Props) {
   const { workout } = props;
 
   return (
     <section style={{ border: "1px solid white" }}>
-      <p>{workout.ownerName}</p>
-      <img
-        src={workout.ownerProfilePictureURL}
-        alt={`profile picture of ${workout.ownerName}`}
-      />
+      <h2>{workout.workoutName}</h2>
+      <img src={workout.workoutImgURL} alt={`workout header image`} />
     </section>
   );
 }
 
-export default WorkoutPresetOwnerPanel;
+export default WorkoutPresetHeader;
