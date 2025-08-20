@@ -1,19 +1,22 @@
+import useUserWorkoutPresetList from "../../Hooks/useUserWorkoutPresetList";
 import type { WorkoutPresetType } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
-
-const testExerciseList: WorkoutPresetType[] = [
-  {
-    id: "1",
-    ownerID: "12345",
-    name: "Preset 1",
-    exerciseIDList: ["K6NnTv0", "U0uPZBq", "QD32SbB"],
-    imgURL: "https://picsum.photos/id/237/200/300",
-  },
-];
+import WorkoutPreset from "./WorkoutPreset";
 
 function WorkoutPresetList() {
-  const data = testExerciseList;
+  const { data, isLoading, isError, error } = useUserWorkoutPresetList();
 
-  return <section></section>;
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {error.message}</div>;
+
+  const presets = data?.items.map((preset: WorkoutPresetType) => (
+    <WorkoutPreset key={preset.id} preset={preset} />
+  ));
+
+  return (
+    <section>
+      <ul>{presets}</ul>
+    </section>
+  );
 }
 
 export default WorkoutPresetList;

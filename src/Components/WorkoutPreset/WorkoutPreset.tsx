@@ -1,27 +1,25 @@
 import type { WorkoutPresetType } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
 
 type Props = {
-  ownerName: string;
-  ownerProfilePictureURL: string;
   preset: WorkoutPresetType;
 };
 
 function WorkoutPreset(props: Props) {
-  const { preset, ownerName, ownerProfilePictureURL } = props;
+  const { preset } = props;
 
   return (
-    <article>
+    <li>
       <p>{preset.name}</p>
       <img src={preset.imgURL} alt={`image of ${preset.name} preset`} />
 
       <div>
         <img
-          src={ownerProfilePictureURL}
-          alt={`profile picture of the user ${ownerName}`}
+          src={preset.ownerProfilePictureURL}
+          alt={`profile picture of the user ${preset.ownerName}`}
         />
-        <p>{ownerName}</p>
+        <p>{preset.ownerName}</p>
       </div>
-    </article>
+    </li>
   );
 }
 
