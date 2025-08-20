@@ -1,5 +1,5 @@
-import type { ExerciseListElement } from "../../Components/Exercise/ExerciseTypes";
 import type { ExerciseListResponseGET } from "../ResponseType/ExerciseListResponseType";
+import type { ExerciseListElement } from "../ResponseType/UserWorkoutPresetsResponseType";
 
 export async function GETWorkoutPresetExerciseList(
   exerciseListID: string[]

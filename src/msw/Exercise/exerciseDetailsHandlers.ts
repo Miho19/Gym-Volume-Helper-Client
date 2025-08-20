@@ -4,7 +4,7 @@ import type {
   ExerciseDetailsResponseType,
   ExerciseDetailsType,
 } from "../../Http/ResponseType/ExerciseDetailsResponseType";
-import type { ExerciseListElement } from "../../Components/Exercise/ExerciseTypes";
+import type { ExerciseListElement } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
 
 const testExerciseDetails: ExerciseDetailsType = {
   name: "Bench Press",

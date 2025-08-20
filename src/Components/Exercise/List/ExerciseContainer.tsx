@@ -1,5 +1,5 @@
+import type { ExerciseListElement } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
 import ExerciseListItem from "./ExerciseListItem";
-import type { ExerciseListElement } from "../ExerciseTypes";
 
 type Props = {
   currentDate: Date;
