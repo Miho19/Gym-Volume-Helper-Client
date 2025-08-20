@@ -1,4 +1,5 @@
 import useWorkoutPresetQuery from "../../../Hooks/useWorkoutPresetQuery";
+import WorkoutPresetExerciseList from "./WorkoutPresetExerciseList";
 import WorkoutPresetHeader from "./WorkoutPresetHeader";
 import WorkoutPresetOwnerPanel from "./WorkoutPresetOwnerPanel";
 
@@ -18,6 +19,7 @@ function IndividualWorkoutPreset(props: Props) {
   return (
     <section>
       <WorkoutPresetHeader workout={data} />
+      <WorkoutPresetExerciseList workout={data} />
       <WorkoutPresetOwnerPanel workout={data} />
     </section>
   );

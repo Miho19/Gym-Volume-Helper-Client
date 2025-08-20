@@ -4,6 +4,7 @@ import type {
   ExerciseDetailsResponseType,
   ExerciseDetailsType,
 } from "../../Http/ResponseType/ExerciseDetailsResponseType";
+import type { ExerciseListElement } from "../../Components/Exercise/ExerciseTypes";
 
 const testExerciseDetails: ExerciseDetailsType = {
   name: "Bench Press",
@@ -44,8 +45,18 @@ const testExerciseDetails: ExerciseDetailsType = {
     "The Bench Press is a classic strength training exercise that primarily targets the chest, shoulders, and triceps, contributing to upper body muscle development. It is suitable for anyone, from beginners to professional athletes, looking to improve their upper body strength and muscular endurance. Individuals may want to incorporate bench press into their routine for its effectiveness in enhancing physical performance, promoting bone health, and improving body composition.",
 };
 
+type GETMinExerciseParams = {
+  exerciseID: string;
+};
+
 export const exerciseDetailsHandlers = [
   http.get(toURL("/exercise/:id"), getExerciseDetail),
+  http.get<GETMinExerciseParams, undefined, ExerciseListElement>(
+    toURL("/min/exercise/:id"),
+    ({ params }) => {
+      const { exerciseID } = params;
+    }
+  ),
 ];
 
 function getExerciseDetail() {
