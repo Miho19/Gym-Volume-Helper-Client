@@ -4,8 +4,6 @@ import ErrorPage from "../Pages/Error";
 import LoginPage from "../Pages/Login";
 import HomePage from "../Pages/Home";
 import ProfilePage from "../Pages/Profile";
-import ExercisePage from "../Pages/ExerciseList";
-import IndividualExercise from "../Pages/IndividualExercise";
 import WorkoutPresetListPage from "../Pages/WorkoutPresets";
 import IndividualWorkoutPresetPage from "../Pages/IndividualWorkoutPreset";
 
@@ -17,8 +15,6 @@ export const routerConfig = [
     children: [
       { element: <HomePage />, index: true },
       { path: "profile", element: <ProfilePage /> },
-      { path: "exercise", element: <ExercisePage /> },
-      { path: "exercise/:id", element: <IndividualExercise /> },
       { path: "workout", element: <WorkoutPresetListPage /> },
       { path: "workout/:id", element: <IndividualWorkoutPresetPage /> },
     ],

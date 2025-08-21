@@ -1,5 +1,9 @@
 import useWorkoutPresetExerciseList from "../../../Hooks/useWorkoutPresetExerciseList";
-import type { UserWorkoutPresetType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type {
+  ExerciseListElement,
+  UserWorkoutPresetType,
+} from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import WorkoutPresetExerciseListElement from "./WorkoutPresetExerciseListElement";
 
 type Props = {
   workout: UserWorkoutPresetType;
@@ -19,7 +23,15 @@ function WorkoutPresetExerciseList(props: Props) {
 
   if (!isSuccess) return <div>error fetching</div>;
 
-  return <section style={{ border: "1px solid white" }}></section>;
+  const exerciseList = data.items.map((exercise: ExerciseListElement) => (
+    <WorkoutPresetExerciseListElement key={exercise.id} exercise={exercise} />
+  ));
+
+  return (
+    <section style={{ border: "1px solid white" }}>
+      <ul>{exerciseList}</ul>
+    </section>
+  );
 }
 
 export default WorkoutPresetExerciseList;

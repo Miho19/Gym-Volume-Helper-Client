@@ -1,7 +1,8 @@
 import { http, HttpResponse } from "msw";
 import { toURL } from "..";
-import type { ExerciseListElement } from "../../Components/Exercise/ExerciseTypes";
+
 import type { ExerciseListResponseGET } from "../../Http/ResponseType/ExerciseListResponseType";
+import type { ExerciseListElement } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
 
 export const exerciseListHandlers = [
   http.get(toURL("/me/exercise"), getExerciseList),

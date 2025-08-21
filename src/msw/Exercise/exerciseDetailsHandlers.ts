@@ -50,7 +50,6 @@ type GETMinExerciseParams = {
 };
 
 export const exerciseDetailsHandlers = [
-  http.get(toURL("/exercise/:id"), getExerciseDetail),
   http.get<GETMinExerciseParams, undefined, ExerciseListElement>(
     toURL("/min/exercise/:id"),
     ({ params }) => {
@@ -58,12 +57,3 @@ export const exerciseDetailsHandlers = [
     }
   ),
 ];
-
-function getExerciseDetail() {
-  const bodyResponse: ExerciseDetailsResponseType = {
-    exerciseID: "K6NnTv0",
-    item: testExerciseDetails,
-  };
-
-  return HttpResponse.json(bodyResponse);
-}
