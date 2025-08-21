@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router";
 import useUserWorkoutPresetList from "../../../Hooks/useUserWorkoutPresetList";
 import type { UserWorkoutPresetListElementType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
 import WorkoutPresetListElement from "./WorkoutPresetListElement";
 
 function WorkoutPresetList() {
+  const navigator = useNavigate();
+
   const { data, isLoading, isError, error } = useUserWorkoutPresetList();
 
   if (isLoading) return <div>Loading...</div>;
@@ -16,6 +19,7 @@ function WorkoutPresetList() {
 
   return (
     <section>
+      <button onClick={() => navigator("/")}>Home</button>
       <ul>{workoutList}</ul>
     </section>
   );

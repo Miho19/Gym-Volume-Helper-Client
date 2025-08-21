@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import useWorkoutPresetQuery from "../../../Hooks/useWorkoutPresetQuery";
 import WorkoutPresetExerciseList from "./WorkoutPresetExerciseList";
 import WorkoutPresetHeader from "./WorkoutPresetHeader";
@@ -7,6 +8,8 @@ type Props = {
   workoutID: string;
 };
 function IndividualWorkoutPreset(props: Props) {
+  const navigator = useNavigate();
+
   const { data, isLoading, isError, error, isSuccess } = useWorkoutPresetQuery({
     workoutID: props.workoutID,
   });
@@ -18,6 +21,7 @@ function IndividualWorkoutPreset(props: Props) {
 
   return (
     <section>
+      <button onClick={() => navigator("/workout")}>Back</button>
       <WorkoutPresetHeader workout={data} />
       <WorkoutPresetExerciseList workout={data} />
       <WorkoutPresetOwnerPanel workout={data} />
