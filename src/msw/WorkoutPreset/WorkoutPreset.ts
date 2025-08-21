@@ -24,7 +24,11 @@ export const testUserWorkoutPresetList: UserWorkoutPresetType[] = [
     ownerID: "12345",
     ownerName: "Josh April",
     ownerProfilePictureURL: "https://picsum.photos/id/12/2500/1667",
-    exerciseIDList: ["K6NnTv0", "U0uPZBq", "QD32SbB"],
+    exerciseIDList: [
+      "exr_41n2hxnFMotsXTj3",
+      "exr_41n2hPFTn4fEG8Bx",
+      "exr_41n2hfGATUH6QYu5",
+    ],
     workoutID: "1",
     workoutName: "Preset 1",
     workoutImgURL: "https://picsum.photos/id/237/200/300",

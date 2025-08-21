@@ -7,12 +7,6 @@ import type {
 import type { POSTUserMetricRequestBody } from "../../Http/RequestFunctions/POSTUserExerciseMetric";
 import { prepareDatesForComparison } from "../../Components/Exercise/Individual/MetricFormDateValidation";
 
-/**
- *
- * Doing this because server is like 1 week away
- *
- */
-
 type MetricsParams = {
   exerciseID: string;
 };
