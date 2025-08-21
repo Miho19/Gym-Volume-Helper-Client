@@ -28,3 +28,9 @@ export type ExerciseListElement = {
   img: string;
   pageLink: string;
 };
+
+export type NewWorkoutPresetFormDataType = {
+  workoutName: string;
+  workoutPicture: string;
+  exerciseNameList: string[];
+};

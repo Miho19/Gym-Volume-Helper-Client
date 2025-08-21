@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { NewWorkoutPresetFormDataType } from "./NewWorkoutPresetForm";
+import type { NewWorkoutPresetFormDataType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
 
 type Props = {
   setFormData: React.Dispatch<
