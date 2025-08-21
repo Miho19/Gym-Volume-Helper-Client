@@ -9,7 +9,7 @@ type GETMinExerciseParams = {
 
 export const exerciseDetailsHandlers = [
   http.get<GETMinExerciseParams, undefined, ExerciseListElement>(
-    toURL("/min/exercise/:id"),
+    toURL("/min/exercise/:exerciseID"),
     ({ params }) => {
       const { exerciseID } = params;
 

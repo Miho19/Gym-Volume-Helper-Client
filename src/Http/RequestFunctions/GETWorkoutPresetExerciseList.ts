@@ -17,7 +17,7 @@ export async function GETWorkoutPresetExerciseList(
   const exerciseListResponses = await Promise.all(
     exerciseListID.map(async (exerciseID: string) => {
       const URL = import.meta.env.DEV
-        ? `http://localhost:5052/exercise/${exerciseID}`
+        ? `http://localhost:5052/min/exercise/${exerciseID}`
         : "";
 
       try {
