@@ -6,6 +6,7 @@ import HomePage from "../Pages/Home";
 import ProfilePage from "../Pages/Profile";
 import WorkoutPresetListPage from "../Pages/WorkoutPresets";
 import IndividualWorkoutPresetPage from "../Pages/IndividualWorkoutPreset";
+import NewWorkoutPresetPage from "../Pages/NewWorkoutPreset";
 
 export const routerConfig = [
   {
@@ -17,6 +18,7 @@ export const routerConfig = [
       { path: "profile", element: <ProfilePage /> },
       { path: "workout", element: <WorkoutPresetListPage /> },
       { path: "workout/:id", element: <IndividualWorkoutPresetPage /> },
+      { path: "newworkout", element: <NewWorkoutPresetPage /> },
     ],
   },
   {

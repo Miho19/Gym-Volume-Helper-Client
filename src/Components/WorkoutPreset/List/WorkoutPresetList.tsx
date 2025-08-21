@@ -21,6 +21,9 @@ function WorkoutPresetList() {
     <section>
       <button onClick={() => navigator("/")}>Home</button>
       <ul>{workoutList}</ul>
+      <button onClick={() => navigator("/newworkout")}>
+        New Workout Preset
+      </button>
     </section>
   );
 }
