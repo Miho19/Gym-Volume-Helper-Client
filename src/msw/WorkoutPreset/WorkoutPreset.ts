@@ -4,10 +4,12 @@ import type {
 } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
 import { FullWorkoutPresetHandlers } from "./FullWorkoutPresetHandlers";
 import { WorkoutPresetListHandlers } from "./WorkoutPresetListHandlers";
+import { WorkoutPresetListPOSTHandlers } from "./WorkoutPresetListPOSTHandler";
 
 export const workoutPresetHandlers = [
   ...WorkoutPresetListHandlers,
   ...FullWorkoutPresetHandlers,
+  ...WorkoutPresetListPOSTHandlers,
 ];
 
 export const testUserWorkoutPresetElementList: UserWorkoutPresetListElementType[] =
@@ -30,3 +32,15 @@ export const testUserWorkoutPresetList: UserWorkoutPresetType[] = [
     workoutImgURL: "https://picsum.photos/id/237/200/300",
   },
 ];
+
+export function getNewWorkoutID(
+  workoutPresetList: UserWorkoutPresetType[]
+): number {
+  const workoutIDArray = workoutPresetList.map((current) =>
+    Number(current.workoutID)
+  );
+
+  const maxID = workoutIDArray.reduce((acc, curr) => Math.max(acc, curr));
+
+  return maxID + 1;
+}
