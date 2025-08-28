@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import NewWorkoutPresetFormExerciseAdder from "./NewWorkoutPresetFormExerciseAdder";
 import { useState } from "react";
 import type { NewWorkoutPresetFormDataType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
 import useNewWorkoutPresetMutation from "../../../Hooks/useNewWorkoutPresetMutation";
@@ -25,7 +24,12 @@ function NewWorkoutPresetForm() {
     event.preventDefault();
     mutation.mutate({ newWorkoutPreset: formData });
     // handle errors
+    resetForm();
     navigation("/workout");
+  }
+
+  function resetForm() {
+    setFormData(initialFormState);
   }
 
   return (
@@ -59,12 +63,10 @@ function NewWorkoutPresetForm() {
           />
         </label>
 
-        <NewWorkoutPresetFormExerciseAdder setFormData={setFormData} />
-        <textarea
-          name="exerciseNameList"
-          value={formData.exerciseNameList.join("\n")}
-        />
         <button type="submit">Create Workout Preset</button>
+        <button type="reset" onClick={resetForm}>
+          Reset
+        </button>
       </form>
     </>
   );
