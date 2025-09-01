@@ -14,6 +14,8 @@ function IndividualWorkoutPreset(props: Props) {
     workoutID: props.workoutID,
   });
 
+  function handleDeleteWorkout() {}
+
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>error: {error.message}</div>;
 
@@ -25,6 +27,7 @@ function IndividualWorkoutPreset(props: Props) {
       <WorkoutPresetHeader workout={data} />
       <WorkoutPresetExerciseList workout={data} />
       <WorkoutPresetOwnerPanel workout={data} />
+      <button onClick={handleDeleteWorkout}>Delete</button>
     </section>
   );
 }
