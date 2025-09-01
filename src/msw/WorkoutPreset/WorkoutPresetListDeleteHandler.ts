@@ -14,7 +14,7 @@ type DELETEBodyType = {
   workoutID: string;
 };
 
-export const WorkoutPresetListPOSTHandlers = [
+export const WorkoutPresetListDELETEHandlers = [
   http.delete<DELETEParams, DELETEBodyType, undefined>(
     toURL("/me/workout/"),
     async ({ request }) => {
