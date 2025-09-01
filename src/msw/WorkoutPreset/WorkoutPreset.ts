@@ -19,6 +19,11 @@ export const testUserWorkoutPresetElementList: UserWorkoutPresetListElementType[
       workoutName: "Preset 1",
       workoutImgURL: "https://picsum.photos/id/237/200/300",
     },
+    {
+      workoutID: "2",
+      workoutName: "Preset 2",
+      workoutImgURL: "https://picsum.photos/id/56/200/300",
+    },
   ];
 
 export const testUserWorkoutPresetList: UserWorkoutPresetType[] = [
@@ -30,6 +35,15 @@ export const testUserWorkoutPresetList: UserWorkoutPresetType[] = [
     workoutID: "1",
     workoutName: "Preset 1",
     workoutImgURL: "https://picsum.photos/id/237/200/300",
+  },
+  {
+    ownerID: "12345",
+    ownerName: "Josh April",
+    ownerProfilePictureURL: "https://picsum.photos/id/12/2500/1667",
+    exerciseIDList: ["VPPtusI", "8d8qJQI", "JGKowMS"],
+    workoutID: "2",
+    workoutName: "Preset 2",
+    workoutImgURL: "https://picsum.photos/id/56/200/300",
   },
 ];
 
