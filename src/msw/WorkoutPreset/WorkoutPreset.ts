@@ -12,7 +12,7 @@ export const workoutPresetHandlers = [
   ...WorkoutPresetListPOSTHandlers,
 ];
 
-export const testUserWorkoutPresetElementList: UserWorkoutPresetListElementType[] =
+export let testUserWorkoutPresetElementList: UserWorkoutPresetListElementType[] =
   [
     {
       workoutID: "1",
@@ -26,7 +26,7 @@ export const testUserWorkoutPresetElementList: UserWorkoutPresetListElementType[
     },
   ];
 
-export const testUserWorkoutPresetList: UserWorkoutPresetType[] = [
+export let testUserWorkoutPresetList: UserWorkoutPresetType[] = [
   {
     ownerID: "12345",
     ownerName: "Josh April",
@@ -57,4 +57,16 @@ export function getNewWorkoutID(
   const maxID = workoutIDArray.reduce((acc, curr) => Math.max(acc, curr));
 
   return maxID + 1;
+}
+
+export function updatetestUserWorkoutPresetElementList(
+  updatedList: UserWorkoutPresetListElementType[]
+) {
+  testUserWorkoutPresetElementList = updatedList;
+}
+
+export function updatetestUserWorkoutPresetList(
+  updatedList: UserWorkoutPresetType[]
+) {
+  testUserWorkoutPresetList = updatedList;
 }
