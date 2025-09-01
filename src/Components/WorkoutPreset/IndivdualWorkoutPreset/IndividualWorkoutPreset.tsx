@@ -14,12 +14,12 @@ function IndividualWorkoutPreset(props: Props) {
     workoutID: props.workoutID,
   });
 
-  function handleDeleteWorkout() {}
-
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>error: {error.message}</div>;
 
   if (!isSuccess) return <div>error fetching</div>;
+
+  function handleDeleteWorkout() {}
 
   return (
     <section>
