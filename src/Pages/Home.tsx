@@ -22,6 +22,11 @@ function HomePage() {
       <ProfileBubble user={data!} />
 
       <div>
+        <h2>Current Workout</h2>
+        <Link to="/currentworkout/">Goto Current Workout</Link>
+      </div>
+
+      <div>
         <h2>Workout Presets</h2>
         <Link to="/workout">Goto Workout Presets</Link>
       </div>

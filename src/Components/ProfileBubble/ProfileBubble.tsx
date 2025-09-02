@@ -1,9 +1,8 @@
 import { Link } from "react-router";
-import type { UserInformation } from "./UserType";
 import type { UserBodyResponseTypePOST } from "../../Http/ResponseType/UserResponseType";
 
 type Props = {
-  user: UserInformation | UserBodyResponseTypePOST;
+  user: UserBodyResponseTypePOST;
 };
 
 function ProfileBubble(props: Props) {
