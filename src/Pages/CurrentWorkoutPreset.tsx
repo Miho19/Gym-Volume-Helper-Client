@@ -1,3 +1,6 @@
+import WorkoutPresetExerciseList from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetExerciseList";
+import WorkoutPresetHeader from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetHeader";
+import WorkoutPresetOwnerPanel from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetOwnerPanel";
 import useInitialiseUserQuery from "../Hooks/useInitialiseUserQuery";
 import useWorkoutPresetQuery from "../Hooks/useWorkoutPresetQuery";
 
@@ -26,7 +29,13 @@ function CurrentWorkoutPresetPage() {
   if (isLoadingWorkout) return <div>Loading...</div>;
   if (isErrorWorkout) return <div>{errorWorkout?.message}</div>;
 
-  return <main></main>;
+  return (
+    <main>
+      <WorkoutPresetHeader workout={workout!} />
+      <WorkoutPresetExerciseList workout={workout!} />
+      <WorkoutPresetOwnerPanel workout={workout!} />
+    </main>
+  );
 }
 
 export default CurrentWorkoutPresetPage;
