@@ -1,5 +1,7 @@
-import type { ExerciseListResponseGET } from "../ResponseType/ExerciseListResponseType";
-import type { ExerciseListElement } from "../ResponseType/UserWorkoutPresetsResponseType";
+import type {
+  ExerciseListElement,
+  ExerciseListResponseGET,
+} from "../ResponseType/UserWorkoutPresetsResponseType";
 
 export async function GETWorkoutPresetExerciseList(
   exerciseListID: string[]

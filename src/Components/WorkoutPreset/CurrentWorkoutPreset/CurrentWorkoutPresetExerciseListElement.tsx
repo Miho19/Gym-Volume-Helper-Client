@@ -1,11 +1,12 @@
 import react from "react";
+import type { ExerciseListElement } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
 
 type Props = {
-  exerciseID: string;
+  exercise: ExerciseListElement;
 };
 
 function CurrentWorkoutPresetExerciseListElement(props: Props) {
-  const { exerciseID } = props;
+  const { exercise } = props;
 
   return <ul></ul>;
 }

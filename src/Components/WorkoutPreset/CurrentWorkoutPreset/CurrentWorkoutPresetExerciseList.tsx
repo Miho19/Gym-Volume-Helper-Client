@@ -1,16 +1,28 @@
 import react from "react";
-import type { UserWorkoutPresetType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type {
+  ExerciseListElement,
+  UserWorkoutPresetType,
+} from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
 import CurrentWorkoutPresetExerciseListElement from "./CurrentWorkoutPresetExerciseListElement";
+import useWorkoutPresetExerciseList from "../../../Hooks/useWorkoutPresetExerciseList";
 
 type Props = {
   workout: UserWorkoutPresetType;
 };
 
 function CurrentWorkoutPresetExerciseList(props: Props) {
-  const { exerciseIDList } = props.workout;
+  const { workoutID, exerciseIDList } = props.workout;
 
-  const exerciseElements = exerciseIDList.map((exerciseID: string) => (
-    <CurrentWorkoutPresetExerciseListElement exerciseID={exerciseID} />
+  const { data, isLoading, isError, error } = useWorkoutPresetExerciseList({
+    workoutID,
+    exerciseList: exerciseIDList,
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>error: {error.message}</div>;
+
+  const exerciseElements = data?.items.map((exercise: ExerciseListElement) => (
+    <CurrentWorkoutPresetExerciseListElement exercise={exercise} />
   ));
 
   return (
