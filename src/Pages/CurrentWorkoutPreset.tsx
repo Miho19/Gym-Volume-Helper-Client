@@ -1,4 +1,4 @@
-import WorkoutPresetExerciseList from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetExerciseList";
+import CurrentWorkoutPresetExerciseList from "../Components/WorkoutPreset/CurrentWorkoutPreset/CurrentWorkoutPresetExerciseList";
 import WorkoutPresetHeader from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetHeader";
 import WorkoutPresetOwnerPanel from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetOwnerPanel";
 import useInitialiseUserQuery from "../Hooks/useInitialiseUserQuery";
@@ -32,7 +32,7 @@ function CurrentWorkoutPresetPage() {
   return (
     <main>
       <WorkoutPresetHeader workout={workout!} />
-      <WorkoutPresetExerciseList workout={workout!} />
+      <CurrentWorkoutPresetExerciseList workout={workout!} />
       <WorkoutPresetOwnerPanel workout={workout!} />
     </main>
   );
