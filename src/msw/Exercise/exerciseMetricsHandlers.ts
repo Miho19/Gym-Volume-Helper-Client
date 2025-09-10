@@ -5,7 +5,7 @@ import type {
   UserExerciseMetricsResponseType,
 } from "../../Http/ResponseType/UserExerciseMetricsResponseType";
 import type { POSTUserMetricRequestBody } from "../../Http/RequestFunctions/POSTUserExerciseMetric";
-import { prepareDatesForComparison } from "../../Components/Exercise/Individual/MetricFormDateValidation";
+import { prepareDatesForComparison } from "../../Components/Exercise/Metrics/MetricFormDateValidation";
 
 type MetricsParams = {
   exerciseID: string;

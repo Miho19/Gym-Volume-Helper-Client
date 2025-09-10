@@ -1,4 +1,4 @@
-import type { MetricFormDataType } from "../../Components/Exercise/Individual/MetricFormDataType";
+import type { MetricFormDataType } from "../../Components/Exercise/Metrics/MetricFormDataType";
 
 export type POSTUserMetricRequestBody = {
   exerciseID: string;

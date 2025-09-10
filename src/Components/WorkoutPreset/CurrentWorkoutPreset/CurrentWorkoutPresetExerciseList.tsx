@@ -22,7 +22,10 @@ function CurrentWorkoutPresetExerciseList(props: Props) {
   if (isError) return <div>error: {error.message}</div>;
 
   const exerciseElements = data?.items.map((exercise: ExerciseListElement) => (
-    <CurrentWorkoutPresetExerciseListElement exercise={exercise} />
+    <CurrentWorkoutPresetExerciseListElement
+      exercise={exercise}
+      numberOfDisplayedMetrics={3}
+    />
   ));
 
   return (

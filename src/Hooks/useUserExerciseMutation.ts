@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { POSTUserExcerciseMetric } from "../Http/RequestFunctions/POSTUserExerciseMetric";
-import type { MetricFormDataType } from "../Components/Exercise/Individual/MetricFormDataType";
+import type { MetricFormDataType } from "../Components/Exercise/Metrics/MetricFormDataType";
 
 type Props = {
   exerciseID: string;

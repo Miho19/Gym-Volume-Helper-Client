@@ -5,9 +5,10 @@ import type {
 
 type Props = {
   metric: ExerciseMetric;
+  showDate: boolean;
 };
 
-function ExerciseIndividualMetricItem({ metric }: Props) {
+function ExerciseIndividualMetricItem({ metric, showDate }: Props) {
   const { dateTime, sets } = metric;
 
   const currentDate = new Date(dateTime);
@@ -30,7 +31,7 @@ function ExerciseIndividualMetricItem({ metric }: Props) {
         gap: "5px",
       }}
     >
-      <p>{currentDate.toDateString()}</p>
+      {showDate && <p>{currentDate.toDateString()}</p>}
       <ul>{setsArray}</ul>
     </li>
   );
