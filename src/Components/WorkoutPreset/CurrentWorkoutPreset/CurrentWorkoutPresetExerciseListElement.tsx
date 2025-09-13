@@ -26,7 +26,14 @@ function CurrentWorkoutPresetExerciseListElement(props: Props) {
     props.numberOfDisplayedMetrics
   );
 
-  return <li></li>;
+  return (
+    <li style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <img src={exercise.img} alt={`${exercise.name} image`} />
+        <p>{exercise.name}</p>
+      </div>
+    </li>
+  );
 }
 
 export default CurrentWorkoutPresetExerciseListElement;
