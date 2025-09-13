@@ -2,6 +2,7 @@ import { http, HttpResponse } from "msw";
 import { toURL } from "..";
 
 import type { ExerciseListElement } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import { TestMinExerciseListElementList } from "./exercise";
 
 type GETMinExerciseParams = {
   exerciseID: string;
@@ -21,25 +22,4 @@ export const exerciseDetailsHandlers = [
       return HttpResponse.json(exercise);
     }
   ),
-];
-
-const TestMinExerciseListElementList: ExerciseListElement[] = [
-  {
-    id: "VPPtusI",
-    name: "inverted row bent knees",
-    img: "https://static.exercisedb.dev/media/VPPtusI.gif",
-    pageLink: "VPPtusI",
-  },
-  {
-    id: "8d8qJQI",
-    name: "barbell reverse grip incline bench row",
-    img: "https://static.exercisedb.dev/media/8d8qJQI.gif",
-    pageLink: "8d8qJQI",
-  },
-  {
-    id: "JGKowMS",
-    name: "smith narrow row",
-    img: "https://static.exercisedb.dev/media/JGKowMS.gif",
-    pageLink: "JGKowMS",
-  },
 ];

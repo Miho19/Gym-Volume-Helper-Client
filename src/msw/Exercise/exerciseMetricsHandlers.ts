@@ -6,6 +6,7 @@ import type {
 } from "../../Http/ResponseType/UserExerciseMetricsResponseType";
 import type { POSTUserMetricRequestBody } from "../../Http/RequestFunctions/POSTUserExerciseMetric";
 import { prepareDatesForComparison } from "../../Components/Exercise/Metrics/MetricFormDateValidation";
+import { addNewMetric, currentMetricID, UserExerciseMetrics } from "./exercise";
 
 type MetricsParams = {
   exerciseID: string;
@@ -63,29 +64,14 @@ export const exerciseMetricsHandlers = [
 
       const newMetric: ExerciseMetric = {
         exerciseID,
-        metricID: String(++currentMetricID),
+        metricID: "",
         dateTime: new Date(requestMetric.dateTime),
         sets: [{ weight: requestMetric.weight, reps: requestMetric.reps }],
       };
 
-      UserExerciseMetrics.push(newMetric);
+      addNewMetric(newMetric);
 
       return new HttpResponse({}, { status: 200 });
     }
   ),
 ];
-
-let currentMetricID = 1;
-
-export const testUserMetric: ExerciseMetric = {
-  exerciseID: "K6NnTv0",
-  metricID: String(currentMetricID),
-  dateTime: new Date(),
-  sets: [
-    { reps: 12, weight: 8 },
-    { reps: 8, weight: 8 },
-    { reps: 5, weight: 9 },
-  ],
-};
-
-const UserExerciseMetrics: ExerciseMetric[] = [testUserMetric];

@@ -2,6 +2,8 @@ import react from "react";
 import type { ExerciseListElement } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
 import useUserExerciseMetricsQuery from "../../../Hooks/useUserExerciseMetricsQuery";
 import { sortMetricData } from "../../Exercise/Metrics/MetricSortList";
+import type { ExerciseMetric } from "../../../Http/ResponseType/UserExerciseMetricsResponseType";
+import ExerciseIndividualMetricItem from "../../Exercise/Metrics/ExerciseIndividualMetricItem";
 
 type Props = {
   exercise: ExerciseListElement;
@@ -26,12 +28,21 @@ function CurrentWorkoutPresetExerciseListElement(props: Props) {
     props.numberOfDisplayedMetrics
   );
 
+  const metricList = limitedSortedMetricList.map((metric: ExerciseMetric) => (
+    <ExerciseIndividualMetricItem showDate={false} metric={metric} />
+  ));
+
   return (
     <li style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <img src={exercise.img} alt={`${exercise.name} image`} />
+        <img
+          src={exercise.img}
+          alt={`${exercise.name} image`}
+          style={{ width: "50px", height: "50px" }}
+        />
         <p>{exercise.name}</p>
       </div>
+      <ol style={{ display: "flex", flexDirection: "column" }}>{metricList}</ol>
     </li>
   );
 }
