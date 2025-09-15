@@ -9,19 +9,17 @@ function HomePage() {
   if (isError) return <div>{error?.message}</div>;
 
   return (
-    <main className="w-full h-full flex flex-col gap-y-4 items-center">
+    <main className="w-full h-full flex flex-col gap-y-4 items-center justify-center">
       <div className="w-3/4">
         <ProfileBubble user={data!} />
       </div>
 
-      <div>
-        <h2>Current Workout</h2>
-        <Link to="/currentworkout/">Goto Current Workout</Link>
+      <div className="border border-white/5 rounded-full w-3/4 h-20 p-3 cursor-pointer text-center transition-all duration-300 hover:scale-105 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center">
+        <Link to="/currentworkout/">Current Workout</Link>
       </div>
 
-      <div>
-        <h2>Workout Presets</h2>
-        <Link to="/workout">Goto Workout Presets</Link>
+      <div className="border border-white/5 rounded-full w-3/4 h-20 p-3 cursor-pointer text-center transition-all duration-300 hover:scale-105 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center">
+        <Link to="/workout">Workout Presets</Link>
       </div>
     </main>
   );
