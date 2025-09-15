@@ -38,6 +38,7 @@ function IndividualWorkoutPreset(props: Props) {
         weight: undefined,
       },
     });
+    navigator("/currentworkout");
   }
 
   return (
