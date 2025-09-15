@@ -32,7 +32,16 @@ function ExerciseIndividualMetricItem({ metric, showDate }: Props) {
       }}
     >
       {showDate && <p>{currentDate.toDateString()}</p>}
-      <ul>{setsArray}</ul>
+      <ol
+        style={{
+          listStyle: "none",
+          display: "flex",
+          flexDirection: "row",
+          gap: "5px",
+        }}
+      >
+        {setsArray}
+      </ol>
     </li>
   );
 }

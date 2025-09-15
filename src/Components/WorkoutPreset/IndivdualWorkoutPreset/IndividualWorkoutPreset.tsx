@@ -27,9 +27,12 @@ function IndividualWorkoutPreset(props: Props) {
     navigator("/workout");
   }
 
+  function handleMakeCurrentWorkout() {}
+
   return (
     <section>
       <button onClick={() => navigator("/workout")}>Back</button>
+      <button onClick={handleMakeCurrentWorkout}>Make Current Workout</button>
       <WorkoutPresetHeader workout={data} />
       <WorkoutPresetExerciseList workout={data} />
       <WorkoutPresetOwnerPanel workout={data} />

@@ -4,6 +4,7 @@ import useUserExerciseMetricsQuery from "../../../Hooks/useUserExerciseMetricsQu
 import { sortMetricData } from "../../Exercise/Metrics/MetricSortList";
 import type { ExerciseMetric } from "../../../Http/ResponseType/UserExerciseMetricsResponseType";
 import ExerciseIndividualMetricItem from "../../Exercise/Metrics/ExerciseIndividualMetricItem";
+import ExerciseMetricsNew from "../../Exercise/Metrics/ExerciseMetricsAddNew";
 
 type Props = {
   exercise: ExerciseListElement;
@@ -29,7 +30,7 @@ function CurrentWorkoutPresetExerciseListElement(props: Props) {
   );
 
   const metricList = limitedSortedMetricList.map((metric: ExerciseMetric) => (
-    <ExerciseIndividualMetricItem showDate={false} metric={metric} />
+    <ExerciseIndividualMetricItem showDate={true} metric={metric} />
   ));
 
   return (
@@ -43,6 +44,7 @@ function CurrentWorkoutPresetExerciseListElement(props: Props) {
         <p>{exercise.name}</p>
       </div>
       <ol style={{ display: "flex", flexDirection: "column" }}>{metricList}</ol>
+      <ExerciseMetricsNew exerciseID={exercise.id} />
     </li>
   );
 }

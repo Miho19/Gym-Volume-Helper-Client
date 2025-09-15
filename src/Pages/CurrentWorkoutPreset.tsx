@@ -1,3 +1,4 @@
+import HomeButton from "../Components/Navigation/HomeButton";
 import CurrentWorkoutPresetExerciseList from "../Components/WorkoutPreset/CurrentWorkoutPreset/CurrentWorkoutPresetExerciseList";
 import WorkoutPresetHeader from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetHeader";
 import WorkoutPresetOwnerPanel from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetOwnerPanel";
@@ -29,8 +30,12 @@ function CurrentWorkoutPresetPage() {
   if (isLoadingWorkout) return <div>Loading...</div>;
   if (isErrorWorkout) return <div>{errorWorkout?.message}</div>;
 
+  const currentDate = new Date().toDateString();
+
   return (
     <main>
+      <HomeButton />
+      <p>{currentDate}</p>
       <WorkoutPresetHeader workout={workout!} />
       <CurrentWorkoutPresetExerciseList workout={workout!} />
       <WorkoutPresetOwnerPanel workout={workout!} />

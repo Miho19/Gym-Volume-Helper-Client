@@ -50,7 +50,7 @@ function ExerciseMetricsNew({ exerciseID }: Props) {
         style={{ display: "flex", gap: "10px", flexDirection: "column" }}
         onSubmit={handleSubmit}
       >
-        <label>
+        {/* <label>
           Date
           <input
             type="date"
@@ -58,7 +58,7 @@ function ExerciseMetricsNew({ exerciseID }: Props) {
             value={metricData.dateTime}
             onChange={handleChange}
           />
-        </label>
+        </label> */}
         <label style={{ display: "flex", gap: "10px" }}>
           weight
           <input

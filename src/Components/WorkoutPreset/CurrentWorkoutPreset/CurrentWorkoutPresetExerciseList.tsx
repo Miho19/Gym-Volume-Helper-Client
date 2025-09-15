@@ -24,7 +24,7 @@ function CurrentWorkoutPresetExerciseList(props: Props) {
   const exerciseElements = data?.items.map((exercise: ExerciseListElement) => (
     <CurrentWorkoutPresetExerciseListElement
       exercise={exercise}
-      numberOfDisplayedMetrics={3}
+      numberOfDisplayedMetrics={1}
     />
   ));
 
