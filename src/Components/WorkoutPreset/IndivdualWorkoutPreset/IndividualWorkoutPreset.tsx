@@ -4,6 +4,7 @@ import WorkoutPresetExerciseList from "./WorkoutPresetExerciseList";
 import WorkoutPresetHeader from "./WorkoutPresetHeader";
 import WorkoutPresetOwnerPanel from "./WorkoutPresetOwnerPanel";
 import useDeleteWorkoutPresetMutation from "../../../Hooks/useDeleteWorkoutPresetMutation";
+import useUpdateUserMutation from "../../../Hooks/useUpdateUserMutation";
 
 type Props = {
   workoutID: string;
@@ -15,7 +16,8 @@ function IndividualWorkoutPreset(props: Props) {
     workoutID: props.workoutID,
   });
 
-  const mutation = useDeleteWorkoutPresetMutation();
+  const deleteWorkoutMutation = useDeleteWorkoutPresetMutation();
+  const updateUserMutation = useUpdateUserMutation();
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>error: {error.message}</div>;
@@ -23,11 +25,20 @@ function IndividualWorkoutPreset(props: Props) {
   if (!isSuccess) return <div>error fetching</div>;
 
   function handleDeleteWorkout() {
-    mutation.mutate({ workoutID: props.workoutID });
+    deleteWorkoutMutation.mutate({ workoutID: props.workoutID });
     navigator("/workout");
   }
 
-  function handleMakeCurrentWorkout() {}
+  function handleMakeCurrentWorkout() {
+    updateUserMutation.mutate({
+      updateUserBody: {
+        currentWorkoutID: props.workoutID,
+        name: undefined,
+        picture: undefined,
+        weight: undefined,
+      },
+    });
+  }
 
   return (
     <section>
