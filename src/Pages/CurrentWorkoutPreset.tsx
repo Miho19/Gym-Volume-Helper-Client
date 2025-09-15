@@ -33,7 +33,7 @@ function CurrentWorkoutPresetPage() {
   const currentDate = new Date().toDateString();
 
   return (
-    <main>
+    <main className="w-full h-full">
       <HomeButton />
       <p>{currentDate}</p>
       <WorkoutPresetHeader workout={workout!} />

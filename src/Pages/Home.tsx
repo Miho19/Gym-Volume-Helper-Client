@@ -1,25 +1,18 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router";
 import ProfileBubble from "../Components/ProfileBubble/ProfileBubble";
 import useInitialiseUserQuery from "../Hooks/useInitialiseUserQuery";
 
 function HomePage() {
-  const { logout } = useAuth0();
   const { data, isLoading, isError, error } = useInitialiseUserQuery();
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>{error?.message}</div>;
 
   return (
-    <main
-      style={{
-        display: "flex",
-        width: "100%",
-        height: "100%",
-        flexDirection: "column",
-      }}
-    >
-      <ProfileBubble user={data!} />
+    <main className="w-full h-full flex flex-col gap-y-4 items-center">
+      <div className="w-3/4">
+        <ProfileBubble user={data!} />
+      </div>
 
       <div>
         <h2>Current Workout</h2>
@@ -30,15 +23,6 @@ function HomePage() {
         <h2>Workout Presets</h2>
         <Link to="/workout">Goto Workout Presets</Link>
       </div>
-
-      <button
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }
-        data-testid="homeLogoutButton"
-      >
-        Log Out
-      </button>
     </main>
   );
 }
