@@ -33,12 +33,15 @@ function CurrentWorkoutPresetPage() {
   const currentDate = new Date().toDateString();
 
   return (
-    <main className="w-full h-full">
-      <HomeButton />
-      <p>{currentDate}</p>
+    <main className="mx-auto flex h-full min-h-screen w-full flex-col items-center justify-center gap-y-5 px-5 mt-5">
       <WorkoutPresetHeader workout={workout!} />
+      <div className="w-full h-full text-center border border-white/5 bg-[#31363F] rounded-lg">
+        <p className="w-full">{currentDate}</p>
+      </div>
+
       <CurrentWorkoutPresetExerciseList workout={workout!} />
       <WorkoutPresetOwnerPanel workout={workout!} />
+      <HomeButton />
     </main>
   );
 }

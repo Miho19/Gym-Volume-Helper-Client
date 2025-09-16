@@ -8,13 +8,14 @@ function WorkoutPresetHeader(props: Props) {
   const { workout } = props;
 
   return (
-    <section style={{ border: "1px solid white" }}>
-      <h2>{workout.workoutName}</h2>
+    <section className="bg-[#31363F] w-full h-full border border-white/5 rounded-xl flex flex-row gap-x-5 items-center p-3">
       <img
         src={workout.workoutImgURL}
         alt={`workout header image`}
-        style={{ width: "50px", height: "50px" }}
+        className="w-16 h-16 border border-white/5 rounded-full object-fit"
       />
+
+      <h2 className="text-center">{workout.workoutName}</h2>
     </section>
   );
 }

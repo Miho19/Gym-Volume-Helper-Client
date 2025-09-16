@@ -23,28 +23,41 @@ function CurrentWorkoutPresetExerciseListElement(props: Props) {
 
   // limit the metrics
 
-  const sortedMetricList = sortMetricData(data!.items);
-  const limitedSortedMetricList = sortedMetricList.slice(
+  const sortedPreviousMetricList = sortMetricData(data!.items);
+  const limitedSortedPreviousMetricList = sortedPreviousMetricList.slice(
     0,
     props.numberOfDisplayedMetrics
   );
 
-  const metricList = limitedSortedMetricList.map((metric: ExerciseMetric) => (
-    <ExerciseIndividualMetricItem showDate={true} metric={metric} />
-  ));
+  const previousMetricListToDisplay = limitedSortedPreviousMetricList.map(
+    (metric: ExerciseMetric) => (
+      <ExerciseIndividualMetricItem metric={metric} showDate={false} />
+    )
+  );
+
+  const previousSetsRecordDate = new Date(
+    limitedSortedPreviousMetricList[0].dateTime
+  ).toDateString();
 
   return (
-    <li style={{ display: "flex", flexDirection: "column" }}>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+    <li className="w-full h-full flex flex-col border border-white/5 list-none gap-y-5 bg-[#31363F] rounded-lg p-3">
+      <div className="flex flex-row items-center gap-x-5">
         <img
           src={exercise.img}
           alt={`${exercise.name} image`}
-          style={{ width: "50px", height: "50px" }}
+          className="w-16 h-16 border border-white/5 rounded-full"
         />
         <p>{exercise.name}</p>
       </div>
-      <ol style={{ display: "flex", flexDirection: "column" }}>{metricList}</ol>
+      <hr className="w-full self-center"></hr>
       <ExerciseMetricsNew exerciseID={exercise.id} />
+      <div className="w-full h-full border border-white/5 rounded-lg bg-[#31363F]">
+        <p>Current Sets</p>
+      </div>
+      <div className="w-full h-full border border-white/5 rounded-lg bg-[#31363F]">
+        <p>Previous Sets Recorded {previousSetsRecordDate}</p>
+        <ol className="w-full h-full">{previousMetricListToDisplay}</ol>
+      </div>
     </li>
   );
 }

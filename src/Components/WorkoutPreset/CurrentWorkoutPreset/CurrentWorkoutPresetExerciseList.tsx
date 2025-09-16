@@ -29,8 +29,10 @@ function CurrentWorkoutPresetExerciseList(props: Props) {
   ));
 
   return (
-    <section>
-      <ul>{exerciseElements}</ul>
+    <section className="w-full h-full flex flex-col items-center">
+      <ul className="w-full h-full flex flex-col items-center gap-y-10 list-none">
+        {exerciseElements}
+      </ul>
     </section>
   );
 }

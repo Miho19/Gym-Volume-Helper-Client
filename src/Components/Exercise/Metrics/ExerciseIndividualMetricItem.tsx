@@ -17,31 +17,15 @@ function ExerciseIndividualMetricItem({ metric, showDate }: Props) {
     const { weight, reps } = set;
     return (
       <li key={index}>
-        <p>{`${weight} kg ${reps}`}</p>
+        <p>{`${weight} kg for ${reps} reps`}</p>
       </li>
     );
   });
 
   return (
-    <li
-      style={{
-        listStyle: "none",
-        display: "flex",
-        flexDirection: "row",
-        gap: "5px",
-      }}
-    >
+    <li className="w-full h-full">
       {showDate && <p>{currentDate.toDateString()}</p>}
-      <ol
-        style={{
-          listStyle: "none",
-          display: "flex",
-          flexDirection: "row",
-          gap: "5px",
-        }}
-      >
-        {setsArray}
-      </ol>
+      <ol className="w-full h-full flex flex-col">{setsArray}</ol>
     </li>
   );
 }

@@ -47,48 +47,36 @@ function ExerciseMetricsNew({ exerciseID }: Props) {
         </>
       )}
       <form
-        style={{ display: "flex", gap: "10px", flexDirection: "column" }}
         onSubmit={handleSubmit}
+        className="w-full h-full flex flex-col gap-y-2"
       >
-        {/* <label>
-          Date
-          <input
-            type="date"
-            name={calendarSelectorName}
-            value={metricData.dateTime}
-            onChange={handleChange}
-          />
-        </label> */}
-        <label style={{ display: "flex", gap: "10px" }}>
-          weight
+        <label className="w-full h-full grid grid-cols-5 gap-4">
+          <span className="col-span-1">Weight</span>
           <input
             min={0}
             type="number"
             name="weight"
             value={metricData.weight}
             onChange={handleChange}
+            className="w-full border border-white/5 col-span-3 rounded-lg px-2"
           />
-          <span>kg</span>
+          <span className="">kg</span>
         </label>
 
-        <label style={{ display: "flex", gap: "10px" }}>
-          reps
+        <label className="w-full h-full grid grid-cols-5 gap-4">
+          <span className="col-span-1">Reps</span>
           <input
             min={0}
             type="number"
             name="reps"
             value={metricData.reps}
             onChange={handleChange}
+            className="w-full border border-white/5 col-span-3 rounded-lg px-2"
           />
         </label>
         <button
           type="submit"
-          style={{
-            background: "white",
-            border: "1px solid black",
-            color: "black ",
-            cursor: "pointer",
-          }}
+          className="border border-white/5 rounded-lg bg-white/5 cursor-pointer transition-all duration-300 hover:font-bold hover:scale-101"
         >
           Add New
         </button>

@@ -9,7 +9,7 @@ function HomePage() {
   if (isError) return <div>{error?.message}</div>;
 
   return (
-    <main className="w-full h-full flex flex-col gap-y-4 items-center justify-center">
+    <main className="mx-auto flex h-full min-h-screen w-full flex-col items-center justify-center gap-y-5">
       <div className="w-3/4">
         <ProfileBubble user={data!} />
       </div>
