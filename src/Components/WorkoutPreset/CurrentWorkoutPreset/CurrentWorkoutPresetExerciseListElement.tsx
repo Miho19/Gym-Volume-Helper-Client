@@ -21,8 +21,6 @@ function CurrentWorkoutPresetExerciseListElement(props: Props) {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>error: {error.message}</div>;
 
-  // limit the metrics
-
   const sortedPreviousMetricList = sortMetricData(data!.items);
   const limitedSortedPreviousMetricList = sortedPreviousMetricList.slice(
     0,
@@ -40,22 +38,25 @@ function CurrentWorkoutPresetExerciseListElement(props: Props) {
   ).toDateString();
 
   return (
-    <li className="w-full h-full flex flex-col border border-white/5 list-none gap-y-5 bg-[#31363F] rounded-lg p-3">
+    <li className="flex flex-col border border-white/5 gap-y-5 bg-[#31363F] rounded-lg p-3">
       <div className="flex flex-row items-center gap-x-5">
         <img
           src={exercise.img}
           alt={`${exercise.name} image`}
-          className="w-16 h-16 border border-white/5 rounded-full"
+          className="w-16 h-16 border border-white/5 rounded-full object-fill"
         />
-        <p>{exercise.name}</p>
+        <p className="text-wrap">{exercise.name}</p>
       </div>
-      <hr className="w-full self-center"></hr>
-      <ExerciseMetricsNew exerciseID={exercise.id} />
-      <div className="w-full h-full border border-white/5 rounded-lg bg-[#31363F]">
+
+      <div className="flex flex-col gap-y-5 border border-white/5 rounded-lg bg-[#31363F] p-5">
         <p>Current Sets</p>
+        <hr className="text-white/50" />
+        <ExerciseMetricsNew exerciseID={exercise.id} />
       </div>
-      <div className="w-full h-full border border-white/5 rounded-lg bg-[#31363F]">
-        <p>Previous Sets Recorded {previousSetsRecordDate}</p>
+
+      <div className="w-full h-full border border-white/5 rounded-lg bg-[#31363F] p-5 flex flex-col gap-y-5">
+        <p>{previousSetsRecordDate}</p>
+        <hr className="text-white/50" />
         <ol className="w-full h-full">{previousMetricListToDisplay}</ol>
       </div>
     </li>

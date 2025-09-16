@@ -21,17 +21,19 @@ function CurrentWorkoutPresetExerciseList(props: Props) {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>error: {error.message}</div>;
 
-  const exerciseElements = data?.items.map((exercise: ExerciseListElement) => (
-    <CurrentWorkoutPresetExerciseListElement
-      exercise={exercise}
-      numberOfDisplayedMetrics={1}
-    />
-  ));
+  const currentWorkoutPresetExerciseListElements = data?.items.map(
+    (exercise: ExerciseListElement) => (
+      <CurrentWorkoutPresetExerciseListElement
+        exercise={exercise}
+        numberOfDisplayedMetrics={1}
+      />
+    )
+  );
 
   return (
-    <section className="w-full h-full flex flex-col items-center">
-      <ul className="w-full h-full flex flex-col items-center gap-y-10 list-none">
-        {exerciseElements}
+    <section className="w-full flex flex-col">
+      <ul className="w-full flex flex-col gap-y-10 list-none">
+        {currentWorkoutPresetExerciseListElements}
       </ul>
     </section>
   );
