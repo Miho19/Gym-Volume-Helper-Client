@@ -16,8 +16,8 @@ function WorkoutPresetList() {
   );
 
   return (
-    <section>
-      <ul>{workoutList}</ul>
+    <section className="h-full w-full flex-1 flex flex-col overflow-y-scroll">
+      <ul className="flex flex-col gap-y-5">{workoutList}</ul>
     </section>
   );
 }

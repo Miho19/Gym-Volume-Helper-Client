@@ -5,12 +5,12 @@ import WorkoutPresetList from "../Components/WorkoutPreset/List/WorkoutPresetLis
 function WorkoutPresetListPage() {
   const navigator = useNavigate();
   return (
-    <main className="mx-auto flex flex-col px-5 mt-5 min-h-screen mb-5">
+    <main className="mx-auto flex flex-col p-5 min-h-screen justify-between gap-y-5">
       <button
         onClick={() => navigator("/newworkout")}
-        className="border border-white/5 rounded-full w-full h-10 cursor-pointer text-center transition-all duration-300 hover:scale-101 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center"
+        className="border border-white/5 rounded-full w-full h-10 cursor-pointer text-center transition-all duration-300 hover:scale-101 bg-[#31363F] flex flex-col justify-center items-center"
       >
-        New Workout Preset
+        Create Workout Preset
       </button>
 
       <WorkoutPresetList />
