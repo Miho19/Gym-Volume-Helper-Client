@@ -28,8 +28,10 @@ function WorkoutPresetExerciseList(props: Props) {
   ));
 
   return (
-    <section style={{ border: "1px solid white" }}>
-      <ul>{exerciseList}</ul>
+    <section className="w-full flex flex-col">
+      <ul className="w-full flex flex-col gap-y-10 list-none">
+        {exerciseList}
+      </ul>
     </section>
   );
 }
