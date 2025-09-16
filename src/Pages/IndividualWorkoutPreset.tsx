@@ -41,13 +41,29 @@ function IndividualWorkoutPresetPage() {
 
   return (
     <main className="mx-auto flex flex-col items-center justify-center gap-y-5 p-5 min-h-screen">
+      <button
+        onClick={() => navigator("/workout")}
+        className="border border-white/5 rounded-full w-full h-10 cursor-pointer text-center transition-all duration-300 hover:scale-101 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center"
+      >
+        Back
+      </button>
+
       <WorkoutPresetHeader workout={data} />
       <WorkoutPresetExerciseList workout={data} />
       <WorkoutPresetOwnerPanel workout={data} />
 
-      <button onClick={() => navigator("/workout")}>Back</button>
-      <button onClick={handleMakeCurrentWorkout}>Make Current Workout</button>
-      <button onClick={handleDeleteWorkout}>Delete</button>
+      <button
+        onClick={handleMakeCurrentWorkout}
+        className="border border-white/5 rounded-full w-full h-10 cursor-pointer text-center transition-all duration-300 hover:scale-101 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center"
+      >
+        Make Current Workout
+      </button>
+      <button
+        onClick={handleDeleteWorkout}
+        className="text-red-400 border border-white/5 rounded-full w-full h-10 cursor-pointer text-center transition-all duration-300 hover:scale-101 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center"
+      >
+        Delete
+      </button>
     </main>
   );
 }
