@@ -33,7 +33,7 @@ function CurrentWorkoutPresetPage() {
   const currentDate = new Date().toDateString();
 
   return (
-    <main className="mx-auto flex flex-col items-center justify-center gap-y-5 px-5 mt-5 min-h-screen">
+    <main className="mx-auto flex flex-col items-center justify-center gap-y-5 p-5 min-h-screen">
       <WorkoutPresetHeader workout={workout!} />
 
       <p className="w-full text-center border border-white/5 bg-[#31363F] rounded-lg">

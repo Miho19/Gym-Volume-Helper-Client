@@ -5,7 +5,7 @@ function HomeButton() {
   return (
     <button
       onClick={() => navigation("/")}
-      className="border border-white/5 rounded-full w-full h-10 cursor-pointer text-center transition-all duration-300 hover:scale-101 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center my-4"
+      className="border border-white/5 rounded-full w-full h-10 cursor-pointer text-center transition-all duration-300 hover:scale-101 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center"
     >
       Home
     </button>

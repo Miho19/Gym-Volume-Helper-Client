@@ -4,8 +4,6 @@ import type { UserWorkoutPresetListElementType } from "../../../Http/ResponseTyp
 import WorkoutPresetListElement from "./WorkoutPresetListElement";
 
 function WorkoutPresetList() {
-  const navigator = useNavigate();
-
   const { data, isLoading, isError, error } = useUserWorkoutPresetList();
 
   if (isLoading) return <div>Loading...</div>;
@@ -19,11 +17,7 @@ function WorkoutPresetList() {
 
   return (
     <section>
-      <button onClick={() => navigator("/")}>Home</button>
       <ul>{workoutList}</ul>
-      <button onClick={() => navigator("/newworkout")}>
-        New Workout Preset
-      </button>
     </section>
   );
 }
