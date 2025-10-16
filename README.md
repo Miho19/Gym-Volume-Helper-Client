@@ -1,31 +1,9 @@
-# Gym Helper Client
+# Gym Volume Helper Client
 
-Track exercises, weight/photos within a calendar
+Track exercise volume metrics over time
 
-## Features
+## Features TODO
+    - [ ] [Fetching exercise data from backend API](https://github.com/Miho19/Gym-Volume-Helper-API)
+    - [ ] Responsive styling for desktops
+    - [ ] Search function for exercises
 
-- [x] Router
-- [x] Auth with FaceBook
-- [x] React Query
-- [ ] Fetching data from backend
-
-- Exercises
-
-  - [ ] Add
-  - [ ] Remove
-  - [ ] Edit
-  - [x] List
-  - metrics
-    - [x] add
-
-- Calendar
-
-  - [ ] Body Weight
-  - [ ] Photos
-
-- Profile
-
-  - [x] Image
-  - [x] Name
-
-- [] Styling
