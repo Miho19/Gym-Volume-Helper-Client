@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import * as auth0 from "@auth0/auth0-react";
-import { testRender, testUser } from "../../Util";
+import { testRender, testUserProfile } from "../../Util";
 
 vi.mock("@auth0/auth0-react");
 
@@ -16,7 +16,7 @@ describe("Home Logout", async () => {
       isAuthenticated: true,
       logout: logoutMock,
       isLoading: false,
-      user: testUser,
+      user: testUserProfile,
     });
 
     const result = testRender();

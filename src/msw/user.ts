@@ -5,7 +5,7 @@ import type {
   UserBodyResponseTypePOST,
 } from "../Http/ResponseType/UserResponseType";
 
-let testUser: UserBodyResponseTypePOST = {
+export let testUser: UserBodyResponseTypePOST = {
   name: "Josh April",
   picture: "https://picsum.photos/200/300?grayscale",
   weight: "84",

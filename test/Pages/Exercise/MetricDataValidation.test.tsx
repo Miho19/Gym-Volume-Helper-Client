@@ -1,9 +1,9 @@
 import React from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-import { isDateValid } from "../../../src/Components/Exercise/Individual/MetricFormDateValidation";
-import { isWeightValid } from "../../../src/Components/Exercise/Individual/MetricFormWeightValidation";
-import { isRepsValid } from "../../../src/Components/Exercise/Individual/MetricFormRepsValidation";
+import { isDateValid } from "../../../src/Components/Exercise/Metrics/MetricFormDateValidation";
+import { isWeightValid } from "../../../src/Components/Exercise/Metrics/MetricFormWeightValidation";
+import { isRepsValid } from "../../../src/Components/Exercise/Metrics/MetricFormRepsValidation";
 
 import { convertDateToInputStringFormat } from "../../../src/Utility/DateFormat";
 
