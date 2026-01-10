@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import type { UserBodyResponseTypePOST } from "../../Http/ResponseType/UserResponseType";
 import { useAuth0 } from "@auth0/auth0-react";
 
