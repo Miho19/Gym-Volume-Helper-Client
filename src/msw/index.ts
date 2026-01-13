@@ -1,3 +1,5 @@
+import type { Path } from "msw";
+import { BASEADDRESS } from "../Http/Request/BaseURLAddress";
 import { exerciseHandlers } from "./Exercise/exercise";
 import { userHandlers } from "./user";
 import { workoutPresetHandlers } from "./WorkoutPreset/WorkoutPreset";
@@ -8,7 +10,8 @@ export const handlers = [
   ...workoutPresetHandlers,
 ];
 
-export function toURL(path: string): string {
-  const devBaseURL = "http://localhost:5052/api/v1";
-  return new URL(path, devBaseURL).toString();
+export function toURL(path: string): Path {
+  const devBaseURL = `${BASEADDRESS}`;
+  const output = new URL(path, devBaseURL).toString();
+  return output;
 }

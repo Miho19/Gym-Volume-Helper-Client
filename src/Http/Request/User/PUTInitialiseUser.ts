@@ -1,6 +1,7 @@
 import { UserProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
+import { BASEADDRESS } from "../BaseURLAddress";
 
-const ENDPOINT: string = `{import.meta.env.SERVERBASEADDRESS ?? "http://localhost:5052"}/api/v1/user/me`;
+const ENDPOINT: string = `${BASEADDRESS}/user/me`;
 
 function generateFetchOptions(userProfile: UserProfile) {
   const fetchOptions: RequestInit = {

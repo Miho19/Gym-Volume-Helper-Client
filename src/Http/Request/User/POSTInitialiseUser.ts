@@ -1,6 +1,7 @@
 import { UserProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
+import { BASEADDRESS } from "../BaseURLAddress";
 
-const ENDPOINT: string = `{import.meta.env.SERVERBASEADDRESS ?? "http://localhost:5052"}/api/v1/user/me`;
+const ENDPOINT: URL = new URL(`${BASEADDRESS}/user/me`);
 
 function GenerateFetchOptions(userSub: string): RequestInit {
   const fetchOptions: RequestInit = {
@@ -25,7 +26,6 @@ export async function POSTInitialiseUser(
 
   try {
     const fetchOptions = GenerateFetchOptions(userSub);
-
     const authResponse = await fetch(ENDPOINT, fetchOptions);
     if (!authResponse.ok) throw new Error("Failed to Fetch User Profile");
 

@@ -1,5 +1,4 @@
-import React from "react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect } from "vitest";
 
 import { isDateValid } from "../../../src/Components/Exercise/Metrics/MetricFormDateValidation";
 import { isWeightValid } from "../../../src/Components/Exercise/Metrics/MetricFormWeightValidation";

@@ -4,9 +4,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router";
 import { router } from "../src/Router/Router";
 import { render } from "@testing-library/react";
-import { UserBodyResponseTypePOST } from "../src/Http/ResponseType/UserResponseType";
 
-import {testUser} from "../src/msw/user";
+import { testUserProfile } from "../src/msw/user";
+import { UserProfile } from "../src/Zod/UserSchema";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,12 +34,11 @@ export function testRender() {
   };
 }
 
-type UserInformation = UserBodyResponseTypePOST & {
+type UserInformation = UserProfile & {
   sub: string;
 };
 
-export const testUserProfile: UserInformation = {
-  ...testUser, 
+export const testAuth0User: UserInformation = {
+  ...testUserProfile,
   sub: "Fake Sub",
-  
 };

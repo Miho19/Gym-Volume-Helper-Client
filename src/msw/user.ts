@@ -1,8 +1,9 @@
 import { http, HttpResponse } from "msw";
 import { toURL } from ".";
 import type { UserProfile } from "../Zod/UserSchema";
+import { BASEADDRESS } from "../Http/Request/BaseURLAddress";
 
-export const testUser: UserProfile = {
+export const testUserProfile: UserProfile = {
   name: "Josh April",
   pictureSource: "https://picsum.photos/200/300?grayscale",
   weight: 84,
@@ -10,22 +11,24 @@ export const testUser: UserProfile = {
 };
 
 type PATCHParams = object;
+type POSTBodyType = { auth0ID: string };
 
 export const userHandlers = [
-  http.post(toURL("/auth/"), postUserResolver),
-  http.patch<PATCHParams, UserProfile, UserProfile>(
-    toURL("/auth"),
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  http.post<{}, POSTBodyType, UserProfile>(
+    toURL(`${BASEADDRESS}/user/me`),
+    () => HttpResponse.json(testUserProfile)
+  ),
+
+  http.put<PATCHParams, UserProfile, UserProfile>(
+    toURL("/user/me"),
     async ({ request }) => {
       const requestBody = await request.json();
 
       if (typeof requestBody.currentWorkoutId !== "undefined")
-        testUser.currentWorkoutId = requestBody.currentWorkoutId;
+        testUserProfile.currentWorkoutId = requestBody.currentWorkoutId;
 
-      return HttpResponse.json(testUser);
+      return HttpResponse.json(testUserProfile);
     }
   ),
 ];
-
-function postUserResolver() {
-  return HttpResponse.json(testUser);
-}
