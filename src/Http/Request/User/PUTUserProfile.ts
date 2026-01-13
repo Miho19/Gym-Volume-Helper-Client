@@ -23,7 +23,9 @@ export async function PUTUserProfile(
   endpoint: URL = PUTUSERPROFILEENDPOINT
 ): Promise<UserProfile> {
   try {
-    const fetchOptions = generateFetchOptions(userProfile);
+    const requestUserProfileValidated = UserProfileZodObj.parse(userProfile);
+
+    const fetchOptions = generateFetchOptions(requestUserProfileValidated);
 
     const response: Response = await fetch(endpoint, fetchOptions);
     if (!response.ok) throw new Error("Failed to fetch user");

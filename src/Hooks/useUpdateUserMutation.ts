@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { PUTUserProfile } from "../Http/Request/User/PUTInitialiseUser";
+import { PUTUserProfile } from "../Http/Request/User/PUTUserProfile";
 import type { UserProfile } from "../Zod/UserSchema";
 
 function useUpdateUserMutation() {
