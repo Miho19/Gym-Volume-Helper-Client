@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { toURL } from "..";
-import type { UserWorkoutPresetType } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { UserWorkoutPresetType } from "../../Http/Response/UserWorkoutPresetsResponseType";
 import { testUserWorkoutPresetList } from "./WorkoutPreset";
 
 type GETWorkoutParams = {

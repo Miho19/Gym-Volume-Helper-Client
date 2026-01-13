@@ -1,4 +1,4 @@
-import type { UserWorkoutPresetListResponseType } from "../ResponseType/UserWorkoutPresetsResponseType";
+import type { UserWorkoutPresetListResponseType } from "../Response/UserWorkoutPresetsResponseType";
 
 export async function GETUserWorkoutPresetList(): Promise<UserWorkoutPresetListResponseType> {
   const fetchOptions: RequestInit = {

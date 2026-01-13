@@ -1,5 +1,5 @@
 import useUserWorkoutPresetList from "../../../Hooks/useUserWorkoutPresetList";
-import type { UserWorkoutPresetListElementType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { UserWorkoutPresetListElementType } from "../../../Http/Response/UserWorkoutPresetsResponseType";
 import WorkoutPresetListElement from "./WorkoutPresetListElement";
 
 function WorkoutPresetList() {

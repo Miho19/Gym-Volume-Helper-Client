@@ -1,4 +1,4 @@
-import type { ExerciseMetric } from "../../../Http/ResponseType/UserExerciseMetricsResponseType";
+import type { ExerciseMetric } from "../../../Http/Response/UserExerciseMetricsResponseType";
 import { prepareDatesForComparison } from "./MetricFormDateValidation";
 
 export function sortMetricData(inputList: ExerciseMetric[]): ExerciseMetric[] {

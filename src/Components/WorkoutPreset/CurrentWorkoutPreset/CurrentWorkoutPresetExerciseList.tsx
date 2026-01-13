@@ -2,7 +2,7 @@ import react from "react";
 import type {
   ExerciseListElement,
   UserWorkoutPresetType,
-} from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+} from "../../../Http/Response/UserWorkoutPresetsResponseType";
 import CurrentWorkoutPresetExerciseListElement from "./CurrentWorkoutPresetExerciseListElement";
 import useWorkoutPresetExerciseList from "../../../Hooks/useWorkoutPresetExerciseList";
 

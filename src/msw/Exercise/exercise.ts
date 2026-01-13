@@ -1,5 +1,5 @@
-import type { ExerciseMetric } from "../../Http/ResponseType/UserExerciseMetricsResponseType";
-import type { ExerciseListElement } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { ExerciseMetric } from "../../Http/Response/UserExerciseMetricsResponseType";
+import type { ExerciseListElement } from "../../Http/Response/UserWorkoutPresetsResponseType";
 import { exerciseDetailsHandlers } from "./exerciseDetailsHandlers";
 import { exerciseMetricsHandlers } from "./exerciseMetricsHandlers";
 

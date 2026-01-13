@@ -1,4 +1,4 @@
-import type { UserExerciseMetricsResponseType } from "../ResponseType/UserExerciseMetricsResponseType";
+import type { UserExerciseMetricsResponseType } from "../Response/UserExerciseMetricsResponseType";
 
 export async function GETUserExerciseMetrics(
   exerciseID: string

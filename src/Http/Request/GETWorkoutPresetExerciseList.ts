@@ -1,7 +1,7 @@
 import type {
   ExerciseListElement,
   ExerciseListResponseGET,
-} from "../ResponseType/UserWorkoutPresetsResponseType";
+} from "../Response/UserWorkoutPresetsResponseType";
 
 export async function GETWorkoutPresetExerciseList(
   exerciseListID: string[]

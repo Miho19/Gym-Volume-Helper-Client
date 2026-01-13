@@ -1,8 +1,8 @@
 import react from "react";
-import type { ExerciseListElement } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { ExerciseListElement } from "../../../Http/Response/UserWorkoutPresetsResponseType";
 import useUserExerciseMetricsQuery from "../../../Hooks/useUserExerciseMetricsQuery";
 import { sortMetricData } from "../../Exercise/Metrics/MetricSortList";
-import type { ExerciseMetric } from "../../../Http/ResponseType/UserExerciseMetricsResponseType";
+import type { ExerciseMetric } from "../../../Http/Response/UserExerciseMetricsResponseType";
 import ExerciseIndividualMetricItem from "../../Exercise/Metrics/ExerciseIndividualMetricItem";
 import ExerciseMetricsNew from "../../Exercise/Metrics/ExerciseMetricsAddNew";
 

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth0 } from "@auth0/auth0-react";
-import { DELETEUserWorkoutPreset } from "../Http/RequestFunctions/DELETEUserWorkoutPreset";
+import { DELETEUserWorkoutPreset } from "../Http/Request/DELETEUserWorkoutPreset";
 
 type MutationFunctionParams = {
   workoutID: string;

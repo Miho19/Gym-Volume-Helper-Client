@@ -4,7 +4,7 @@ import type {
   NewWorkoutPresetFormDataType,
   UserWorkoutPresetListElementType,
   UserWorkoutPresetType,
-} from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
+} from "../../Http/Response/UserWorkoutPresetsResponseType";
 import {
   getNewWorkoutID,
   testUserWorkoutPresetElementList,

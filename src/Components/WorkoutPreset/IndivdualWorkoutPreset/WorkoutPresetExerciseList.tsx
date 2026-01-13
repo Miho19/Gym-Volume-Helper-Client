@@ -2,7 +2,7 @@ import useWorkoutPresetExerciseList from "../../../Hooks/useWorkoutPresetExercis
 import type {
   ExerciseListElement,
   UserWorkoutPresetType,
-} from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+} from "../../../Http/Response/UserWorkoutPresetsResponseType";
 import WorkoutPresetExerciseListElement from "./WorkoutPresetExerciseListElement";
 
 type Props = {

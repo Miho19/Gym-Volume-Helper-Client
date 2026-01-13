@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { GETWorkoutPreset } from "../Http/RequestFunctions/GETWorkoutPreset";
+import { GETWorkoutPreset } from "../Http/Request/GETWorkoutPreset";
 import { useAuth0 } from "@auth0/auth0-react";
-import { GETWorkoutPresetExerciseList } from "../Http/RequestFunctions/GETWorkoutPresetExerciseList";
+import { GETWorkoutPresetExerciseList } from "../Http/Request/GETWorkoutPresetExerciseList";
 
 type Props = {
   workoutID: string;

@@ -1,4 +1,4 @@
-import type { NewWorkoutPresetFormDataType } from "../ResponseType/UserWorkoutPresetsResponseType";
+import type { NewWorkoutPresetFormDataType } from "../Response/UserWorkoutPresetsResponseType";
 
 export async function POSTUserWorkoutList(input: NewWorkoutPresetFormDataType) {
   const fetchOptions: RequestInit = {

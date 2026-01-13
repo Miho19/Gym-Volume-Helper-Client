@@ -9,6 +9,6 @@ export const handlers = [
 ];
 
 export function toURL(path: string): string {
-  const devBaseURL = "http://localhost:5052";
+  const devBaseURL = "http://localhost:5052/api/v1";
   return new URL(path, devBaseURL).toString();
 }

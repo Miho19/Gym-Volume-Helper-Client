@@ -3,8 +3,8 @@ import { toURL } from "..";
 import type {
   ExerciseMetric,
   UserExerciseMetricsResponseType,
-} from "../../Http/ResponseType/UserExerciseMetricsResponseType";
-import type { POSTUserMetricRequestBody } from "../../Http/RequestFunctions/POSTUserExerciseMetric";
+} from "../../Http/Response/UserExerciseMetricsResponseType";
+import type { POSTUserMetricRequestBody } from "../../Http/Request/POSTUserExerciseMetric";
 import { prepareDatesForComparison } from "../../Components/Exercise/Metrics/MetricFormDateValidation";
 import { addNewMetric, currentMetricID, UserExerciseMetrics } from "./exercise";
 

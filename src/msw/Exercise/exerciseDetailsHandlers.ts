@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
 import { toURL } from "..";
 
-import type { ExerciseListElement } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { ExerciseListElement } from "../../Http/Response/UserWorkoutPresetsResponseType";
 import { TestMinExerciseListElementList } from "./exercise";
 
 type GETMinExerciseParams = {

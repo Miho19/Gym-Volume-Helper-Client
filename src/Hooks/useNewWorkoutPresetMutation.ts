@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import type { NewWorkoutPresetFormDataType } from "../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { NewWorkoutPresetFormDataType } from "../Http/Response/UserWorkoutPresetsResponseType";
 import { useAuth0 } from "@auth0/auth0-react";
-import { POSTUserWorkoutList } from "../Http/RequestFunctions/POSTUserWorkoutList";
+import { POSTUserWorkoutList } from "../Http/Request/POSTUserWorkoutList";
 
 type MutationFunctionParams = {
   newWorkoutPreset: NewWorkoutPresetFormDataType;

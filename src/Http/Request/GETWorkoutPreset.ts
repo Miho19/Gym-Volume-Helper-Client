@@ -1,4 +1,4 @@
-import type { UserWorkoutPresetType } from "../ResponseType/UserWorkoutPresetsResponseType";
+import type { UserWorkoutPresetType } from "../Response/UserWorkoutPresetsResponseType";
 
 export async function GETWorkoutPreset(
   workoutID: string

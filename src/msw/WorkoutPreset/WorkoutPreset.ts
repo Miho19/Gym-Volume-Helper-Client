@@ -1,7 +1,7 @@
 import type {
   UserWorkoutPresetListElementType,
   UserWorkoutPresetType,
-} from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
+} from "../../Http/Response/UserWorkoutPresetsResponseType";
 import { FullWorkoutPresetHandlers } from "./FullWorkoutPresetHandlers";
 import { WorkoutPresetListDELETEHandlers } from "./WorkoutPresetListDeleteHandler";
 import { WorkoutPresetListHandlers } from "./WorkoutPresetListHandlers";

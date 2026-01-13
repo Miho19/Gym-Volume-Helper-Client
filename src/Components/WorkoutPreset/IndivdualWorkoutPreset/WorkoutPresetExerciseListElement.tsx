@@ -1,4 +1,4 @@
-import type { ExerciseListElement } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { ExerciseListElement } from "../../../Http/Response/UserWorkoutPresetsResponseType";
 
 type Props = {
   exercise: ExerciseListElement;

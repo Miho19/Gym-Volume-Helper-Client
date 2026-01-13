@@ -1,4 +1,4 @@
-import type { UserWorkoutPresetType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { UserWorkoutPresetType } from "../../../Http/Response/UserWorkoutPresetsResponseType";
 
 type Props = {
   workout: UserWorkoutPresetType;

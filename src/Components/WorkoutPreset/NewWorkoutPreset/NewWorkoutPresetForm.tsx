@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import type { NewWorkoutPresetFormDataType } from "../../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { NewWorkoutPresetFormDataType } from "../../../Http/Response/UserWorkoutPresetsResponseType";
 import useNewWorkoutPresetMutation from "../../../Hooks/useNewWorkoutPresetMutation";
 
 const initialFormState: NewWorkoutPresetFormDataType = {

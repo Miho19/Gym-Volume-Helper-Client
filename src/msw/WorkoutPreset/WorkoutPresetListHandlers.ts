@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { toURL } from "..";
-import type { UserWorkoutPresetListResponseType } from "../../Http/ResponseType/UserWorkoutPresetsResponseType";
+import type { UserWorkoutPresetListResponseType } from "../../Http/Response/UserWorkoutPresetsResponseType";
 import { testUserWorkoutPresetElementList } from "./WorkoutPreset";
 
 export const WorkoutPresetListHandlers = [

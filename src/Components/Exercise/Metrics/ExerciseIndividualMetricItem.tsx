@@ -1,7 +1,7 @@
 import type {
   ExerciseMetric,
   ExerciseSetType,
-} from "../../../Http/ResponseType/UserExerciseMetricsResponseType";
+} from "../../../Http/Response/UserExerciseMetricsResponseType";
 
 type Props = {
   metric: ExerciseMetric;
