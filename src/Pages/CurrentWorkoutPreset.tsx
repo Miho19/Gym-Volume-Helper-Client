@@ -3,7 +3,7 @@ import CurrentWorkoutPresetExerciseList from "../Components/WorkoutPreset/Curren
 import WorkoutPresetHeader from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetHeader";
 import WorkoutPresetOwnerPanel from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetOwnerPanel";
 import useUserProfileQuery from "../Hooks/User/useUserProfileQuery";
-import useWorkoutPresetQuery from "../Hooks/useWorkoutPresetQuery";
+import useWorkoutQuery from "../Hooks/Workout/useWorkoutQuery";
 
 function CurrentWorkoutPresetPage() {
   const {
@@ -19,9 +19,7 @@ function CurrentWorkoutPresetPage() {
     isError: isErrorWorkout,
     error: errorWorkout,
     isSuccess,
-  } = useWorkoutPresetQuery({
-    workoutId: user?.currentWorkoutId,
-  });
+  } = useWorkoutQuery(user?.currentWorkoutId);
 
   if (isLoadingUser) return <div>Loading...</div>;
   if (isErrorUser) return <div>{errorUser?.message}</div>;

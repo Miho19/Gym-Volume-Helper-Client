@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import useDeleteWorkoutPresetMutation from "../Hooks/useDeleteWorkoutPresetMutation";
 import useUpdateUserMutation from "../Hooks/useUpdateUserMutation";
-import useWorkoutPresetQuery from "../Hooks/useWorkoutPresetQuery";
+import useWorkoutPresetQuery from "../Hooks/Workout/useWorkoutQuery";
 import WorkoutPresetHeader from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetHeader";
 import WorkoutPresetExerciseList from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetExerciseList";
 import WorkoutPresetOwnerPanel from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetOwnerPanel";
