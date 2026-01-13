@@ -1,7 +1,7 @@
 import type { UserWorkoutPresetType } from "../Response/UserWorkoutPresetsResponseType";
 
 export async function GETWorkoutPreset(
-  workoutID: string
+  workoutID: string | undefined
 ): Promise<UserWorkoutPresetType> {
   const fetchOptions: RequestInit = {
     mode: "cors",

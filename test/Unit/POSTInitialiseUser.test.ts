@@ -1,7 +1,7 @@
 import { afterAll, describe, expect, it } from "vitest";
-import { POSTUserProfile } from "../../src/Http/Request/User/POSTUserProfile";
-import { GETUserProfile } from "../../src/Http/Request/User/GETUserProfile";
-import { PUTUserProfile } from "../../src/Http/Request/User/PUTUserProfile";
+import { POSTUserProfile } from "../../src/Http/Request/UserProfile/POSTUserProfile";
+import { GETUserProfile } from "../../src/Http/Request/UserProfile/GETUserProfile";
+import { PUTUserProfile } from "../../src/Http/Request/UserProfile/PUTUserProfile";
 import { testUserProfile } from "../../src/msw/user";
 import { server } from "../../src/msw/node";
 import { http, HttpResponse } from "msw";
