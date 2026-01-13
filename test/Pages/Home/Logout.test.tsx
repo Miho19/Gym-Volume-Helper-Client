@@ -1,4 +1,3 @@
-import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
@@ -11,6 +10,7 @@ describe("Home Logout", async () => {
   it("render a clickable Logout Button", async () => {
     const logoutMock = vi.fn();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
       loginWithRedirect: vi.fn(),
       isAuthenticated: true,

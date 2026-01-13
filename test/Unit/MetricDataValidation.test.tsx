@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 
-import { isDateValid } from "../../../src/Components/Exercise/Metrics/MetricFormDateValidation";
-import { isWeightValid } from "../../../src/Components/Exercise/Metrics/MetricFormWeightValidation";
-import { isRepsValid } from "../../../src/Components/Exercise/Metrics/MetricFormRepsValidation";
+import { isDateValid } from "../../src/Components/Exercise/Metrics/MetricFormDateValidation";
+import { isWeightValid } from "../../src/Components/Exercise/Metrics/MetricFormWeightValidation";
+import { isRepsValid } from "../../src/Components/Exercise/Metrics/MetricFormRepsValidation";
 
-import { convertDateToInputStringFormat } from "../../../src/Utility/DateFormat";
+import { convertDateToInputStringFormat } from "../../src/Utility/DateFormat";
 
 describe("Metric Form Data Validation", () => {
   describe("Date Validation", () => {

@@ -13,6 +13,7 @@ const client = new QueryClient();
 
 describe("Profile Bubble", async () => {
   it("render profile bubble with user data", async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
       isAuthenticated: true,
       isLoading: false,

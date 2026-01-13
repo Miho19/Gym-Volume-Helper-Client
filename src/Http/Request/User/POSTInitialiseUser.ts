@@ -1,7 +1,9 @@
 import { UserProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
 import { BASEADDRESS } from "../BaseURLAddress";
 
-const ENDPOINT: URL = new URL(`${BASEADDRESS}/user/me`);
+export const POSTINITIALISEUSERENDPOINT: URL = new URL(
+  `${BASEADDRESS}/user/me`
+);
 
 function GenerateFetchOptions(userSub: string): RequestInit {
   const fetchOptions: RequestInit = {
@@ -19,14 +21,15 @@ function GenerateFetchOptions(userSub: string): RequestInit {
 }
 
 export async function POSTInitialiseUser(
-  userSub: string | undefined
+  userSub: string | undefined,
+  endpoint: URL = POSTINITIALISEUSERENDPOINT
 ): Promise<UserProfile> {
   if (typeof userSub === "undefined")
     throw new Error("Initialise User Requires a UserSub");
 
   try {
     const fetchOptions = GenerateFetchOptions(userSub);
-    const authResponse = await fetch(ENDPOINT, fetchOptions);
+    const authResponse = await fetch(endpoint, fetchOptions);
     if (!authResponse.ok) throw new Error("Failed to Fetch User Profile");
 
     const responseBody = await authResponse.json();
