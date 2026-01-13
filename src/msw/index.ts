@@ -11,7 +11,6 @@ export const handlers = [
 ];
 
 export function toURL(path: string): Path {
-  const devBaseURL = `${BASEADDRESS}`;
-  const output = new URL(path, devBaseURL).toString();
+  const output = new URL(path, BASEADDRESS).toString();
   return output;
 }

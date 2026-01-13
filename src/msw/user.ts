@@ -1,7 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { toURL } from ".";
 import type { UserProfile } from "../Zod/UserSchema";
-import { BASEADDRESS } from "../Http/Request/BaseURLAddress";
 
 export const testUserProfile: UserProfile = {
   name: "Josh April",
@@ -15,13 +14,16 @@ type POSTBodyType = { auth0ID: string };
 
 export const userHandlers = [
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  http.post<{}, POSTBodyType, UserProfile>(
-    toURL(`${BASEADDRESS}/user/me`),
-    () => HttpResponse.json(testUserProfile)
+  http.post<{}, POSTBodyType, UserProfile>(toURL(`user/me`), () =>
+    HttpResponse.json(testUserProfile)
+  ),
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  http.get<{}, {}, UserProfile>(toURL(`user/me`), () =>
+    HttpResponse.json(testUserProfile)
   ),
 
   http.put<PATCHParams, UserProfile, UserProfile>(
-    toURL("/user/me"),
+    toURL("user/me"),
     async ({ request }) => {
       const requestBody = await request.json();
 

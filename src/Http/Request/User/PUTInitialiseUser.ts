@@ -1,7 +1,7 @@
 import { UserProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
 import { BASEADDRESS } from "../BaseURLAddress";
 
-const ENDPOINT: string = `${BASEADDRESS}/user/me`;
+export const PUTUSERPROFILEENDPOINT: URL = new URL("user/me", BASEADDRESS);
 
 function generateFetchOptions(userProfile: UserProfile) {
   const fetchOptions: RequestInit = {
@@ -19,19 +19,19 @@ function generateFetchOptions(userProfile: UserProfile) {
 }
 
 export async function PUTUserProfile(
-  userProfile: UserProfile
+  userProfile: UserProfile,
+  endpoint: URL = PUTUSERPROFILEENDPOINT
 ): Promise<UserProfile> {
   try {
     const fetchOptions = generateFetchOptions(userProfile);
 
-    const response: Response = await fetch(ENDPOINT, fetchOptions);
+    const response: Response = await fetch(endpoint, fetchOptions);
     if (!response.ok) throw new Error("Failed to fetch user");
     const responseBody = await response.json();
 
     const result = await UserProfileZodObj.parseAsync(responseBody);
     return result;
-  } catch (error) {
-    if (error instanceof Error) console.error(error);
+  } catch {
     throw new Error("An unexpected error occurred");
   }
 }
