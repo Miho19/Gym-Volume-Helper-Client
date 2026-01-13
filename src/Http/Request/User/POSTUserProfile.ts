@@ -18,7 +18,7 @@ function GenerateFetchOptions(userSub: string): RequestInit {
   return fetchOptions;
 }
 
-export async function POSTInitialiseUser(
+export async function POSTUserProfile(
   userSub: string | undefined,
   endpoint: URL = POSTINITIALISEUSERENDPOINT
 ): Promise<UserProfile> {

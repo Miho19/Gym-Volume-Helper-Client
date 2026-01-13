@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it } from "vitest";
-import { POSTInitialiseUser } from "../../src/Http/Request/User/POSTUserProfile";
+import { POSTUserProfile } from "../../src/Http/Request/User/POSTUserProfile";
 import { GETUserProfile } from "../../src/Http/Request/User/GETUserProfile";
 import { PUTUserProfile } from "../../src/Http/Request/User/PUTUserProfile";
 import { testUserProfile } from "../../src/msw/user";
@@ -14,13 +14,13 @@ describe("User HTTP Request Functions", () => {
 
     it("Should return a valid user profile on success", async () => {
       const userSub: string = "userSubFake";
-      const result = await POSTInitialiseUser(userSub);
+      const result = await POSTUserProfile(userSub);
       expect(result).toEqual(testUserProfile);
     });
 
     it("Should return an error is the user sub is undefined or missing", async () => {
       const userSub = undefined;
-      await expect(POSTInitialiseUser(userSub)).rejects.toThrow();
+      await expect(POSTUserProfile(userSub)).rejects.toThrow();
     });
 
     it("Should return error when the server returns an error", async () => {
@@ -36,7 +36,7 @@ describe("User HTTP Request Functions", () => {
       );
 
       await expect(() =>
-        POSTInitialiseUser("fake user sub", endpoint)
+        POSTUserProfile("fake user sub", endpoint)
       ).rejects.toThrowError(/unexpected/);
     });
   });
