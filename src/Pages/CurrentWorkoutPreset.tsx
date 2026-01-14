@@ -38,7 +38,7 @@ function CurrentWorkoutPresetPage() {
       </p>
 
       <CurrentWorkoutPresetExerciseList workout={workout} />
-      <WorkoutPresetOwnerPanel workout={workout!} />
+      <WorkoutPresetOwnerPanel workout={workout} />
       <HomeButton />
     </main>
   );

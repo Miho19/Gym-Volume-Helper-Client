@@ -1,8 +1,9 @@
-import type { UserWorkoutPresetType } from "../Response/UserWorkoutPresetsResponseType";
+import type { UserWorkoutPresetType } from "../../Response/UserWorkoutPresetsResponseType";
+import { BASEADDRESS } from "../BaseURLAddress";
 
-export async function GETWorkoutPreset(
-  workoutID: string | undefined
-): Promise<UserWorkoutPresetType> {
+export const GETWORKOUTENDPOINT: URL = new URL("me/workout", BASEADDRESS);
+
+export async function GETWorkout(): Promise<UserWorkoutPresetType> {
   const fetchOptions: RequestInit = {
     mode: "cors",
     method: "GET",

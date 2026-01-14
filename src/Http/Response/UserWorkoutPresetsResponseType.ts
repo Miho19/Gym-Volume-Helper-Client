@@ -16,12 +16,6 @@ export type UserWorkoutPresetListElementType = {
   workoutImgURL: string;
 };
 
-export type UserWorkoutPresetListResponseType = {
-  userID: string;
-  userName: string;
-  items: UserWorkoutPresetListElementType[];
-};
-
 export type ExerciseListElement = {
   id: string;
   name: string;

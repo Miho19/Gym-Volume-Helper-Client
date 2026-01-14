@@ -1,4 +1,4 @@
-import { UserProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
+import { userProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
 import { BASEADDRESS } from "../BaseURLAddress";
 
 export const GETUSERPROFILEENDPOINT: URL = new URL("user/me", BASEADDRESS);
@@ -29,7 +29,7 @@ export async function GETUserProfile(
 
     const body = await response.json();
 
-    const result = await UserProfileZodObj.parseAsync(body);
+    const result = await userProfileZodObj.parseAsync(body);
     return result;
   } catch {
     throw new Error("Failed to Fetch User Profile");

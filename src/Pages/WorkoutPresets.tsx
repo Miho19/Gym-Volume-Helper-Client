@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import HomeButton from "../Components/Navigation/HomeButton";
-import WorkoutPresetList from "../Components/WorkoutPreset/List/WorkoutPresetList";
+import WorkoutList from "../Components/WorkoutPreset/List/WorkoutList";
 
 function WorkoutPresetListPage() {
   const navigator = useNavigate();
@@ -13,19 +13,11 @@ function WorkoutPresetListPage() {
         Create Workout Preset
       </button>
 
-      <WorkoutPresetList />
+      <WorkoutList />
 
       <HomeButton />
     </main>
   );
 }
-
-/**
- *
- * view workout presets, create/delete/update
- *
- * name
- * list exercises in short box form
- */
 
 export default WorkoutPresetListPage;
