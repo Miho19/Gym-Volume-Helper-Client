@@ -28,6 +28,9 @@ export async function GETUserWorkoutList(
 ): Promise<Workout[]> {
   try {
     const fetchOptions: RequestInit = generateFetchOptions();
+
+    console.log(endpoint.toString());
+
     const response: Response = await fetch(endpoint, fetchOptions);
 
     if (!response.ok) throw new Error(`Unexpected response from server`);
