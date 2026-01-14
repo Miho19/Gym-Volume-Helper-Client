@@ -6,7 +6,7 @@ export default function useWorkoutQuery(workoutId: string | undefined) {
   const { isAuthenticated } = useAuth0();
 
   return useQuery({
-    queryKey: [`current user workout list`],
+    queryKey: [`workout ${workoutId}`],
     queryFn: () => GETWorkout(workoutId),
     enabled: isAuthenticated && typeof workoutId !== "undefined",
   });

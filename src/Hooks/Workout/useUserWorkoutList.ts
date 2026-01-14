@@ -6,7 +6,7 @@ export default function useUserWorkoutList() {
   const { isAuthenticated, user } = useAuth0();
 
   return useQuery({
-    queryKey: [`${user?.name} workout preset list`],
+    queryKey: [`${user?.name} workout list`],
     queryFn: () => GETUserWorkoutList(),
     enabled: isAuthenticated,
   });

@@ -1,9 +1,13 @@
 import type { UserWorkoutPresetType } from "../../Response/UserWorkoutPresetsResponseType";
 import { BASEADDRESS } from "../BaseURLAddress";
 
-export const GETWORKOUTENDPOINT: URL = new URL("me/workout", BASEADDRESS);
+export function GETWORKOUTENDPOINT(workoutId: string | undefined): URL {
+  if (typeof workoutId === "undefined")
+    throw new Error("Workout Id is undefined");
+  return new URL(`workout/${workoutId}`, BASEADDRESS);
+}
 
-export async function GETWorkout(): Promise<UserWorkoutPresetType> {
+function generateFetchOptions(): RequestInit {
   const fetchOptions: RequestInit = {
     mode: "cors",
     method: "GET",
@@ -14,23 +18,29 @@ export async function GETWorkout(): Promise<UserWorkoutPresetType> {
     credentials: "include",
   };
 
-  const URL = import.meta.env.DEV
-    ? `http://localhost:5052/me/workout/${workoutID}`
-    : "";
+  return fetchOptions;
+}
 
+export async function GETWorkout(
+  workoutId: string | undefined,
+  endpoint: URL = GETWORKOUTENDPOINT(workoutId)
+): Promise<UserWorkoutPresetType> {
   try {
-    const response: Response = await fetch(URL, fetchOptions);
+    if (typeof workoutId === "undefined")
+      throw new Error("Workout Id is undefined");
+
+    const fetchOptions = generateFetchOptions();
+    const response: Response = await fetch(endpoint, fetchOptions);
 
     if (!response.ok)
-      throw new Error(`Failed to fetch workout preset ${workoutID}`);
+      throw new Error(`Unexpected server error:\n ${response.statusText}`);
 
-    const body: unknown = await response.json();
+    const body = await response.json();
 
     // validate response using ZOD
 
     return body as UserWorkoutPresetType;
-  } catch (error) {
-    if (error instanceof Error) console.log(error);
-    throw new Error(`Failed to fetch workout preset ${workoutID}`);
+  } catch {
+    throw new Error(`Failed to fetch workout preset ${workoutId}`);
   }
 }

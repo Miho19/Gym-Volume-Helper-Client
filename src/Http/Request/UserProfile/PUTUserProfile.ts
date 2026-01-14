@@ -1,4 +1,4 @@
-import { UserProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
+import { userProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
 import { BASEADDRESS } from "../BaseURLAddress";
 
 export const PUTUSERPROFILEENDPOINT: URL = new URL("user/me", BASEADDRESS);
@@ -23,7 +23,7 @@ export async function PUTUserProfile(
   endpoint: URL = PUTUSERPROFILEENDPOINT
 ): Promise<UserProfile> {
   try {
-    const requestUserProfileValidated = UserProfileZodObj.parse(userProfile);
+    const requestUserProfileValidated = userProfileZodObj.parse(userProfile);
 
     const fetchOptions = generateFetchOptions(requestUserProfileValidated);
 
@@ -31,7 +31,7 @@ export async function PUTUserProfile(
     if (!response.ok) throw new Error("Failed to fetch user");
     const responseBody = await response.json();
 
-    const result = await UserProfileZodObj.parseAsync(responseBody);
+    const result = await userProfileZodObj.parseAsync(responseBody);
     return result;
   } catch {
     throw new Error("An unexpected error occurred");

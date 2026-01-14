@@ -1,4 +1,4 @@
-import { UserProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
+import { userProfileZodObj, type UserProfile } from "../../../Zod/UserSchema";
 import { BASEADDRESS } from "../BaseURLAddress";
 
 export const POSTINITIALISEUSERENDPOINT: URL = new URL("user/me", BASEADDRESS);
@@ -32,7 +32,7 @@ export async function POSTUserProfile(
 
     const responseBody = await authResponse.json();
 
-    const result = await UserProfileZodObj.parseAsync(responseBody);
+    const result = await userProfileZodObj.parseAsync(responseBody);
     return result;
   } catch {
     throw new Error("An unexpected error occurred");
