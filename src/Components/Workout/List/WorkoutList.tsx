@@ -1,9 +1,10 @@
-import useUserWorkoutList from "../../../Hooks/Workout/useUserWorkoutList";
+import useUserWorkoutListQuery from "../../../Hooks/Workout/useUserWorkoutList";
 import type { Workout } from "../../../Zod/WorkoutSchema";
 import WorkoutListElement from "./WorkoutListElement";
 
 function WorkoutList() {
-  const { data, isLoading, isError, error, isSuccess } = useUserWorkoutList();
+  const { data, isLoading, isError, error, isSuccess } =
+    useUserWorkoutListQuery();
 
   if (isLoading) return <div>Loading...</div>;
   if (isError || !isSuccess) return <div>Error: {error?.message}</div>;

@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth0 } from "@auth0/auth0-react";
 import { DELETEUserWorkoutPreset } from "../Http/Request/DELETEUserWorkoutPreset";
+import { userWorkoutListQueryKey } from "./Workout/useUserWorkoutList";
 
 type MutationFunctionParams = {
   workoutID: string;
@@ -15,7 +16,7 @@ function useDeleteWorkoutPresetMutation() {
       DELETEUserWorkoutPreset(input.workoutID),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [`${user?.name} workout preset list`],
+        queryKey: [userWorkoutListQueryKey(user?.name)],
       });
     },
   });

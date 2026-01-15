@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import useDeleteWorkoutPresetMutation from "../Hooks/useDeleteWorkoutPresetMutation";
-import useUpdateUserMutation from "../Hooks/useUpdateUserMutation";
+import useUpdateUserMutation from "../Hooks/User/useUpdateUserMutation";
 import useWorkoutQuery from "../Hooks/Workout/useWorkoutQuery";
 import WorkoutHeader from "../Components/Workout/Individual/WorkoutHeader";
 import WorkoutExerciseList from "../Components/Workout/Individual/WorkoutExerciseList";
@@ -32,7 +32,7 @@ function IndividualWorkoutPresetPage() {
 
   if (isLWorkoutLoading || isUserLoading) return <div>Loading...</div>;
 
-  if (isWorkoutError || !isUserError || !isUserSuccess || !isWorkoutSuccess)
+  if (isWorkoutError || isUserError || !isUserSuccess || !isWorkoutSuccess)
     return (
       <div>
         <div>{workoutError?.message}</div>
@@ -41,7 +41,8 @@ function IndividualWorkoutPresetPage() {
     );
 
   function handleDeleteWorkout() {
-    deleteWorkoutMutation.mutate({ workoutID: id! });
+    if (id === undefined) return;
+    deleteWorkoutMutation.mutate({ workoutID: id });
     navigator("/workout");
   }
 
