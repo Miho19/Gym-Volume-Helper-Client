@@ -25,13 +25,14 @@ export async function GETUserProfile(
     const fetchOptions = generateFetchOptions();
 
     const response = await fetch(endpont, fetchOptions);
-    if (!response.ok) throw new Error("Failed to Fetch User Profile");
+    if (!response.ok)
+      throw new Error(`Failed to Fetch User Profile: ${response.statusText}`);
 
     const body = await response.json();
 
     const result = await userProfileZodObj.parseAsync(body);
     return result;
   } catch {
-    throw new Error("Failed to Fetch User Profile");
+    throw new Error("An unexpected error occurred");
   }
 }

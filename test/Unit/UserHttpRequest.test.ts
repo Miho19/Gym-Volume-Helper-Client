@@ -62,7 +62,7 @@ describe("User HTTP Request Functions", () => {
       );
 
       await expect(() => GETUserProfile(endpoint)).rejects.toThrowError(
-        /Fetch User Profile/
+        /unexpected/
       );
     });
   });

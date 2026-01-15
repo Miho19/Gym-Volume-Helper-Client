@@ -41,6 +41,6 @@ export async function GETWorkout(
 
     return body as UserWorkoutPresetType;
   } catch {
-    throw new Error(`Failed to fetch workout preset ${workoutId}`);
+    throw new Error("An unexpected error occurred");
   }
 }

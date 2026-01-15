@@ -2,16 +2,6 @@ import type {
   UserWorkoutPresetListElementType,
   UserWorkoutPresetType,
 } from "../../Http/Response/UserWorkoutPresetsResponseType";
-import { FullWorkoutPresetHandlers } from "./FullWorkoutPresetHandlers";
-import { WorkoutPresetListDELETEHandlers } from "./WorkoutPresetListDeleteHandler";
-
-import { WorkoutPresetListPOSTHandlers } from "./WorkoutPresetListPOSTHandler";
-
-// export const workoutPresetHandlers = [
-//   ...FullWorkoutPresetHandlers,
-//   ...WorkoutPresetListPOSTHandlers,
-//   ...WorkoutPresetListDELETEHandlers,
-// ];
 
 export let testUserWorkoutPresetElementList: UserWorkoutPresetListElementType[] =
   [

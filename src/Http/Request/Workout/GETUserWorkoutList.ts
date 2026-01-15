@@ -29,15 +29,16 @@ export async function GETUserWorkoutList(
   try {
     const fetchOptions: RequestInit = generateFetchOptions();
 
-    console.log(endpoint.toString());
-
     const response: Response = await fetch(endpoint, fetchOptions);
 
-    if (!response.ok) throw new Error(`Unexpected response from server`);
+    if (!response.ok)
+      throw new Error(
+        `Unexpected response from server: ${response.statusText}`
+      );
     const responseBody = await response.json();
     const result = await workoutZodObjectArray.parseAsync(responseBody);
     return result;
   } catch {
-    throw new Error(`Failed to fetch user workout list`);
+    throw new Error("An unexpected error occurred");
   }
 }
