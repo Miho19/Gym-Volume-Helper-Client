@@ -1,4 +1,4 @@
-import type { UserWorkoutPresetType } from "../../Response/UserWorkoutPresetsResponseType";
+import { workoutZodObject, type Workout } from "../../../Zod/WorkoutSchema";
 import { BASEADDRESS } from "../BaseURLAddress";
 
 export function GETWORKOUTENDPOINT(workoutId: string | undefined): URL {
@@ -24,7 +24,7 @@ function generateFetchOptions(): RequestInit {
 export async function GETWorkout(
   workoutId: string | undefined,
   endpoint: URL = GETWORKOUTENDPOINT(workoutId)
-): Promise<UserWorkoutPresetType> {
+): Promise<Workout> {
   try {
     if (typeof workoutId === "undefined")
       throw new Error("Workout Id is undefined");
@@ -35,12 +35,16 @@ export async function GETWorkout(
     if (!response.ok)
       throw new Error(`Unexpected server error:\n ${response.statusText}`);
 
-    const body = await response.json();
+    const responseBody = await response.json();
 
-    // validate response using ZOD
+    const result = await workoutZodObject.parseAsync(responseBody);
 
-    return body as UserWorkoutPresetType;
-  } catch {
-    throw new Error("An unexpected error occurred");
+    return result;
+  } catch (error) {
+    throw new Error(
+      `An unexpected error occurred\n ${
+        error instanceof Error && error?.message
+      }`
+    );
   }
 }
