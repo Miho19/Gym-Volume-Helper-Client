@@ -3,7 +3,8 @@ import { GETWorkout } from "../../Http/Request/Workout/GETWorkout";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export function useWorkoutQueryKey(workoutId: string | undefined): string {
-  if (workoutId === undefined) throw new Error("Workout Id is undefined");
+  if (typeof workoutId === "undefined")
+    throw new Error("Workout Id is undefined");
   return `workout ${workoutId}`;
 }
 

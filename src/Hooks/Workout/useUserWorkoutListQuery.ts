@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GETUserWorkoutList } from "../../Http/Request/Workout/GETUserWorkoutList";
 
 export function userWorkoutListQueryKey(userName: string | undefined): string {
-  if (userName === undefined) throw new Error("Username is undefined");
+  if (typeof userName === "undefined") throw new Error("Username is undefined");
   return `${userName} workout list`;
 }
 

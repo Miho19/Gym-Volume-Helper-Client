@@ -1,4 +1,4 @@
-import useUserWorkoutListQuery from "../../../Hooks/Workout/useUserWorkoutList";
+import useUserWorkoutListQuery from "../../../Hooks/Workout/useUserWorkoutListQuery";
 import type { Workout } from "../../../Zod/WorkoutSchema";
 import WorkoutListElement from "./WorkoutListElement";
 

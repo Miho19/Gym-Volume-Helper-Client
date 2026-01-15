@@ -42,7 +42,7 @@ function IndividualWorkoutPresetPage() {
 
   function handleDeleteWorkout() {
     if (id === undefined) return;
-    deleteWorkoutMutation.mutate({ workoutID: id });
+    deleteWorkoutMutation.mutate(id);
     navigator("/workout");
   }
 

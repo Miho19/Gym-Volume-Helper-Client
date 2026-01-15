@@ -17,7 +17,6 @@ function generateFetchOptions(): RequestInit {
     },
     credentials: "include",
   };
-
   return fetchOptions;
 }
 
