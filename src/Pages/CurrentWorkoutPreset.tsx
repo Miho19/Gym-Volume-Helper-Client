@@ -5,7 +5,7 @@ import WorkoutPresetOwnerPanel from "../Components/WorkoutPreset/IndivdualWorkou
 import useUserProfileQuery from "../Hooks/User/useUserProfileQuery";
 import useWorkoutQuery from "../Hooks/Workout/useWorkoutQuery";
 
-function CurrentWorkoutPresetPage() {
+function CurrentWorkoutPage() {
   const {
     data: user,
     isLoading: isLoadingUser,
@@ -44,4 +44,4 @@ function CurrentWorkoutPresetPage() {
   );
 }
 
-export default CurrentWorkoutPresetPage;
+export default CurrentWorkoutPage;

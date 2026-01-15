@@ -11,7 +11,7 @@ const workout1: Workout = {
 
 const workout2: Workout = {
   id: "2",
-  name: "Workout 3",
+  name: "Workout 2",
   pictureSource: "https://picsum.photos/id/56/200/300",
   ownerId: "12345",
   ownerName: "Josh April",

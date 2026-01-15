@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { GETWorkoutPreset } from "../Http/Request/Workout/GETWorkout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { GETWorkoutPresetExerciseList } from "../Http/Request/GETWorkoutPresetExerciseList";
 

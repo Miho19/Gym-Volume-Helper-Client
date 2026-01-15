@@ -4,7 +4,7 @@ import type { UserProfile } from "../Zod/UserSchema";
 
 export const testUserProfile: UserProfile = {
   name: "Josh April",
-  pictureSource: "https://picsum.photos/200/300?grayscale",
+  pictureSource: "https://picsum.photos/id/27/200",
   weight: 84,
   currentWorkoutId: "1",
 };
