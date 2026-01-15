@@ -1,13 +1,19 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import type { UserProfile } from "../../Zod/UserSchema";
+import useUserProfileQuery from "../../Hooks/User/useUserProfileQuery";
 
-type Props = {
-  user: UserProfile;
-};
-
-function ProfileBubble(props: Props) {
+function ProfileBubble() {
   const { logout } = useAuth0();
-  const { user } = props;
+
+  const {
+    data: user,
+    isLoading,
+    isError,
+    error,
+    isSuccess,
+  } = useUserProfileQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError || !isSuccess) return <div>{error?.message}</div>;
 
   return (
     <section className="h-20 border border-white/5 bg-[#31363F] rounded-full flex flex-row items-center justify-between px-5">
