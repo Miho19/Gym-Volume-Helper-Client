@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from "react-router";
 import useDeleteWorkoutPresetMutation from "../Hooks/useDeleteWorkoutPresetMutation";
 import useUpdateUserMutation from "../Hooks/useUpdateUserMutation";
-import useWorkoutPresetQuery from "../Hooks/Workout/useWorkoutQuery";
 import WorkoutPresetHeader from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetHeader";
 import WorkoutPresetExerciseList from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetExerciseList";
 import WorkoutPresetOwnerPanel from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetOwnerPanel";
+import useWorkoutQuery from "../Hooks/Workout/useWorkoutQuery";
 
 function IndividualWorkoutPresetPage() {
   const { id } = useParams();
@@ -13,9 +13,7 @@ function IndividualWorkoutPresetPage() {
   const deleteWorkoutMutation = useDeleteWorkoutPresetMutation();
   const updateUserMutation = useUpdateUserMutation();
 
-  const { data, isLoading, isError, error, isSuccess } = useWorkoutPresetQuery({
-    workoutID: id!,
-  });
+  const { data, isLoading, isError, error, isSuccess } = useWorkoutQuery(id);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>error: {error.message}</div>;
@@ -28,14 +26,14 @@ function IndividualWorkoutPresetPage() {
   }
 
   function handleMakeCurrentWorkout() {
-    updateUserMutation.mutate({
-      updateUserBody: {
-        currentWorkoutID: id!,
-        name: undefined,
-        picture: undefined,
-        weight: undefined,
-      },
-    });
+    // updateUserMutation.mutate({
+    //   updateUserBody: {
+    //     currentWorkoutID: id!,
+    //     name: undefined,
+    //     picture: undefined,
+    //     weight: undefined,
+    //   },
+    // });
     navigator("/currentworkout");
   }
 

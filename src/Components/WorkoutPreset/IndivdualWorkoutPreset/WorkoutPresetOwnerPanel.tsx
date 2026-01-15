@@ -1,7 +1,7 @@
-import type { UserWorkoutPresetType } from "../../../Http/Response/UserWorkoutPresetsResponseType";
+import type { Workout } from "../../../Zod/WorkoutSchema";
 
 type Props = {
-  workout: UserWorkoutPresetType;
+  workout: Workout;
 };
 
 function WorkoutPresetOwnerPanel(props: Props) {
@@ -11,7 +11,7 @@ function WorkoutPresetOwnerPanel(props: Props) {
     <section className="w-full border border-white/5 bg-[#31363F] p-3 flex flex-row items-center gap-x-5 rounded-lg">
       <img
         className="w-10 h-10 border border-white/5 rounded-full object-fill"
-        src={workout.ownerProfilePictureURL}
+        src={workout.ownerPictureSource}
         alt={`profile picture of ${workout.ownerName}`}
       />
       <p>{workout.ownerName}</p>

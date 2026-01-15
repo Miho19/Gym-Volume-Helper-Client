@@ -1,7 +1,12 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { GETWorkout } from "../../src/Http/Request/Workout/GETWorkout";
+import { server } from "../../src/msw/node";
+import { http, HttpResponse } from "msw";
+import { BASEADDRESS } from "../../src/Http/Request/BaseURLAddress";
 
 describe("Get Workout Test", () => {
+  afterEach(() => server.resetHandlers());
+
   it("Should return workout 1 on success", async () => {
     const workoutId = "1";
     const result = await GETWorkout(workoutId);
@@ -24,5 +29,20 @@ describe("Get Workout Test", () => {
   it("Should return not found when workoutId is not found", async () => {
     const workoutId = "random id";
     await expect(GETWorkout(workoutId)).rejects.toThrowError(/Not Found/);
+  });
+
+  it("Should return error when server returns an error", async () => {
+    const endpoint = new URL("test/workout/1", BASEADDRESS);
+    server.use(
+      http.get(endpoint.toString(), () => {
+        return new HttpResponse(null, {
+          status: 500,
+          statusText: "Unexpected error occured",
+        });
+      })
+    );
+
+    const workoutId = "random id";
+    await expect(GETWorkout(workoutId)).rejects.toThrowError(/unexpected/);
   });
 });
