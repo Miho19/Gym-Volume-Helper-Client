@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it } from "vitest";
-import { GETUserWorkoutList } from "../../src/Http/Request/Workout/GETUserWorkoutPresetList";
+import { GETUserWorkoutList } from "../../src/Http/Request/Workout//GETUserWorkoutList";
 import { server } from "../../src/msw/node";
 import { http, HttpResponse } from "msw";
 import { BASEADDRESS } from "../../src/Http/Request/BaseURLAddress";
