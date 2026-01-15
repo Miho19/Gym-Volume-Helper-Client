@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { PUTUserProfile } from "../Http/Request/UserProfile/PUTUserProfile";
 import type { UserProfile } from "../Zod/UserSchema";
+import { USEUSERPROFILEQUERYKEY } from "./User/useUserProfileQuery";
 
 function useUpdateUserMutation() {
   const queryClient = useQueryClient();
@@ -9,7 +10,7 @@ function useUpdateUserMutation() {
     mutationFn: (userProfile: UserProfile) => PUTUserProfile(userProfile),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [`auth0 Initialise User`],
+        queryKey: [USEUSERPROFILEQUERYKEY],
       });
     },
   });

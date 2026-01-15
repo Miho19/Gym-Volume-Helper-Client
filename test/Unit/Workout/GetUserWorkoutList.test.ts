@@ -1,8 +1,8 @@
 import { afterAll, describe, expect, it } from "vitest";
-import { GETUserWorkoutList } from "../../src/Http/Request/Workout//GETUserWorkoutList";
-import { server } from "../../src/msw/node";
+import { GETUserWorkoutList } from "../../../src/Http/Request/Workout/GETUserWorkoutList";
+import { server } from "../../../src/msw/node";
 import { http, HttpResponse } from "msw";
-import { BASEADDRESS } from "../../src/Http/Request/BaseURLAddress";
+import { BASEADDRESS } from "../../../src/Http/Request/BaseURLAddress";
 
 describe("Workout Get User Workout List", () => {
   afterAll(() => server.resetHandlers());

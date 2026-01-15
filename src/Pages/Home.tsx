@@ -3,8 +3,7 @@ import ProfileBubble from "../Components/ProfileBubble/ProfileBubble";
 import useInitialiseUserQuery from "../Hooks/User/useInitialiseUserQuery";
 
 function HomePage() {
-  const { data, isLoading, isError, error, isSuccess } =
-    useInitialiseUserQuery();
+  const { isLoading, isError, error, isSuccess } = useInitialiseUserQuery();
 
   if (isLoading) return <div>Loading...</div>;
   if (isError || !isSuccess) return <div>{error?.message}</div>;
@@ -12,7 +11,7 @@ function HomePage() {
   return (
     <main className="mx-auto flex min-h-screen flex-col items-center justify-center gap-y-5">
       <div className="w-3/4">
-        <ProfileBubble user={data} />
+        <ProfileBubble />
       </div>
 
       <div className="border border-white/5 rounded-full w-3/4 h-20 p-3 cursor-pointer text-center transition-all duration-300 hover:scale-105 hover:font-bold bg-[#31363F] flex flex-col justify-center items-center">

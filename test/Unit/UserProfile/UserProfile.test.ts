@@ -1,12 +1,12 @@
 import { afterAll, describe, expect, it } from "vitest";
-import { POSTUserProfile } from "../../src/Http/Request/UserProfile/POSTUserProfile";
-import { GETUserProfile } from "../../src/Http/Request/UserProfile/GETUserProfile";
-import { PUTUserProfile } from "../../src/Http/Request/UserProfile/PUTUserProfile";
-import { testUserProfile } from "../../src/msw/user";
-import { server } from "../../src/msw/node";
+import { POSTUserProfile } from "../../../src/Http/Request/UserProfile/POSTUserProfile";
+import { GETUserProfile } from "../../../src/Http/Request/UserProfile/GETUserProfile";
+import { PUTUserProfile } from "../../../src/Http/Request/UserProfile/PUTUserProfile";
+import { testUserProfile } from "../../../src/msw/user";
+import { server } from "../../../src/msw/node";
 import { http, HttpResponse } from "msw";
-import { BASEADDRESS } from "../../src/Http/Request/BaseURLAddress";
-import { UserProfile } from "../../src/Zod/UserSchema";
+import { BASEADDRESS } from "../../../src/Http/Request/BaseURLAddress";
+import { UserProfile } from "../../../src/Zod/UserSchema";
 
 describe("User HTTP Request Functions", () => {
   describe("POST User Profile", () => {

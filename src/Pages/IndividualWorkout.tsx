@@ -5,20 +5,40 @@ import useWorkoutQuery from "../Hooks/Workout/useWorkoutQuery";
 import WorkoutHeader from "../Components/Workout/Individual/WorkoutHeader";
 import WorkoutExerciseList from "../Components/Workout/Individual/WorkoutExerciseList";
 import WorkoutOwnerPanel from "../Components/Workout/Individual/WorkoutOwnerPanel";
+import useUserProfileQuery from "../Hooks/User/useUserProfileQuery";
 
 function IndividualWorkoutPresetPage() {
   const { id } = useParams();
   const navigator = useNavigate();
 
   const deleteWorkoutMutation = useDeleteWorkoutPresetMutation();
-  // const updateUserMutation = useUpdateUserMutation();
+  const updateUserMutation = useUpdateUserMutation();
 
-  const { data, isLoading, isError, error, isSuccess } = useWorkoutQuery(id);
+  const {
+    data: workout,
+    isLoading: isLWorkoutLoading,
+    isError: isWorkoutError,
+    error: workoutError,
+    isSuccess: isWorkoutSuccess,
+  } = useWorkoutQuery(id);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>error: {error.message}</div>;
+  const {
+    data: user,
+    isLoading: isUserLoading,
+    isError: isUserError,
+    error: UserError,
+    isSuccess: isUserSuccess,
+  } = useUserProfileQuery();
 
-  if (!isSuccess) return <div>error fetching</div>;
+  if (isLWorkoutLoading || isUserLoading) return <div>Loading...</div>;
+
+  if (isWorkoutError || !isUserError || !isUserSuccess || !isWorkoutSuccess)
+    return (
+      <div>
+        <div>{workoutError?.message}</div>
+        <div>{UserError?.message}</div>
+      </div>
+    );
 
   function handleDeleteWorkout() {
     deleteWorkoutMutation.mutate({ workoutID: id! });
@@ -26,14 +46,13 @@ function IndividualWorkoutPresetPage() {
   }
 
   function handleMakeCurrentWorkout() {
-    // updateUserMutation.mutate({
-    //   updateUserBody: {
-    //     currentWorkoutID: id!,
-    //     name: undefined,
-    //     picture: undefined,
-    //     weight: undefined,
-    //   },
-    // });
+    if (id === undefined) return;
+    if (user === undefined) return;
+
+    updateUserMutation.mutate({
+      ...user,
+      currentWorkoutId: id,
+    });
     navigator("/currentworkout");
   }
 
@@ -46,9 +65,9 @@ function IndividualWorkoutPresetPage() {
         Back
       </button>
 
-      <WorkoutHeader workout={data} />
-      <WorkoutExerciseList workout={data} />
-      <WorkoutOwnerPanel workout={data} />
+      <WorkoutHeader workout={workout} />
+      <WorkoutExerciseList workout={workout} />
+      <WorkoutOwnerPanel workout={workout} />
 
       <button
         onClick={handleMakeCurrentWorkout}

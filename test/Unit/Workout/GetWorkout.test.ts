@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { GETWorkout } from "../../src/Http/Request/Workout/GETWorkout";
-import { server } from "../../src/msw/node";
+import { GETWorkout } from "../../../src/Http/Request/Workout/GETWorkout";
+import { server } from "../../../src/msw/node";
 import { http, HttpResponse } from "msw";
-import { BASEADDRESS } from "../../src/Http/Request/BaseURLAddress";
+import { BASEADDRESS } from "../../../src/Http/Request/BaseURLAddress";
 
 describe("Get Workout Test", () => {
   afterEach(() => server.resetHandlers());
