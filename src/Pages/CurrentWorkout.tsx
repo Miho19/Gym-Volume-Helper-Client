@@ -1,6 +1,6 @@
 import HomeButton from "../Components/Navigation/HomeButton";
 import CurrentWorkoutExerciseList from "../Components/Workout/Current/CurrentWorkoutExerciseList";
-import WorkoutPresetHeader from "../Components/Workout/Individual/WorkoutHeader";
+import WorkoutHeader from "../Components/Workout/Individual/WorkoutHeader";
 import WorkoutOwnerPanel from "../Components/Workout/Individual/WorkoutOwnerPanel";
 import useUserProfileQuery from "../Hooks/User/useUserProfileQuery";
 import useWorkoutQuery from "../Hooks/Workout/useWorkoutQuery";
@@ -31,7 +31,7 @@ function CurrentWorkoutPage() {
 
   return (
     <main className="mx-auto flex flex-col items-center justify-center gap-y-5 p-5 min-h-screen">
-      <WorkoutPresetHeader workout={workout} />
+      <WorkoutHeader workout={workout} />
 
       <p className="w-full text-center border border-white/5 bg-[#31363F] rounded-lg">
         {currentDate}
