@@ -19,7 +19,7 @@ export function DELETEUserWorkoutEndpoint(workoutId: string | undefined): URL {
   return new URL(`workout/${workoutId}`, BASEADDRESS);
 }
 
-export async function DELETEUserWorkout(workoutId: string) {
+export async function DELETEUserWorkout(workoutId: string): Promise<boolean> {
   try {
     const fetchOptions = generateFetchOptions();
     const endpoint = DELETEUserWorkoutEndpoint(workoutId);
@@ -29,12 +29,10 @@ export async function DELETEUserWorkout(workoutId: string) {
     if (!response.ok)
       throw new Error(`Unexpected error\n ${response.statusText}`);
 
-    return;
+    return true;
   } catch (error) {
     throw new Error(
-      `Failed to delete user workout\n${
-        error instanceof Error && error.message
-      }`
+      `An unexpected error occurred\n${error instanceof Error && error.message}`
     );
   }
 }

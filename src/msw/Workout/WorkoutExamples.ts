@@ -18,7 +18,6 @@ const workout2: Workout = {
   ownerPictureSource: "https://picsum.photos/id/12/200/300",
 };
 
-// eslint-disable-next-line prefer-const
-let userWorkoutList: Workout[] = [workout1, workout2];
+const userWorkoutList: Workout[] = [workout1, workout2];
 
 export { userWorkoutList };
