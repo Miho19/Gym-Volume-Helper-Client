@@ -3,10 +3,10 @@ import Root from "../Pages/Root";
 import ErrorPage from "../Pages/Error";
 import LoginPage from "../Pages/Login";
 import HomePage from "../Pages/Home";
-import WorkoutPresetListPage from "../Pages/WorkoutPresets";
-import IndividualWorkoutPresetPage from "../Pages/IndividualWorkoutPreset";
-import NewWorkoutPresetPage from "../Pages/NewWorkoutPreset";
-import CurrentWorkoutPage from "../Pages/CurrentWorkoutPreset";
+import WorkoutListPage from "../Pages/WorkoutList";
+import IndividualWorkoutPresetPage from "../Pages/IndividualWorkout";
+import NewWorkoutPresetPage from "../Pages/NewWorkout";
+import CurrentWorkoutPage from "../Pages/CurrentWorkout";
 
 export const routerConfig = [
   {
@@ -15,7 +15,7 @@ export const routerConfig = [
     errorElement: <ErrorPage />,
     children: [
       { element: <HomePage />, index: true },
-      { path: "workout", element: <WorkoutPresetListPage /> },
+      { path: "workout", element: <WorkoutListPage /> },
       { path: "workout/:id", element: <IndividualWorkoutPresetPage /> },
       { path: "newworkout", element: <NewWorkoutPresetPage /> },
       { path: "currentworkout", element: <CurrentWorkoutPage /> },

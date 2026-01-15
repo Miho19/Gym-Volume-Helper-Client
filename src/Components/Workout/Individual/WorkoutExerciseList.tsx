@@ -4,7 +4,7 @@ type Props = {
   workout: Workout;
 };
 
-function WorkoutPresetExerciseList(props: Props) {
+function WorkoutExerciseList(props: Props) {
   const { workout } = props;
 
   // const { data, isLoading, isError, error, isSuccess } =
@@ -28,4 +28,4 @@ function WorkoutPresetExerciseList(props: Props) {
   );
 }
 
-export default WorkoutPresetExerciseList;
+export default WorkoutExerciseList;

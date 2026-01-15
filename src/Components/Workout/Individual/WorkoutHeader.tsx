@@ -4,7 +4,7 @@ type Props = {
   workout: Workout;
 };
 
-function WorkoutPresetHeader(props: Props) {
+function WorkoutHeader(props: Props) {
   const { workout } = props;
 
   return (
@@ -20,4 +20,4 @@ function WorkoutPresetHeader(props: Props) {
   );
 }
 
-export default WorkoutPresetHeader;
+export default WorkoutHeader;

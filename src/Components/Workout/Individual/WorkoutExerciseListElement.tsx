@@ -4,7 +4,7 @@ type Props = {
   exercise: ExerciseListElement;
 };
 
-function WorkoutPresetExerciseListElement(props: Props) {
+function WorkoutExerciseListElement(props: Props) {
   const { exercise } = props;
 
   return (
@@ -19,4 +19,4 @@ function WorkoutPresetExerciseListElement(props: Props) {
   );
 }
 
-export default WorkoutPresetExerciseListElement;
+export default WorkoutExerciseListElement;

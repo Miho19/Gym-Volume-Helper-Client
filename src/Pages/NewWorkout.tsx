@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import NewWorkoutPresetForm from "../Components/WorkoutPreset/NewWorkoutPreset/NewWorkoutPresetForm";
+import NewWorkoutPresetForm from "../Components/Workout/New/NewWorkoutPresetForm";
 
 function NewWorkoutPresetPage() {
   const navigation = useNavigate();

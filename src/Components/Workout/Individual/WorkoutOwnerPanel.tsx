@@ -4,7 +4,7 @@ type Props = {
   workout: Workout;
 };
 
-function WorkoutPresetOwnerPanel(props: Props) {
+function WorkoutOwnerPanel(props: Props) {
   const { workout } = props;
 
   return (
@@ -19,4 +19,4 @@ function WorkoutPresetOwnerPanel(props: Props) {
   );
 }
 
-export default WorkoutPresetOwnerPanel;
+export default WorkoutOwnerPanel;

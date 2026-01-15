@@ -1,7 +1,7 @@
 import HomeButton from "../Components/Navigation/HomeButton";
-import CurrentWorkoutPresetExerciseList from "../Components/WorkoutPreset/CurrentWorkoutPreset/CurrentWorkoutPresetExerciseList";
-import WorkoutPresetHeader from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetHeader";
-import WorkoutPresetOwnerPanel from "../Components/WorkoutPreset/IndivdualWorkoutPreset/WorkoutPresetOwnerPanel";
+import CurrentWorkoutExerciseList from "../Components/Workout/Current/CurrentWorkoutExerciseList";
+import WorkoutPresetHeader from "../Components/Workout/Individual/WorkoutHeader";
+import WorkoutOwnerPanel from "../Components/Workout/Individual/WorkoutOwnerPanel";
 import useUserProfileQuery from "../Hooks/User/useUserProfileQuery";
 import useWorkoutQuery from "../Hooks/Workout/useWorkoutQuery";
 
@@ -37,8 +37,8 @@ function CurrentWorkoutPage() {
         {currentDate}
       </p>
 
-      <CurrentWorkoutPresetExerciseList workout={workout} />
-      <WorkoutPresetOwnerPanel workout={workout} />
+      <CurrentWorkoutExerciseList workout={workout} />
+      <WorkoutOwnerPanel workout={workout} />
       <HomeButton />
     </main>
   );

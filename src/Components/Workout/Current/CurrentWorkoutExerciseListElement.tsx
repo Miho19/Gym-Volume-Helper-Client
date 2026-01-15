@@ -11,7 +11,7 @@ type Props = {
   numberOfDisplayedMetrics: number;
 };
 
-function CurrentWorkoutPresetExerciseListElement(props: Props) {
+function CurrentWorkoutExerciseListElement(props: Props) {
   const { exercise } = props;
 
   const { data, isLoading, isError, error } = useUserExerciseMetricsQuery({
@@ -63,4 +63,4 @@ function CurrentWorkoutPresetExerciseListElement(props: Props) {
   );
 }
 
-export default CurrentWorkoutPresetExerciseListElement;
+export default CurrentWorkoutExerciseListElement;

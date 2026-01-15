@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import HomeButton from "../Components/Navigation/HomeButton";
-import WorkoutList from "../Components/WorkoutPreset/List/WorkoutList";
+import WorkoutList from "../Components/Workout/List/WorkoutList";
 
-function WorkoutPresetListPage() {
+function WorkoutListPage() {
   const navigator = useNavigate();
   return (
     <main className="mx-auto flex flex-col p-5 min-h-screen justify-between gap-y-5">
@@ -20,4 +20,4 @@ function WorkoutPresetListPage() {
   );
 }
 
-export default WorkoutPresetListPage;
+export default WorkoutListPage;
