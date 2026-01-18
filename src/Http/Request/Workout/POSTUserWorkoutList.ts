@@ -1,8 +1,9 @@
 import {
   newWorkoutFormZodObject,
   type NewWorkoutFormType,
-} from "../../Zod/NewWorkoutFormSchema";
-import { GETUSERWORKOUTLISTENDPOINT } from "./Workout/GETUserWorkoutList";
+} from "../../../Zod/NewWorkoutFormSchema";
+import { workoutZodObject, type Workout } from "../../../Zod/WorkoutSchema";
+import { GETUSERWORKOUTLISTENDPOINT } from "./GETUserWorkoutList";
 
 async function generateFetchOptions(
   formData: NewWorkoutFormType
@@ -33,22 +34,24 @@ async function generateFetchOptions(
 export const POSTUSERWORKOUTLISTENDPOINT = GETUSERWORKOUTLISTENDPOINT;
 
 export async function POSTUserWorkoutList(
-  newWorkoutFormData: NewWorkoutFormType
-) {
+  newWorkoutFormData: NewWorkoutFormType,
+  endpoint: URL = POSTUSERWORKOUTLISTENDPOINT
+): Promise<Workout> {
   try {
     const fetchOptions = await generateFetchOptions(newWorkoutFormData);
 
-    const response: Response = await fetch(
-      POSTUSERWORKOUTLISTENDPOINT,
-      fetchOptions
-    );
+    const response: Response = await fetch(endpoint, fetchOptions);
 
     if (!response.ok)
       throw new Error(
         `Unexpected response from server: ${response.statusText}`
       );
 
-    return;
+    const responseBody = await response.json();
+
+    const result = await workoutZodObject.parseAsync(responseBody);
+
+    return result;
   } catch (error) {
     throw new Error(
       `An unexpected error occurred\n${error instanceof Error && error.message}`

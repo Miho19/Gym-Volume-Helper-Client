@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import useNewWorkoutPresetMutation from "../../../Hooks/Workout/useNewWorkoutPresetMutation";
+import useNewWorkoutMutation from "../../../Hooks/Workout/useNewWorkoutPresetMutation";
 import type { NewWorkoutFormType } from "../../../Zod/NewWorkoutFormSchema";
 
 const initialFormState: NewWorkoutFormType = {
@@ -11,7 +11,7 @@ const initialFormState: NewWorkoutFormType = {
 
 function NewWorkoutForm() {
   const navigation = useNavigate();
-  const mutation = useNewWorkoutPresetMutation();
+  const newWorkoutMutation = useNewWorkoutMutation();
 
   const [formData, setFormData] = useState(initialFormState);
 
@@ -22,10 +22,14 @@ function NewWorkoutForm() {
 
   function handleOnSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    mutation.mutate(formData);
+    newWorkoutMutation.mutate(formData);
     // handle errors
     resetForm();
-    navigation("/workout");
+    if (newWorkoutMutation.isSuccess) {
+      navigation(`/workout/${newWorkoutMutation.data.id}`);
+    } else {
+      navigation("/workout");
+    }
   }
 
   function resetForm() {
