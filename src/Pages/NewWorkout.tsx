@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
-import NewWorkoutPresetForm from "../Components/Workout/New/NewWorkoutPresetForm";
+import NewWorkoutForm from "../Components/Workout/New/NewWorkoutForm";
 
-function NewWorkoutPresetPage() {
+function NewWorkoutPage() {
   const navigation = useNavigate();
 
   return (
@@ -13,9 +13,9 @@ function NewWorkoutPresetPage() {
         Back
       </button>
 
-      <NewWorkoutPresetForm />
+      <NewWorkoutForm />
     </main>
   );
 }
 
-export default NewWorkoutPresetPage;
+export default NewWorkoutPage;

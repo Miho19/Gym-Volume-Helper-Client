@@ -1,17 +1,17 @@
 import { useNavigate, useParams } from "react-router";
-import useDeleteWorkoutPresetMutation from "../Hooks/useDeleteWorkoutPresetMutation";
 import useUpdateUserMutation from "../Hooks/User/useUpdateUserMutation";
 import useWorkoutQuery from "../Hooks/Workout/useWorkoutQuery";
 import WorkoutHeader from "../Components/Workout/Individual/WorkoutHeader";
 import WorkoutExerciseList from "../Components/Workout/Individual/WorkoutExerciseList";
 import WorkoutOwnerPanel from "../Components/Workout/Individual/WorkoutOwnerPanel";
 import useUserProfileQuery from "../Hooks/User/useUserProfileQuery";
+import useDeleteWorkoutMutation from "../Hooks/Workout/useDeleteWorkoutMutation";
 
-function IndividualWorkoutPresetPage() {
+function IndividualWorkoutPage() {
   const { id } = useParams();
   const navigator = useNavigate();
 
-  const deleteWorkoutMutation = useDeleteWorkoutPresetMutation();
+  const deleteWorkoutMutation = useDeleteWorkoutMutation();
   const updateUserMutation = useUpdateUserMutation();
 
   const {
@@ -86,4 +86,4 @@ function IndividualWorkoutPresetPage() {
   );
 }
 
-export default IndividualWorkoutPresetPage;
+export default IndividualWorkoutPage;

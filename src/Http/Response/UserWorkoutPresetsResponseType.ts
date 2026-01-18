@@ -5,12 +5,6 @@ export type ExerciseListElement = {
   pageLink: string;
 };
 
-export type NewWorkoutPresetFormDataType = {
-  workoutName: string;
-  workoutPicture: string;
-  exerciseNameList: string[];
-};
-
 export type ExerciseListResponseGET = {
   limit: number;
   index: number;

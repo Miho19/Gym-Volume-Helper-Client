@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import type { NewWorkoutPresetFormDataType } from "../../../Http/Response/UserWorkoutPresetsResponseType";
-import useNewWorkoutPresetMutation from "../../../Hooks/useNewWorkoutPresetMutation";
+import useNewWorkoutPresetMutation from "../../../Hooks/Workout/useNewWorkoutPresetMutation";
+import type { NewWorkoutFormType } from "../../../Zod/NewWorkoutFormSchema";
 
-const initialFormState: NewWorkoutPresetFormDataType = {
-  workoutName: "",
-  workoutPicture: "",
+const initialFormState: NewWorkoutFormType = {
+  name: "",
+  pictureSource: "",
   exerciseNameList: [],
 };
 
-function NewWorkoutPresetForm() {
+function NewWorkoutForm() {
   const navigation = useNavigate();
   const mutation = useNewWorkoutPresetMutation();
 
@@ -22,7 +22,7 @@ function NewWorkoutPresetForm() {
 
   function handleOnSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    mutation.mutate({ newWorkoutPreset: formData });
+    mutation.mutate(formData);
     // handle errors
     resetForm();
     navigation("/workout");
@@ -45,7 +45,7 @@ function NewWorkoutPresetForm() {
             maxLength={25}
             min={3}
             name="workoutName"
-            value={formData.workoutName}
+            value={formData.name}
             onChange={handleOnChange}
             className="w-full border border-white/5 col-span-3 rounded-lg px-2"
           />
@@ -58,7 +58,7 @@ function NewWorkoutPresetForm() {
             maxLength={25}
             min={3}
             name="workoutPicture"
-            value={formData.workoutPicture}
+            value={formData.pictureSource}
             onChange={handleOnChange}
             className="w-full border border-white/5 col-span-3 rounded-lg px-2"
           />
@@ -84,4 +84,4 @@ function NewWorkoutPresetForm() {
   );
 }
 
-export default NewWorkoutPresetForm;
+export default NewWorkoutForm;
