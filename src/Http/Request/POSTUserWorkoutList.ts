@@ -1,28 +1,57 @@
-import type { NewWorkoutPresetFormDataType } from "../Response/UserWorkoutPresetsResponseType";
+import {
+  newWorkoutFormZodObject,
+  type NewWorkoutFormType,
+} from "../../Zod/NewWorkoutFormSchema";
+import { GETUSERWORKOUTLISTENDPOINT } from "./Workout/GETUserWorkoutList";
 
-export async function POSTUserWorkoutList(input: NewWorkoutPresetFormDataType) {
-  const fetchOptions: RequestInit = {
-    mode: "cors",
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-
-    body: JSON.stringify(input),
-    credentials: "include",
-  };
-
-  const URL = import.meta.env.DEV ? `http://localhost:5052/me/workout/` : "";
-
+async function generateFetchOptions(
+  formData: NewWorkoutFormType
+): Promise<RequestInit> {
   try {
-    const response: Response = await fetch(URL, fetchOptions);
+    const result = await newWorkoutFormZodObject.parseAsync(formData);
 
-    if (!response.ok) throw new Error("Failed to update workout preset list");
+    const fetchOptions: RequestInit = {
+      mode: "cors",
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(result),
+      credentials: "include",
+    };
+
+    return fetchOptions;
+  } catch (error) {
+    throw new Error(
+      `Unexpected error\n ${error instanceof Error && error.message}`
+    );
+  }
+}
+
+export const POSTUSERWORKOUTLISTENDPOINT = GETUSERWORKOUTLISTENDPOINT;
+
+export async function POSTUserWorkoutList(
+  newWorkoutFormData: NewWorkoutFormType
+) {
+  try {
+    const fetchOptions = await generateFetchOptions(newWorkoutFormData);
+
+    const response: Response = await fetch(
+      POSTUSERWORKOUTLISTENDPOINT,
+      fetchOptions
+    );
+
+    if (!response.ok)
+      throw new Error(
+        `Unexpected response from server: ${response.statusText}`
+      );
 
     return;
   } catch (error) {
-    if (error instanceof Error) console.log(error);
-    throw new Error("Failed to update workout preset list");
+    throw new Error(
+      `An unexpected error occurred\n${error instanceof Error && error.message}`
+    );
   }
 }
