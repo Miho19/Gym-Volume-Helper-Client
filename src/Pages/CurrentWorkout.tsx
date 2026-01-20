@@ -27,16 +27,9 @@ function CurrentWorkoutPage() {
   if (isLoadingWorkout) return <div>Loading...</div>;
   if (isErrorWorkout || !isSuccess) return <div>{errorWorkout?.message}</div>;
 
-  const currentDate = new Date().toDateString();
-
   return (
     <main className="mx-auto flex flex-col items-center justify-center gap-y-5 p-5 min-h-screen">
       <WorkoutHeader workout={workout} />
-
-      <p className="w-full text-center border border-white/5 bg-[#31363F] rounded-lg">
-        {currentDate}
-      </p>
-
       <CurrentWorkoutExerciseList workout={workout} />
       <WorkoutOwnerPanel workout={workout} />
       <HomeButton />

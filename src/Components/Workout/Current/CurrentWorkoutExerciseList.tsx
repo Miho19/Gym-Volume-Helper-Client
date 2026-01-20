@@ -1,33 +1,26 @@
-import react from "react";
-import CurrentWorkoutPresetExerciseListElement from "./CurrentWorkoutExerciseListElement";
-import useWorkoutPresetExerciseList from "../../../Hooks/useWorkoutPresetExerciseList";
 import type { Workout } from "../../../Zod/WorkoutSchema";
+import useWorkoutExerciseList from "../../../Hooks/Exercise/useWorkoutExerciseList";
+import CurrentWorkoutExerciseListElement from "./CurrentWorkoutExerciseListElement";
 
 type Props = {
   workout: Workout;
 };
 
 function CurrentWorkoutExerciseList(props: Props) {
-  const { workoutId } = props.workout;
+  const { id: workoutId } = props.workout;
+  const { data, isSuccess, isError, isLoading, error } =
+    useWorkoutExerciseList(workoutId);
 
-  // const { data, isLoading, isError, error } = useWorkoutPresetExerciseList({
-  //   workoutID,
-  //   exerciseList: exerciseIDList,
-  // });
+  if (isLoading) return <div>Loading...</div>;
+  if (isError || !isSuccess) return <div>Error: {error?.message}</div>;
 
-  // if (isLoading) return <div>Loading...</div>;
-  // if (isError) return <div>error: {error.message}</div>;
-
-  // const currentWorkoutPresetExerciseListElements = data?.items.map(
-  //   (exercise: ExerciseListElement) => (
-  //     <CurrentWorkoutPresetExerciseListElement
-  //       exercise={exercise}
-  //       numberOfDisplayedMetrics={1}
-  //     />
-  //   )
-  // );
-
-  const currentWorkoutPresetExerciseListElements: [] = [];
+  const currentWorkoutPresetExerciseListElements = data.map((e) => (
+    <CurrentWorkoutExerciseListElement
+      key={e.exerciseId}
+      exercise={e}
+      numberOfDisplayedMetrics={3}
+    />
+  ));
 
   return (
     <section className="w-full flex flex-col">
