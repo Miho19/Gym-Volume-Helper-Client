@@ -23,8 +23,7 @@ function NewWorkoutForm() {
   function handleOnSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     newWorkoutMutation.mutate(formData);
-    // handle errors
-    resetForm();
+
     if (newWorkoutMutation.isSuccess) {
       navigation(`/workout/${newWorkoutMutation.data.id}`);
     } else {
@@ -48,7 +47,7 @@ function NewWorkoutForm() {
             type="text"
             maxLength={25}
             min={3}
-            name="workoutName"
+            name="name"
             value={formData.name}
             onChange={handleOnChange}
             className="w-full border border-white/5 col-span-3 rounded-lg px-2"
@@ -61,7 +60,7 @@ function NewWorkoutForm() {
             type="text"
             maxLength={25}
             min={3}
-            name="workoutPicture"
+            name="pictureSource"
             value={formData.pictureSource}
             onChange={handleOnChange}
             className="w-full border border-white/5 col-span-3 rounded-lg px-2"
