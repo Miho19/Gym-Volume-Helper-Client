@@ -1,5 +1,5 @@
 import HomeButton from "../Components/Navigation/HomeButton";
-import CurrentWorkoutExerciseList from "../Components/Workout/Current/CurrentWorkoutExerciseList";
+import WorkoutExerciseList from "../Components/Workout/Individual/WorkoutExerciseList";
 import WorkoutHeader from "../Components/Workout/Individual/WorkoutHeader";
 import WorkoutOwnerPanel from "../Components/Workout/Individual/WorkoutOwnerPanel";
 import useUserProfileQuery from "../Hooks/User/useUserProfileQuery";
@@ -30,7 +30,7 @@ function CurrentWorkoutPage() {
   return (
     <main className="mx-auto flex flex-col items-center justify-center gap-y-5 p-5 min-h-screen">
       <WorkoutHeader workout={workout} />
-      <CurrentWorkoutExerciseList workout={workout} />
+      <WorkoutExerciseList workout={workout} />
       <WorkoutOwnerPanel workout={workout} />
       <HomeButton />
     </main>
