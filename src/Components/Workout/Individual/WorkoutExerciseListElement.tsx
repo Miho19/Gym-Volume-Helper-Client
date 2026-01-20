@@ -1,7 +1,9 @@
-import type { ExerciseListElement } from "../../../Http/Response/UserWorkoutPresetsResponseType";
+import type { Exercise } from "../../../Zod/ExerciseSchema";
 
 type Props = {
-  exercise: ExerciseListElement;
+  exercise: Exercise;
+  numberOfDisplayedMetrics: number;
+  isMetricsEditable: boolean;
 };
 
 function WorkoutExerciseListElement(props: Props) {
@@ -10,7 +12,7 @@ function WorkoutExerciseListElement(props: Props) {
   return (
     <li className="flex flex-row border border-white/5 gap-x-5 bg-[#31363F] rounded-lg p-3 items-center">
       <img
-        src={exercise.img}
+        src={exercise.imageUrl}
         alt={`${exercise.name} image`}
         className="w-16 h-16 object-fill rounded-full"
       />

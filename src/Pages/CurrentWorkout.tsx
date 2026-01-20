@@ -30,7 +30,7 @@ function CurrentWorkoutPage() {
   return (
     <main className="mx-auto flex flex-col items-center justify-center gap-y-5 p-5 min-h-screen">
       <WorkoutHeader workout={workout} />
-      <WorkoutExerciseList workout={workout} />
+      <WorkoutExerciseList workout={workout} isMetricsEditable={true} />
       <WorkoutOwnerPanel workout={workout} />
       <HomeButton />
     </main>

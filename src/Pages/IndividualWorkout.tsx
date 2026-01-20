@@ -67,7 +67,7 @@ function IndividualWorkoutPage() {
       </button>
 
       <WorkoutHeader workout={workout} />
-      <WorkoutExerciseList workout={workout} />
+      <WorkoutExerciseList workout={workout} isMetricsEditable={false} />
       <WorkoutOwnerPanel workout={workout} />
 
       <button

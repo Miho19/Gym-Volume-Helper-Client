@@ -1,8 +1,10 @@
 import useWorkoutExerciseList from "../../../Hooks/Exercise/useWorkoutExerciseList";
 import type { Workout } from "../../../Zod/WorkoutSchema";
+import WorkoutExerciseListElement from "./WorkoutExerciseListElement";
 
 type Props = {
   workout: Workout;
+  isMetricsEditable: boolean;
 };
 
 function WorkoutExerciseList(props: Props) {
@@ -13,20 +15,19 @@ function WorkoutExerciseList(props: Props) {
   if (isLoading) return <div>Loading...</div>;
   if (isError || !isSuccess) return <div>Error: {error?.message}</div>;
 
-  const currentWorkoutPresetExerciseListElements = data.map((e) => (
-    <CurrentWorkoutExerciseListElement
+  const workoutExerciseListElements = data.map((e) => (
+    <WorkoutExerciseListElement
       key={e.exerciseId}
       exercise={e}
       numberOfDisplayedMetrics={3}
+      isMetricsEditable
     />
   ));
-
-  const exerciseList: string[] = ["hello"];
 
   return (
     <section className="w-full flex flex-col">
       <ul className="w-full flex flex-col gap-y-10 list-none">
-        {exerciseList}
+        {workoutExerciseListElements}
       </ul>
     </section>
   );
