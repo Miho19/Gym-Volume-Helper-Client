@@ -1,12 +1,12 @@
-import type { UserExerciseMetricQueryParameterType } from "../../Hooks/Exercise/useUserExerciseMetricsQuery";
+import type { UserWorkoutSessionQueryParameterType } from "../../../Hooks/Exercise/useUserWorkoutSessionQuery";
 import {
-  exerciseMetricZodObject,
-  type ExerciseMetric,
-} from "../../Zod/ExerciseMetricSchema";
-import { BASEADDRESS } from "./BaseURLAddress";
+  workoutSessionZodObject,
+  type WorkoutSession,
+} from "../../../Zod/WorkoutSessionSchema";
+import { BASEADDRESS } from "../BaseURLAddress";
 
 export function GETUSEREXERCISEMETRICENDPOINT(
-  input: UserExerciseMetricQueryParameterType,
+  input: UserWorkoutSessionQueryParameterType,
 ): URL {
   const { exerciseId, workoutId } = input;
   if (typeof exerciseId === "undefined")
@@ -31,10 +31,10 @@ function generateFetchOptions(): RequestInit {
   return fetchOptions;
 }
 
-export async function GETUserExerciseMetric(
-  input: UserExerciseMetricQueryParameterType,
+export async function GETUserWorkoutSession(
+  input: UserWorkoutSessionQueryParameterType,
   endpoint: URL = GETUSEREXERCISEMETRICENDPOINT(input),
-): Promise<ExerciseMetric> {
+): Promise<WorkoutSession> {
   try {
     const fetchOptions = generateFetchOptions();
     const response: Response = await fetch(endpoint, fetchOptions);
@@ -45,7 +45,7 @@ export async function GETUserExerciseMetric(
       );
 
     const responseBody = await response.json();
-    const result = await exerciseMetricZodObject.parseAsync(responseBody);
+    const result = await workoutSessionZodObject.parseAsync(responseBody);
     return result;
   } catch (error) {
     throw new Error(

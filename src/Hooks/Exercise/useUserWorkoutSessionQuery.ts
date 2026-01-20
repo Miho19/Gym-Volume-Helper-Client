@@ -1,14 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "@tanstack/react-query";
-import { GETUserExerciseMetric } from "../../Http/Request/GETUserExerciseMetrics";
+import { GETUserWorkoutSession } from "../../Http/Request/Exercise/GETUserExerciseMetrics";
 
-export type UserExerciseMetricQueryParameterType = {
+export type UserWorkoutSessionQueryParameterType = {
   workoutId: string | undefined;
   exerciseId: string | undefined;
 };
 
 function userExerciseMetricQueryKey(
-  input: UserExerciseMetricQueryParameterType,
+  input: UserWorkoutSessionQueryParameterType,
 ) {
   const { exerciseId, workoutId } = input;
   if (typeof exerciseId === "undefined")
@@ -18,14 +18,14 @@ function userExerciseMetricQueryKey(
   return `user metrics for exercise ${exerciseId} in workout ${workoutId}`;
 }
 
-export default function useUserExerciseMetricsQuery(
-  input: UserExerciseMetricQueryParameterType,
+export default function useUserWorkoutSessionQuery(
+  input: UserWorkoutSessionQueryParameterType,
 ) {
   const { isAuthenticated } = useAuth0();
 
   return useQuery({
     queryKey: [userExerciseMetricQueryKey(input)],
-    queryFn: () => GETUserExerciseMetric(input),
+    queryFn: () => GETUserWorkoutSession(input),
     enabled: isAuthenticated,
   });
 }
