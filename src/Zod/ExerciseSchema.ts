@@ -3,7 +3,7 @@ import z from "zod";
 export const exerciseZodObject = z.object({
   exerciseId: z.string(),
   name: z.string(),
-  videoUrl: z.string(),
+  videoUrl: z.string().optional(),
   imageUrl: z.string(),
 });
 
